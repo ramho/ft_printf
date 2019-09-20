@@ -6,18 +6,16 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 14:27:35 by rhoorntj          #+#    #+#             */
-/*   Updated: 2019/09/20 14:36:52 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2019/09/20 14:54:47 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<stdarg.h>
+#include <stdio.h>
+#include <stdarg.h>
 
-void ft_printf(char *,...); 				//Our printf function
-char* convert(unsigned int, int); 		//Convert integer number into octal, hex, etc.
+/* Convert integer number into octal, hex, etc. */
 
-
-int main()
+int 			main()
 {
 	ft_printf(" salut les %s\n %d", "amis", 9);
 
@@ -25,7 +23,7 @@ int main()
 }
 
 
-void ft_printf(char* format,...)
+void 			ft_printf(char* format,...)
 {
 	char *traverse;
 	unsigned int i;
@@ -78,7 +76,7 @@ void ft_printf(char* format,...)
 	va_end(arg);
 }
 
-char *convert(unsigned int num, int base)
+char 			*convert(unsigned int num, int base)
 {
 	static char Representation[]= "0123456789ABCDEF";
 	static char buffer[50];
