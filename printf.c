@@ -10,81 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+#include "printf.h"
 
-// void	ft_printf(char *format, ...)
-// {
-// 	va_list args;
-//
-// 	va_start(args, format);
-// 	ft_putstr(format);
-// 	//format = va_arg (args, char *);
-// 	va_end(args);
-// }
-//
-// int main()
-// {
-// 	ft_printf("Salut");
-// }
-
-void simple_printf(const char* fmt, ...)
+char 	is_type(char c)
 {
-	va_list args;
-	va_start(args, fmt);
-
-	while (*fmt != '\0')
-	{
-		if (*fmt == '%' && *(fmt + 1) == 'd') {
-			int i = va_arg(args, int);
-			ft_putstr(itoa(i + ' '));
-			fmt++;
-		}
-		else if (*fmt == '%' && *(fmt + 1) == 'c')
-		{
-			// A 'char' variable will be promoted to 'int'
-			// A character literal in C is already 'int' by itself
-			char c = va_arg(args, int);
-			ft_putstr(&c);
-			fmt++;
-		}
-		else if (*fmt == '%' && *(fmt + 1) == 'f')
-		{
-				double d = va_arg(args, double);
-				ft_putstr(itoa(d + ' '));
-				fmt++;
-		}
-		else if ( *fmt == '%' && *(fmt + 1) == 'p')
-		{
-			int p = va_arg(args, int);
-			ft_putstr(ft_itoa_base(p, 16));
-			fmt++;
-		}
-		else
-			write(1,fmt,1);
-		fmt++;
-	}
-
-		va_end(args);
-	}
-
-int main(void)
-{
-	char *str = "caca";
-    simple_printf("salut les %p\n", str);
-	printf("psalut les %p\n", str);
-    simple_printf("salut les %c\n", str[0]);
-	printf("psalut les %c\n", str[0]);
-    simple_printf("salut les %c\n", str[3]);
-    printf("psalut les %c\n", str[3]);
-	simple_printf("salut les %p\n", &str);
-    printf("psalut les %p\n", &str);
-	simple_printf("salut les %p\n", &str[0]);
-    printf("psalut les %p\n", &str[0]);
-	simple_printf("salut les %p\n", &str[3]);
-    printf("psalut les %p\n", &str[3]);
+	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'o'||
+			c == 'u' || c == 'x' || c == 'X' || c == 'f');
 }
+
+int ft_printf(const char* format, ...)
+{
+	t_base all;
+	int i;
+	int j;
+	int k;
+	i = 0;
+	k = 0;
+	all.fmt = (char *)format;
+	all.tab = malloc(sizeof(char *) * (2 + 1));
+	va_start(all.args, format);
+	while (all.fmt[i] != '\0')
+	{
+		if(all.fmt[i] == '%')
+		{
+			j = 0;
+				while ( all.fmt[i] && !is_type(all.fmt[i]))
+				{
+					i++;
+					j++;
+				}
+				all.tab[k] = ft_strsub(all.fmt, i - j, j + 1);
+				k++;
+		}
+		i++;
+	}
+	tab[k] = NULL;
+
+	va_end(all.args);
+	return (1);
+	}

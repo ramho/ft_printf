@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	find_size(int value, int base)
+/*static int	find_size(int value, int base)
   {
   int	len;
   len = 0;
@@ -53,8 +53,7 @@ static int	find_size(int value, int base)
   n /= base;
   }
   return (ret);
-  }
-/*#include "libft.h"
+  }*/
 
 static int	nlen(int value, int base)
 {
@@ -95,4 +94,4 @@ char 		*itoa_base(int value, int base)
 		n /= base;
 	}
 	return (dst);	
-}*/
+}
