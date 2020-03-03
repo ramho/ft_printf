@@ -1,0 +1,2 @@
+turn on the flags
+  what to do when turned on --> have all imbedded for each conversion char or have individual fonction for each flag ?

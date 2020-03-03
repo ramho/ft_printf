@@ -14,7 +14,7 @@
 
 char 	is_type(char c)
 {
-	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || 
+	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' ||
 			c == 'o'||	c == 'u' || c == 'x' || c == 'X' || c == 'f');
 }
 
@@ -47,6 +47,7 @@ int ft_printf(const char* format, ...)
 		i++;
 	}
 	all.tab[k] = NULL;
+	light_flags(all);
 	va_end(all.args);
 	return (1);
 	}
