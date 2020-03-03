@@ -6,7 +6,7 @@
 #    By: rhoorntj <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 15:08:31 by rhoorntj          #+#    #+#              #
-#    Updated: 2020/02/27 17:13:25 by rhoorntj         ###   ########.fr        #
+#    Updated: 2020/03/03 20:15:24 by rhoorntj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c \
 	  ft_putendl_fd.c ft_putnbr_fd.c ft_itoa.c ft_strnequ.c ft_strsplit.c \
 	  ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 	  ft_lstmap.c ft_isspace.c ft_memdel1.c ft_countwords.c \
-	  get_next_line.c ft_itoa_base.c \
+	  get_next_line.c ft_itoa_base.c ft_count_sym.c \
 
 FLAGS = -Wall -Werror -Wextra
 

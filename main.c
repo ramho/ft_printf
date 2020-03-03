@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	char *str = "caca";
+//	char *str = "caca";
 	//ft_printf("salut %s", str);
 	// printf("-014d |%-014d|\n", 512);
 	// printf("-14d |%-14d|\n", 512);
@@ -22,6 +22,5 @@ int main(void)
   //   printf("psalut les %p\n", &str[0]);
 	// simple_printf("salut les %p\n", &str[3]);
   //   printf("psalut les %p\n", &str[3]);
-  ft_printf("");
-  printf("salut %%-14s 5 %%#.543s\n");
+  ft_printf("hello %s des %0.5d la %-#0.2s");
 }

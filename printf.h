@@ -22,15 +22,16 @@ typedef		struct 	s_flag
 	int h;
 	int hh;
 
-}									t_flag;
+}						t_flag;
 
-typedef   struct  s_base
+typedef   struct  	s_base
 {
 
-	va_list          args;
-  char       			*fmt;
-	char 						**tab;
-}                 t_base;
+	va_list			args;
+	char			*fmt;
+	char			**tab;
+	int				len;
+}                	 t_base;
 
 
 /*
