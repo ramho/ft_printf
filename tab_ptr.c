@@ -1,6 +1,6 @@
 #include "printf.h"
 
-void	(*conversion[10])(t_all all, char **tab)
+int	(*conversion[10])(t_all all, char **tab)
 {
 	conversion[c] = c_conversion(all, tab);
 	conversion[s] = s_conversion(all, tab);
