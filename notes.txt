@@ -29,3 +29,5 @@ turn on the flags
   // 	ft_putstr(ft_itoa_base(p, 16));
   // 	fmt++;
   // }
+
+read the string, stock the *str, if i find a converter, convert and concatenate/strjoin

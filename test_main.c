@@ -3,6 +3,7 @@
 
 int main()
 {
+	char c;
 
 //	FOR c
 	ft_printf("|%c|\n", 'c');
@@ -21,9 +22,9 @@ int main()
 
 //	FOR s
 //	FOR d
-	printf("%00d\n", 1);
-	printf("%0000d\n",1);
-	printf("%033d\n",1);
-	printf("%030d\n",1);
+	// printf("%00d\n", 1);
+	// printf("%0000d\n",1);
+	// printf("%033d\n",1);
+	// printf("%030d\n",1);
 //	printf("%-0000d",1); - overides the 0
 }

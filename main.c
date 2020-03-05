@@ -22,5 +22,12 @@ int main(void)
   //   printf("psalut les %p\n", &str[0]);
 	// simple_printf("salut les %p\n", &str[3]);
   //   printf("psalut les %p\n", &str[3]);
-  ft_printf("hello %s des %0.5d la %-#0.2s");
+  //ft_printf("hello %s des %0.5d la %-#0.2s");
+  ft_printf("%c", 'c');
+  ft_printf("%5c", 'c');
+  ft_printf("%-5c", 'c');
+  printf("%c\n", 'c');
+  printf("%5c\n", 'c');
+  printf("%-5c\n", 'c');
+
 }

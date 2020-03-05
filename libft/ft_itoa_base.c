@@ -6,13 +6,13 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:52:39 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/03 18:32:44 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/05 18:34:45 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	nlen(long long value, int base)
+static long long	nlen(long long value, int base)
 {
 	int count = 0;
 
@@ -24,7 +24,7 @@ static int	nlen(long long value, int base)
 	return (count);
 }
 
-static	char *pick_size(char c)
+static	char 	*pick_size(char c)
 {
 	if (c == 'm')
 		return ("0123456789abdef");
@@ -33,7 +33,7 @@ static	char *pick_size(char c)
 	return(NULL);
 }
 
-char 		*ft_itoa_base(long long value, int base, char c)
+char 			*ft_itoa_base(long long value, int base, char c)
 {
 	char *str_base;
 	char *dst;

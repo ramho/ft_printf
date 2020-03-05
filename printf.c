@@ -6,7 +6,7 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 14:19:19 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/04 16:01:20 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/05 16:15:12 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ int ft_printf(const char* format, ...)
 					j++;
 				}
 				all.tab[k] = ft_strsub(all.fmt, i - j, j + 1);
+				light_flags(all ,all.tab[k]);
 				k++;
 		}
 		i++;
 	}
 	all.tab[k] = NULL;
-	convert(all);
+	//convert(all);
 	va_end(all.args);
 	return (1);
 	}

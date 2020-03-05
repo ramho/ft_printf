@@ -43,7 +43,7 @@ char 	is_type(char c);
 /*
 **  sort_flag.c
 */
-int 	light_flags(t_base all);
+int 	light_flags(t_base all, char *str);
 t_flag	*init_flag(t_flag *flag);
 
 /*
@@ -53,7 +53,8 @@ t_flag	*init_flag(t_flag *flag);
 /*
 **  convert.c
 */
-int start_conversion(t_base all);
+int start_conversion(char *str, t_base all);
+int c_conversion(t_base all);
 
 /*
 **  .c
