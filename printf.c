@@ -6,7 +6,7 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 14:19:19 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/05 16:15:12 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/06 13:44:36 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char 	is_type(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' ||
-			c == 'o'||	c == 'u' || c == 'x' || c == 'X' || c == 'f');
+			c == 'o'||	c == 'u' || c == 'x' || c == 'X' || c == 'f' );
 }
 
 int ft_printf(const char* format, ...)
@@ -23,6 +23,8 @@ int ft_printf(const char* format, ...)
 	t_base all;
 	int i;
 	int j;
+//	char *str;
+
 	int k;
 	i = 0;
 	k = 0;
@@ -32,22 +34,25 @@ int ft_printf(const char* format, ...)
 	va_start(all.args, format);
 	while (all.fmt[i] != '\0')
 	{
-		if(all.fmt[i] == '%')
+		if(all.fmt[i] == '%' && all.fmt[i + 1] != '%')
 		{
 			j = 0;
-				while ( all.fmt[i] && !is_type(all.fmt[i]))
-				{
-					i++;
-					j++;
-				}
-				all.tab[k] = ft_strsub(all.fmt, i - j, j + 1);
-				light_flags(all ,all.tab[k]);
-				k++;
+			while ( all.fmt[i] && !is_type(all.fmt[i]))
+			{
+				i++;
+				j++;
+			}
+			all.tab[k] = ft_strsub(all.fmt, i - j, j + 1);
+			light_flags(all, all.tab[k]);
+			k++;
 		}
+		else
+			if (all.fmt[i] == '%')
+				i++;
+			write(1, &all.fmt[i], 1);
 		i++;
 	}
 	all.tab[k] = NULL;
-	//convert(all);
 	va_end(all.args);
 	return (1);
 	}

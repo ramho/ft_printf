@@ -6,7 +6,7 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:48:59 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/05 18:35:15 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/06 13:42:47 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int 	light_flags(t_base all, char *str)
 			if (ft_isdigit(str[i]))
 			{
 				all.flag->width = ft_atoi(&str[i]);
-			//	printf("width = %d\n", all.flag->width);
+				i++;
 				while (ft_isdigit(str[i]))
 				{
 					i++;
@@ -59,6 +59,5 @@ int 	light_flags(t_base all, char *str)
 			}
 			i++;
 		}
-	start_conversion(str, all);
-	return(1);
+	return(start_conversion(str, all));
 }

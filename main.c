@@ -19,15 +19,13 @@ int main(void)
 	// simple_printf("salut les %p\n", &str); // 0x7ff on stack
   //   printf("psalut les %p\n", &str);
 	// simple_printf("salut les %p\n", &str[0]);
-  //   printf("psalut les %p\n", &str[0]);
-	// simple_printf("salut les %p\n", &str[3]);
   //   printf("psalut les %p\n", &str[3]);
   //ft_printf("hello %s des %0.5d la %-#0.2s");
-  ft_printf("%c", 'c');
-  ft_printf("%5c", 'c');
-  ft_printf("%-5c", 'c');
-  printf("%c\n", 'c');
-  printf("%5c\n", 'c');
-  printf("%-5c\n", 'c');
+  ft_printf("les %c les\n", 'm');
+    ft_printf("%%-5c\n", 'c');
+  // ft_printf("%-5c", 'c');
+  // printf("%c\n", 'c');
+  // printf("%5c\n", 'c');
+  // printf("%-5c\n", 'c');
 
 }
