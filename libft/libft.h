@@ -6,7 +6,7 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:18:51 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/03 20:15:59 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/06 18:43:20 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ int						ft_countwords(char const *str, char c);
 int						get_next_line(const int fd, char **line);
 char 					*ft_itoa_base(long long value, int base, char c);
 int						ft_count_sym(char *str, char c);
+int						ft_count_num(int value);
 
 #endif

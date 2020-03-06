@@ -6,7 +6,7 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:48:59 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/06 16:23:58 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/06 22:03:15 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int 	light_flags(t_base *all, char *str)
 	int i;
 
 	//all->flag.hash = 0; // redo
-	//printf("enter light flags\n");
+	// printf("str %s\n", str);
 	i = 0;
 	all->flag = init_flag(all->flag);
 	//printf("111\n");
@@ -56,17 +56,12 @@ int 	light_flags(t_base *all, char *str)
 			//printf("^^^^^^^^^^^^ %c && %d\n", str[i], all->flag.width);
 			if (ft_isdigit(str[i]))
 			{
-				all->flag.width = ft_atoi(&str[i]);
-				//printf(" in LIGHT flag width = %d\n", all->flag.width);
-				i++;
-				while (ft_isdigit(str[i]))
-				{
-					i++;
-					//printf("flag width = %d\n", all->flag.width);
-					all->flag.width = all->flag.width + 10 + ft_atoi(&str[i]);
+					all->flag.width = ft_atoi(str + i);
+					i += ft_count_num(all->flag.width);
+				//	printf("i count num = %d && str[i] = %c\n", i, str[i]);
 				}
-			}
-			i++;
+				i++;
 		}
-	return(start_conversion(str, all));
+	all->type = str[i];
+	return(start_conversion(all));
 }

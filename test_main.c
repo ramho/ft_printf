@@ -21,13 +21,13 @@ int main()
 
 // FOR p
 
-	printf("%p", c);
-	printf("%#p", c);
-	printf("%-p", c);
-	printf("%+p", c);
-	printf("% p", c);
-	printf("%0p", c);
-	printf("%p", c);
+	printf("|%p|\n", c);
+	//UB printf("%#p", c);
+	printf("|%-20p|\n", c);
+	//UB printf("%+p", c);
+	//UBgiprintf("% p", c);
+	//UB printf("%0p", c);
+	printf("|%20p|\n", c);
 
 
 //	FOR s

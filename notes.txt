@@ -33,3 +33,8 @@ turn on the flags
 read the string, stock the *str, if i find a converter, convert and concatenate/strjoin
 
 pour %s, if width is shorter than strlen(str), no need to take into account.
+
+if %s, precision avant la width
+
+
+if no type, prinft just prints letter and ignored conversion

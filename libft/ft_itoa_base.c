@@ -6,11 +6,12 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 16:52:39 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/05 18:34:45 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/06 18:58:37 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static long long	nlen(long long value, int base)
 {
@@ -27,7 +28,7 @@ static long long	nlen(long long value, int base)
 static	char 	*pick_size(char c)
 {
 	if (c == 'm')
-		return ("0123456789abdef");
+		return ("0123456789abcdef");
 	else if (c == 'M')
 		return ("0123456789ABCDEF");
 	return(NULL);

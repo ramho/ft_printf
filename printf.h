@@ -31,6 +31,7 @@ typedef   struct  	s_base
 	char			*fmt;
 	char			**tab;
 	int				len;
+	int 			type;
 }                	 t_base;
 
 
@@ -49,12 +50,13 @@ t_flag	init_flag(t_flag flag);
 /*
 **  tab_ptr.c
 */
-
+void	init_function(int(*conversion[255])(t_base *all));
 /*
 **  convert.c
 */
-int start_conversion(char *str, t_base *all);
+int start_conversion(t_base *all);
 int c_conversion(t_base *all);
+int p_conversion(t_base *all);
 
 /*
 **  .c
