@@ -21,7 +21,8 @@ int main(void)
 	// simple_printf("salut les %p\n", &str[0]);
   //   printf("psalut les %p\n", &str[3]);
   //ft_printf("hello %s des %0.5d la %-#0.2s");
-  ft_printf("les %c%c%c%c%c%c\n", 'a', 'm', 'i', 'g', 'o','s');
+  ft_printf("les %c%c%c%c%c de 19\n", 'c', 'h', 'i', 'l', 'l');
+   printf("les %c%c%c%c%c de 19\n", 'c', 'h', 'i', 'l', 'l');
   // ft_printf(" |%5c|\n", 'm');
   // ft_printf("%-5c", 'c');
   // printf("%c\n", 'c');

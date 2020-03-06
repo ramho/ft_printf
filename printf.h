@@ -26,7 +26,7 @@ typedef		struct 	s_flag
 
 typedef   struct  	s_base
 {
- 	t_flag 			*flag;
+ 	t_flag 			flag;
 	va_list			args;
 	char			*fmt;
 	char			**tab;
@@ -44,7 +44,7 @@ char 	is_type(char c);
 **  sort_flag.c
 */
 int 	light_flags(t_base *all, char *str);
-t_flag	*init_flag(t_flag *flag);
+t_flag	init_flag(t_flag flag);
 
 /*
 **  tab_ptr.c

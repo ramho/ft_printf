@@ -3,12 +3,12 @@
 
 int main()
 {
-	char c;
+	char *c = "j";
 
 //	FOR c
-	ft_printf("|%c|\n", 'c');
-	ft_printf("min width of 5 |%7c|\n", 'c');
-	ft_printf("left adjustment|%-5c|\n", 'c');
+					// ft_printf("|%c|\n", 'c');
+					// ft_printf("min width of 5 |%7c|\n", 'c');
+					// ft_printf("left adjustment|%-5c|\n", 'c');
 //	printf("UB|%.5c|\n", 'c');
 //	printf("UB %5 c", 'c');
 //	printf("UB %#c", 'c');
@@ -18,6 +18,16 @@ int main()
 //	printf("UB|%0c|\n", 'c');
 //	printf("UB|%0-5c|\n", 'c');
 //	printf("UB|%-05c|\n", 'c');
+
+// FOR p
+
+	printf("%p", c);
+	printf("%#p", c);
+	printf("%-p", c);
+	printf("%+p", c);
+	printf("% p", c);
+	printf("%0p", c);
+	printf("%p", c);
 
 
 //	FOR s

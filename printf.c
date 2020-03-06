@@ -6,7 +6,7 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 14:19:19 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/06 14:42:32 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/06 16:24:12 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int ft_printf(const char* format, ...)
 	all=malloc(sizeof(t_base));
 	all->fmt = (char *)format;
 	all->len = ft_count_sym(all->fmt, '%');
-	//all->tab = malloc(sizeof(char *) * (all->len + 1));
 	str = malloc(sizeof(char *) * (all->len + 1));
 	va_start(all->args, format);
 	while (all->fmt[i] != '\0')
 	{
+		//printf("next round\n");
 		if(all->fmt[i] == '%' && all->fmt[i + 1] != '%')
 		{
 			j = 0;
@@ -44,11 +44,8 @@ int ft_printf(const char* format, ...)
 				i++;
 				j++;
 			}
-			//all->tab[k] = ft_strsub(all->fmt, i - j, j + 1);
 			str = ft_strsub(all->fmt, i - j, j + 1);
-			//light_flags(all-> all->tab[k]);
 			light_flags(all, str);
-			//k++;
 			free(str);
 		}
 		else
@@ -59,7 +56,6 @@ int ft_printf(const char* format, ...)
 		}
 		i++;
 	}
-	//all->tab[k] = NULL;
 	va_end(all->args);
 	return (1);
 	}
