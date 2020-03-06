@@ -6,7 +6,7 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:48:59 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/06 13:42:47 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/06 14:44:39 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,33 @@ t_flag	*init_flag(t_flag *flag)
 	return(flag);
 }
 
-int 	light_flags(t_base all, char *str)
+int 	light_flags(t_base *all, char *str)
 {
 	int i;
 
-	all.flag->hash = 0; // redo
+	all->flag->hash = 0; // redo
 	i = 0;
-	init_flag(all.flag);
+	init_flag(all->flag);
 	while (str[i] && !(is_type(str[i])))
 	{
-			str[i] == '#' ? all.flag->hash = 1 : 0;
-			str[i] == '0' ? all.flag->zero = 1 : 0;
-			str[i] == '+' ? all.flag->plus = 1 : 0;
-			str[i] == '-' ? all.flag->minus = 1 : 0;
-			str[i] == ' ' ? all.flag->space = 1 : 0;
+			str[i] == '#' ? all->flag->hash = 1 : 0;
+			str[i] == '0' ? all->flag->zero = 1 : 0;
+			str[i] == '+' ? all->flag->plus = 1 : 0;
+			str[i] == '-' ? all->flag->minus = 1 : 0;
+			str[i] == ' ' ? all->flag->space = 1 : 0;
 //			str[i] == '.precision' ? // a voir
-			str[i] == 'l' ? all.flag->l = 1 : 0;
+			str[i] == 'l' ? all->flag->l = 1 : 0;
 //			str[i] == "ll" ? flag->ll = 1 : 0; one char cannot == "ll"
-			str[i] == 'h' ? all.flag->h = 1 : 0;
+			str[i] == 'h' ? all->flag->h = 1 : 0;
 //			str[i] == "hh" ? flag->hh = 1 : 0;
 			if (ft_isdigit(str[i]))
 			{
-				all.flag->width = ft_atoi(&str[i]);
+				all->flag->width = ft_atoi(&str[i]);
 				i++;
 				while (ft_isdigit(str[i]))
 				{
 					i++;
-					all.flag->width = all.flag->width + 10 + ft_atoi(&str[i]);
+					all->flag->width = all->flag->width + 10 + ft_atoi(&str[i]);
 				}
 			}
 			i++;

@@ -31,3 +31,5 @@ turn on the flags
   // }
 
 read the string, stock the *str, if i find a converter, convert and concatenate/strjoin
+
+pour %s, if width is shorter than strlen(str), no need to takr into account.
