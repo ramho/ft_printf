@@ -57,6 +57,7 @@ void	init_function(int(*conversion[255])(t_base *all));
 int start_conversion(t_base *all);
 int c_conversion(t_base *all);
 int p_conversion(t_base *all);
+int s_conversion(t_base *all);
 
 /*
 **  .c

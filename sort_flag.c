@@ -35,31 +35,27 @@ int 	light_flags(t_base *all, char *str)
 {
 	int i;
 
-	//all->flag.hash = 0; // redo
-	// printf("str %s\n", str);
 	i = 0;
 	all->flag = init_flag(all->flag);
-	//printf("111\n");
 	while (str[i] && !(is_type(str[i])))
 	{
-		//printf("%s\n", str);
 			str[i] == '#' ? all->flag.hash = 1 : 0;
 			str[i] == '0' ? all->flag.zero = 1 : 0;
 			str[i] == '+' ? all->flag.plus = 1 : 0;
 			str[i] == '-' ? all->flag.minus = 1 : 0;
 			str[i] == ' ' ? all->flag.space = 1 : 0;
-//			str[i] == '.precision' ? // a voir
-			str[i] == 'l' ? all->flag.l = 1 : 0;
-//			str[i] == "ll" ? flag.ll = 1 : 0; one char cannot == "ll"
-			str[i] == 'h' ? all->flag.h = 1 : 0;
-//			str[i] == "hh" ? flag.hh = 1 : 0;
-			//printf("^^^^^^^^^^^^ %c && %d\n", str[i], all->flag.width);
 			if (ft_isdigit(str[i]))
 			{
 					all->flag.width = ft_atoi(str + i);
 					i += ft_count_num(all->flag.width);
-				//	printf("i count num = %d && str[i] = %c\n", i, str[i]);
-				}
+			}
+			if (str[i] == '.')
+			{
+				i++;
+				if (ft_isdigit(str[i]))
+					all->flag.precision = ft_atoi(str + i);
+					i += ft_count_num(all->flag.precision);
+			}
 				i++;
 		}
 	all->type = str[i];

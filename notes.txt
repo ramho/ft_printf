@@ -1,40 +1,18 @@
-turn on the flags
-  what to do when turned on --> have all imbedded for each conversion char or have individual fonction for each flag ?
+*if len of arg longer than width, no need
+*if precision longer than arg, no need
+* precision tj avant la width
+*if no type, prinft just prints letter and ignored conversion
+*ternere pour flag 0 et espace
+* for float, if no specific precision , flag.precision = 6 else equals value of precision (.0 = .) 
 
 
-  // if (*all.fmt == '%' && *(all.fmt + 1) == 'd')
-  // {
-  // 	int i = va_arg(args, int);
-  // 	ft_putstr(ft_itoa(i + ' '));
-  // 	fmt++;
-  // }
+TO DO
 
-  // else if (*fmt == '%' && *(fmt + 1) == 'c')
-  // {
-  // 	// A 'char' variable will be promoted to 'int'
-  // 	// A character literal in C is already 'int' by itself
-  // 	char c = va_arg(args, int);
-  // 	ft_putstr(&c);
-  // 	fmt++;
-  // }
-  // else if (*fmt == '%' && *(fmt + 1) == 'f')
-  // {
-  // 		double d = va_arg(args, double);
-  // 		ft_putstr(ft_itoa(d + ' '));
-  // 		fmt++;
-  // }
-  // else if ( *fmt == '%' && *(fmt + 1) == 'p')
-  // {
-  // 	int p = va_arg(args, int);
-  // 	ft_putstr(ft_itoa_base(p, 16));
-  // 	fmt++;
-  // }
+--> turn off flags
+-- > function if no if no type (ft_printf("%5.3y  yyyyyyy", 3))
 
-read the string, stock the *str, if i find a converter, convert and concatenate/strjoin
+CHECK
 
-pour %s, if width is shorter than strlen(str), no need to take into account.
-
-if %s, precision avant la width
-
-
-if no type, prinft just prints letter and ignored conversion
+need to handle % without arg ? (ft_printf("hello %s des %0.5d la %-#0.2s\n"))
+  ft_printf("|%-10.-15s|\n", s);
+  printf("printf |%-10.-15s|\n", s);
