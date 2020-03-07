@@ -20,6 +20,7 @@ int ft_flag_width(t_base *all, char *s)
 	all->tot_len = (all->slen <= all->flag.width) ? all->flag.width : all->slen;
 	if(!(all->con_str = malloc(sizeof(char *) * (all->tot_len + 1))))
 		return (-1);
+	return(1);
 }
 int s_conversion(t_base *all)
 {
