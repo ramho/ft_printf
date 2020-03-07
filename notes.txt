@@ -3,7 +3,8 @@
 * precision tj avant la width
 *if no type, prinft just prints letter and ignored conversion
 *ternere pour flag 0 et espace
-* for float, if no specific precision , flag.precision = 6 else equals value of precision (.0 = .) 
+* for float, if no specific precision , flag.precision = 6 else equals value of precision (.0 = .)
+* diouxX, si precision remplie de 0 et apres width
 
 
 TO DO

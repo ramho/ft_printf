@@ -28,10 +28,14 @@ typedef   struct  	s_base
 {
  	t_flag 			flag;
 	va_list			args;
+	char			*con_str;
 	char			*fmt;
+
 	char			**tab;
 	int				len;
 	int 			type;
+	int slen;
+	int tot_len;
 }                	 t_base;
 
 

@@ -12,8 +12,6 @@
 
 #include "printf.h"
 
-//int 	width_flag()
-
 int c_conversion(t_base *all)
 {
 	int width;
@@ -85,44 +83,44 @@ int p_conversion(t_base *all)
 	return (tot_len);
 }
 
-int s_conversion(t_base *all)
-{
-	char *con_str;
-	char *tmp;
-	char *s;
-	int i;
-	int slen;
-	int tot_len;
-
-	i = 0;
-	s = va_arg(all->args, char*);
-	if (all->flag.precision > 0 && all->flag.precision < ft_strlen(s))
-	{
-		tmp = ft_strsub(s, i, all->flag.precision);
-		s = tmp;
-	}
-	slen = ft_strlen(s);
-	tot_len = (slen <= all->flag.width) ? all->flag.width : slen;
-	if(!(con_str = malloc(sizeof(char *) * (tot_len + 1))))
-		return (-1);
-	while(i < tot_len)
-		con_str[i++] = '.';
-	i = -1;
-	if (all->flag.minus)
-	{
-		while (++i <= slen - 1)
-			con_str[i] = s[i];
-		}
-	else
-	{
-		i = tot_len;
-		while (slen + 1)
-			con_str[i--] = s[slen--];
-	}
-	con_str[tot_len + 1] = '\0';
-	ft_putstr(con_str);
-	return (tot_len);
-}
+// int s_conversion(t_base *all)
+// {
+// 	char *con_str;
+// 	char *tmp;
+// 	char *s;
+// 	int i;
+// 	int slen;
+// 	int tot_len;
+//
+// 	i = 0;
+// 	s = va_arg(all->args, char*);
+// 	if (all->flag.precision > 0 && all->flag.precision < ft_strlen(s))
+// 	{
+// 		tmp = ft_strsub(s, i, all->flag.precision);
+// 		s = tmp;
+// 	}
+// 	slen = ft_strlen(s);
+// 	tot_len = (slen <= all->flag.width) ? all->flag.width : slen;
+// 	if(!(con_str = malloc(sizeof(char *) * (tot_len + 1))))
+// 		return (-1);
+// 	while(i < tot_len)
+// 		con_str[i++] = '.';
+// 	i = -1;
+// 	if (all->flag.minus)
+// 	{
+// 		while (++i <= slen - 1)
+// 			con_str[i] = s[i];
+// 		}
+// 	else
+// 	{
+// 		i = tot_len;
+// 		while (slen + 1)
+// 			con_str[i--] = s[slen--];
+// 	}
+// 	con_str[tot_len + 1] = '\0';
+// 	ft_putstr(con_str);
+// 	return (tot_len);
+// }
 
 
 int start_conversion(t_base *all)
