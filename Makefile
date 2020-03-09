@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rhoorntj <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/06 10:43:04 by rhoorntj          #+#    #+#              #
-#    Updated: 2020/03/06 10:50:11 by rhoorntj         ###   ########.fr        #
+#    Updated: 2020/03/09 16:48:32 by rhoorntj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
 
-SRC = printf.c sort_flag.c convert.c
+SRC = printf.c sort_flag.c convert.c flags.c tab_ptr.c main.c
 
-INC = ft_printf.h
+INC = printf.h
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -38,4 +38,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : all clean fclean re 
+.PHONY : all clean fclean re

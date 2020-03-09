@@ -32,9 +32,9 @@ typedef   struct  	s_base
 	char			*fmt;
 
 	char			**tab;
-	int				len;
+	int				len_fmt;
 	int 			type;
-	int slen;
+	int len;
 	int tot_len;
 }                	 t_base;
 
@@ -55,6 +55,7 @@ t_flag	init_flag(t_flag flag);
 **  tab_ptr.c
 */
 void	init_function(int(*conversion[255])(t_base *all));
+//void	init_value_of_base(t_base *all);
 /*
 **  convert.c
 */
@@ -63,8 +64,12 @@ int c_conversion(t_base *all);
 int p_conversion(t_base *all);
 int s_conversion(t_base *all);
 
+
 /*
-**  .c
+**  flags.c
 */
+char *ft_flag_precision(t_base *all,char *s, int i);
+int ft_flag_width(t_base *all, char *s);
+void	fill_width_space(char *str, int size);
 
 #endif

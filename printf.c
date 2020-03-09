@@ -6,7 +6,7 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 14:19:19 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/06 20:22:02 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/09 14:25:43 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int ft_printf(const char* format, ...)
 	k = 0;
 	all=malloc(sizeof(t_base));
 	all->fmt = (char *)format;
-	all->len = ft_count_sym(all->fmt, '%');
-	str = malloc(sizeof(char *) * (all->len + 1));
+	all->len_fmt = ft_count_sym(all->fmt, '%');
+	str = malloc(sizeof(char *) * (all->len_fmt + 1));
 	va_start(all->args, format);
 	while (all->fmt[i] != '\0')
 	{

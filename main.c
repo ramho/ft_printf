@@ -2,42 +2,53 @@
 
 int main(void)
 {
-// 	 char *s = "salut";
-// 	ft_printf("salut |%s|\n", s);
-// 	printf("salut |%s|\n", s);
-//
-//   ft_printf("les %-5c%c%10c%c%c de 19\n", 'c', 'h', 'i', 'l', 'l');
-// 	printf("les %-5c%c%10c%c%c de 19\n", 'c', 'h', 'i', 'l', 'l');
-//
-// 	//ft_printf(" |%#5c|\n", 'm');
-// 	//printf(" |%#5c|\n", 'm');
-//
-//   ft_printf("%-5c\n", 'c');
-// 	printf("%-5c\n", 'c');
-//
-//   ft_printf("|%-15p|\n", s);
-// 	printf("|%-15p|\n", s);
-//
-//  	ft_printf("|%-20p|\n", s);
-// 	printf("|%-20p|\n", s);
-//
-//  	ft_printf("|%20p|\n", s);
-// 	printf("|%20p|\n", s);
-//
-// 	ft_printf("%s\n", s);
-// 	printf("%s\n", s);
-//
-// //	ft_printf("|%.-15s|\n",
+	 //char *s = "salut";
+	// ft_printf("salut |%s|\n", s);
+	// printf("salut |%s|\n", s);
+  //
+  // ft_printf("les %-5c%c%10c%c%c de 19\n", 'c', 'h', 'i', 'l', 'l');
+	// printf("les %-5c%c%10c%c%c de 19\n", 'c', 'h', 'i', 'l', 'l');
 
-// //	printf("printf |%.-1s|\n", s);
-//
-// 	ft_printf("|%-50c|\n", '\0');
-// 	printf("|%-50c|\n", '\0');
+	//ft_printf(" |%#5c|\n", 'm');
+	//printf(" |%#5c|\n", 'm');
 
-	printf("1%+.5d\n", 12);
-	printf("2%+5d\n", 12);
-	printf("3%+05d\n", 12);
-	printf("4%+015.5d\n", 12);
-	printf("5%-05d\n", 12);
+  // ft_printf("|%-5c|\n", 'c');
+	// printf("|%-5c|\n", 'c');
+
+  // ft_printf("|%-15p|\n", s);
+	// printf("|%-15p|\n", s);
+  //
+ 	// ft_printf("|%-20p|\n", s);
+	// printf("|%-20p|\n", s);
+  //
+ 	// ft_printf("|%20p|\n", s);
+	// printf("|%20p|\n", s);
+  //
+	// ft_printf("%s\n", s);
+	// printf("%s\n", s);
+
+//	ft_printf("|%.-15s|\n",
+
+//	printf("printf |%.-1s|\n", s);
+
+	// ft_printf("|%-50c|\n", '\0');
+	// printf("|%-50c|\n", '\0');
+
+	// printf("%+.5d\n", 12);
+	// printf("%+5d\n", 12);
+	// printf("%+05d\n", 12);
+	// printf("%+015.5d\n", 12);
+	// printf("%-05d\n", 12); //
+	// printf("%hd\n", 12);
+	// printf("%hhd\n", 122);
+	// printf("%ld\n", 12);
+	// printf("%lld\n", 12);
+
+	printf("%10.1d\n", 21);
+	printf("%10.2d\n", 21);
+	printf("%10.5d\n", 21);
+	printf("%.1hhd\n", 21);
+	printf("%.2hhd\n", 21);
+	printf("%.5hhd\n", 21);
 return(0);
 }

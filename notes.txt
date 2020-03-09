@@ -17,3 +17,6 @@ CHECK
 need to handle % without arg ? (ft_printf("hello %s des %0.5d la %-#0.2s\n"))
   ft_printf("|%-10.-15s|\n", s);
   printf("printf |%-10.-15s|\n", s);
+
+  find alternative to ft_strlen of a char, because when you send a pointer to char c,
+  	it sometimes sends additional/random chars along and affects ft_strlen return

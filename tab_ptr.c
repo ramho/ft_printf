@@ -13,3 +13,11 @@ void	init_function(int (*conversion[255])(t_base *all))
 	// conversion['X'] = X_conversion(all);
 	// conversion['f'] = f_conversion(all);
 }
+
+void init_value_of_base(t_base *all)
+{
+
+	all->con_str = NULL;
+	all->len = 0;
+	all->tot_len = 0;
+}
