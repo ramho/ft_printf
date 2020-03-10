@@ -1,12 +1,12 @@
 #include "printf.h"
 
-void	init_function(int (*conversion[255])(t_base *all))
+void	init_function(int (*conversion[122])(t_base *all))
 {
 	conversion[99] = c_conversion;
 	conversion[112] = p_conversion;
 	conversion[115] = s_conversion;
-	// conversion['d'] = d_conversion(all);
-	// conversion['i'] = i_conversion(all);
+	conversion[64] = di_conversion;
+	onversion[105] = di_conversion;
 	// conversion['o'] = o_conversion(all);
 	// conversion['u'] = u_conversion(all);
 	// conversion['x'] = x_conversion(all);

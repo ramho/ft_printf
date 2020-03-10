@@ -18,9 +18,7 @@ typedef		struct 	s_flag
 	int width;
 	int precision;
 	int l;
-	int ll;
 	int h;
-	int hh;
 
 }						t_flag;
 

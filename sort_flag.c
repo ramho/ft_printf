@@ -6,7 +6,7 @@
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:48:59 by rhoorntj          #+#    #+#             */
-/*   Updated: 2020/03/06 22:03:15 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2020/03/10 17:52:21 by rhoorntj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,12 @@ int 	light_flags(t_base *all, char *str)
 					all->flag.precision = ft_atoi(str + i);
 					i += ft_count_num(all->flag.precision);
 			}
-				i++;
-		}
+			if (str[i] == 'h')
+				str[i + 1] == 'h' ? i++ && all->flag.h = 2 : all->flag.h = 1;
+			if (str[i] == 'l')
+				str[i + 1] == 'l' ? i++ && all->flag.l = 2 : all->flag.l = 1;
+		i++;
+	}
 	all->type = str[i];
 	return(start_conversion(all));
 }

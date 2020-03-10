@@ -6,13 +6,14 @@
 #    By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/06 10:43:04 by rhoorntj          #+#    #+#              #
-#    Updated: 2020/03/09 16:48:32 by rhoorntj         ###   ########.fr        #
+#    Updated: 2020/03/10 17:17:58 by rhoorntj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
 
-SRC = printf.c sort_flag.c convert.c flags.c tab_ptr.c main.c
+SRC = printf.c sort_flag.c convert_csp.c flags.c tab_ptr.c convert_diouxX.c \
+ 		main.c
 
 INC = printf.h
 
