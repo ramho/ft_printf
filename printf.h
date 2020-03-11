@@ -61,6 +61,8 @@ int start_conversion(t_base *all);
 int c_conversion(t_base *all);
 int p_conversion(t_base *all);
 int s_conversion(t_base *all);
+int di_conversion(t_base *all);
+
 
 
 /*

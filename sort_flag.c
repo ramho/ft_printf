@@ -23,11 +23,7 @@ t_flag	init_flag(t_flag flag)
 	flag.width = 0;
 	flag.precision = 0;
 	flag.l = 0;
-	flag.ll = 0;
 	flag.h = 0;
-	flag.hh = 0;
-	//printf("width in init %d\n", flag.width);
-	//printf("end of init flag\n");
 	return(flag);
 }
 
@@ -57,9 +53,15 @@ int 	light_flags(t_base *all, char *str)
 					i += ft_count_num(all->flag.precision);
 			}
 			if (str[i] == 'h')
-				str[i + 1] == 'h' ? i++ && all->flag.h = 2 : all->flag.h = 1;
+			{
+				all->flag.h = 1;
+				(str[i + 1] == 'h') ? all->flag.h = 2 && i++ : i;
+			}
 			if (str[i] == 'l')
-				str[i + 1] == 'l' ? i++ && all->flag.l = 2 : all->flag.l = 1;
+			{
+				all->flag.l = 1;
+				(str[i + 1] == 'l') ? all->flag.l = 2 && i++ : i;
+			}		
 		i++;
 	}
 	all->type = str[i];

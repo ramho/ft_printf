@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "printf.h"
+
 // void	length_modifier(t_base all)
 // {
 //
@@ -26,5 +28,6 @@ int		di_conversion(t_base *all)
 {
 	int d;
 
-	g = va_arg()
+	d = va_arg(all->args, int);
+	return (1);
 }

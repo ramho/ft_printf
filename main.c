@@ -45,10 +45,15 @@ int main(void)
 	// printf("%lld\n", 12);
 
 	printf("%10.1d\n", 21);
-	printf("%10.2d\n", 21);
+	printf("%-10.2d\n", 21);
+	printf("%-+10.3d\n", 21); // + to add to dlen bnd precision before width
+	printf("1  %-010.2d\n", 21); //
+	printf("2  %010.2d\n", 21); // with precision no padding of 0
+	printf("3  %010d\n", 21); // without precision padding of 0
+	printf("4  %-10.2d\n", 21); //
 	printf("%10.5d\n", 21);
-	printf("%.1hhd\n", 21);
-	printf("%.2hhd\n", 21);
-	printf("%.5hhd\n", 21);
+	printf("%.1d\n", 21);// precison smaller tan dlen so no 0
+	printf("%.3d\n", 21);
+	printf("%.5d\n", 21); // precision adds 000 before d if precision bigger than dlen
 return(0);
 }
