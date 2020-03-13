@@ -1,4 +1,5 @@
 #include "printf.h"
+#include <limits.h>
 
 int main(void)
 {
@@ -151,19 +152,19 @@ int main(void)
 	// printf("3  %-010u\n", 21); // without precision padding of 0
 	// ft_printf("3  %-010u\n", 21); // without precision padding of 0
 
-	printf("----\n");
-	printf("8  |%-+10.3u|\n", -21); // + to add to dlen bnd precision before width
-	ft_printf("8  |%-+10.3u|\n", -21); // + to add to dlen bnd precision before width
-	printf("----\n");
-	printf("9  %+00010u\n", -21); // without precision padding of 0
-	ft_printf("9  %+00010u\n", -21); // without precision padding of 0
-	printf("----\n");
-	printf("1  %010u\n", -21); // without precision padding of 0
-	ft_printf("1  %010u\n", -21); // without precision padding of 0
-	printf("----\n");
-	printf("2  %+ 10u\n", -21); // without precision padding of 0
-	ft_printf("2  %+ 10u\n", -21); // without precision padding of 0
-	printf("----\n");
+	// printf("----\n");
+	// printf("8  |%-+10.3u|\n", -21); // + to add to dlen bnd precision before width
+	// ft_printf("8  |%-+10.3u|\n", -21); // + to add to dlen bnd precision before width
+	// printf("----\n");
+	// printf("9  %+00010u\n", -21); // without precision padding of 0
+	// ft_printf("9  %+00010u\n", -21); // without precision padding of 0
+	// printf("----\n");
+	// printf("1  %010u\n", -21); // without precision padding of 0
+	// ft_printf("1  %010u\n", -21); // without precision padding of 0
+	// printf("----\n");
+	// printf("2  %+ 10u\n", -21); // without precision padding of 0
+	// ft_printf("2  %+ 10u\n", -21); // without precision padding of 0
+	// printf("----\n");
 	// printf("8  %+00010.3u\n", 21); // without precision padding of 0
 	// ft_printf("8  %+00010.3u\n", 21); // without precision padding of 0
 	// printf("----\n");
@@ -189,5 +190,151 @@ int main(void)
 	// printf("2  %.5u\n", 21); // precision adds 000 before d if precision bigger than dlen
 	// ft_printf("2  %.5u\n", 21); // precision ad
 
+	// TYPE O
+	// printf("1  %10.5o\n", 21);
+	// ft_printf("1  %10.5o\n", 21);
+	// printf("----\n");
+	// printf("2  |%-10.2o|\n", 21);
+	// ft_printf("2  |%-10.2o|\n", 21);
+	// printf("----\n");
+	// printf("3  %010o\n", 21); // without precision padding of 0
+	// ft_printf("3  %010o\n", 21); // without precision padding of 0
+	// printf("----\n");
+	// printf("4  %00010o\n", 21); // without precision padding of 0
+	// ft_printf("4  %00010o\n", 21); // without precision padding of 0
+	// printf("----\n");
+	// printf("5  %.0004o\n", 21); // without precision padding of 0
+	// ft_printf("5  %.0004o\n", 21); // without precision padding of 0
+	// printf("----\n");
+	// printf("4  %10o\n", 21); // without precision padding of 0
+	// ft_printf("4  %10o\n", 21); // without precision padding of 0
+	// printf("----\n");
+	// printf("3  |%+10.3o|\n", 21); // + to add to dlen bnd precision before width
+	// ft_printf("3  |%+10.3o|\n", 21); // + to add to dlen bnd precision before width
+	// printf("----\n");
+	// printf("4  |%+10o|\n", 21); // + to add to dlen bnd precision before width
+	// ft_printf("4  |%+10o|\n", 21); // + to add to dlen bnd precision before width
+	// printf("----\n");
+	// printf("5  |%+.3o|\n", 21); // + to add to dlen bnd precision before width
+	// ft_printf("5  |%+.3o|\n", 21); // + to add to dlen bnd precision before width
+	// printf("----\n");
+	// printf("6  |%-+10.3o|\n", 21); // + to add to dlen bnd precision before width
+	// ft_printf("6  |%-+10.3o|\n", 21); // + to add to dlen bnd precision before width
+	// printf("----\n");
+	// printf("1  %010o\n", 21); // without precision padding of 0
+	// ft_printf("1  %010o\n", 21); // without precision padding of 0
+	// printf("2  %015.10o\n", 21); // without precision padding of 0
+	// ft_printf("2  %015.10o\n", 21); // without precision padding of 0
+	// printf("3  %-010o\n", 21); // without precision padding of 0
+	// ft_printf("3  %-010o\n", 21); // without precision padding of 0
+	// printf("----\n");
+	// printf("8  |%-10.3o|\n", -21); // + to add to dlen bnd precision before width
+	// ft_printf("8  |%-10.3o|\n", -21); // + to add to dlen bnd precision before width
+	// printf("----\n");
+	// printf("9  %00010o\n", -21); // without precision padding of 0
+	// ft_printf("9  %00010o\n", -21); // without precision padding of 0
+	// printf("----\n");
+	// printf("1  %010o\n", -21); // without precision padding of 0
+	// ft_printf("1  %010o\n", -21); // without precision padding of 0
+	// printf("----\n");
+	// printf("2  % 10o\n", -21); // without precision padding of 0
+	// ft_printf("2  % 10o\n", -21); // without precision padding of 0
+	// printf("----\n");
+	// printf("8  %+00010.3o\n", 21); // without precision padding of 0
+	// ft_printf("8  %+00010.3o\n", 21); // without precision padding of 0
+	// printf("----\n");
+	// printf("4  %-010.2o\n", 21); //
+	// ft_printf("4  %-010.2o\n", 21); //
+	// printf("----\n");
+	// printf("5  %010.2o\n", 21); // with precision no padding of 0
+	// ft_printf("5  %010.2o\n", 21); // with precision no padding of 0
+	// printf("----\n");
+	// printf("7  %-10.2o\n", 21); //
+	// ft_printf("7  %-10.2o\n", 21); //
+	// printf("----\n");
+	// printf("8  %10.5o\n", 21);
+	// ft_printf("8  %10.5o\n", 21);
+	// printf("----\n");
+	// printf("9  %.1o\n", 21);// precison smaller tan dlen so no 0
+	// ft_printf("9  %.1o\n", 21);// precison smaller tan dlen so no 0
+	// printf("----\n");
+	// printf("1  %.3o\n", 21);
+	// ft_printf("1  %.3o\n", 21);
+	// printf("----\n");
+	// printf("2  %.5o\n", 21); // precision adds 000 before d if precision bigger than dlen
+	// ft_printf("2  %.5o\n", 21); // precision ad
+
+	 //TYPE xX
+
+	// printf("1  %10.5x\n", 21);
+	// ft_printf("1  %10.5x\n", 21);
+	// printf("----\n");
+	// printf("2  |%-10.2x|\n", 21);
+	// ft_printf("2  |%-10.2x|\n", 21);
+	// printf("----\n");
+	printf("3  %010x\n", 21); // without precision padding of 0
+	ft_printf("3  %010x\n", 21); // without precision padding of 0
+	printf("----\n");
+	printf("4  %00010x\n", 21); // without precision padding of 0
+	ft_printf("4  %00010x\n", 21); // without precision padding of 0
+	printf("----\n");
+	// printf("5  %.0004x\n", 21); // without precision padding of 0
+	// ft_printf("5  %.0004x\n", 21); // without precision padding of 0
+	// printf("----\n");
+	// printf("4  %10x\n", 21); // without precision padding of 0
+	// ft_printf("4  %10x\n", 21); // without precision padding of 0
+	// printf("----\n");
+	// printf("3  |%10.3x|\n", 21); // + to add to dlen bnd precision before width
+	// ft_printf("3  |%10.3x|\n", 21); // + to add to dlen bnd precision before width
+	// printf("----\n");
+	// printf("4  |%10x|\n", 21); // + to add to dlen bnd precision before width
+	// ft_printf("4  |%10x|\n", 21); // + to add to dlen bnd precision before width
+	// printf("----\n");
+	// printf("5  |%.3x|\n", 21); //  to add to dlen bnd precision before width
+	// ft_printf("5  |%.3x|\n", 21); //  to add to dlen bnd precision before width
+	// printf("----\n");
+	// printf("6  |%-10.3x|\n", 21); //  to add to dlen bnd precision before width
+	// ft_printf("6  |%-10.3x|\n", 21); //  to add to dlen bnd precision before width
+	// printf("----\n");
+	printf("7  %10.5x\n", INT_MAX); // without precision padding of 0
+	ft_printf("7  %10.5x\n", INT_MAX); // without precision padding of 0
+	printf("----\n");
+	// printf("8  |%-10.3x|\n", -21); //  to add to dlen bnd precision before width
+	// ft_printf("8  |%-10.3x|\n", -21); //  to add to dlen bnd precision before width
+	// printf("----\n");
+	printf("9  %050x\n", INT_MAX); // without precision padding of 0
+	ft_printf("9  %050x\n", INT_MAX); // without precision padding of 0
+	printf("----\n");
+	printf("1  %060.40x\n", INT_MAX); // without precision padding of 0
+	ft_printf("1  %060.40x\n", INT_MAX); // without precision padding of 0
+	// printf("----\n");
+	// printf("2  %10x\n", -21); // without precision padding of 0
+	// ft_printf("2  %10x\n", -21); // without precision padding of 0
+	// printf("----\n");
+	// printf("8  %00010.3x\n", 21); // without precision padding of 0
+	// ft_printf("8  %00010.3x\n", 21); // without precision padding of 0
+	// printf("----\n");
+	// printf("4  %-010.2x\n", 21); //
+	// ft_printf("4  %-010.2x\n", 21); //
+	// printf("5  %-010x\n", 21); //
+	// ft_printf("5  %-010x\n", 21); //
+	// printf("----\n");
+	// printf("5  %010.2x\n", 21); // with precision no padding of 0
+	// ft_printf("5  %010.2x\n", 21); // with precision no padding of 0
+	// printf("----\n");
+	// printf("7  %-10.2x\n", 21); //
+	// ft_printf("7  %-10.2x\n", 21); //
+	// printf("----\n");
+	// printf("8  %10.5x\n", 21);
+	// ft_printf("8  %10.5x\n", 21);
+	// printf("----\n");
+	// printf("9  %.1x\n", 21);// precison smaller tan dlen so no 0
+	// ft_printf("9  %.1x\n", 21);// precison smaller tan dlen so no 0
+	// printf("----\n");
+	// printf("1  %.3x\n", 21);
+	// ft_printf("1  %.3x\n", 21);
+	// printf("----\n");
+	// printf("2  %.5x\n", 21); // precision adds 000 before d if precision bigger than dlen
+	// ft_printf("2  %.5x\n", 21);
 return(0);
 }

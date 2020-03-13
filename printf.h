@@ -6,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <math.h>
 #include "libft/libft.h"
 
 typedef		struct 	s_flag
@@ -70,6 +71,8 @@ int s_conversion(t_base *all);
 */
 int di_conversion(t_base *all);
 int		u_conversion(t_base *all);
+int		o_conversion(t_base *all);
+int		xX_conversion(t_base *all);
 
 /*
 **  flags.c

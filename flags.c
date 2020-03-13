@@ -71,7 +71,7 @@ void	fill_width_space(t_base *all, char *str, int size)
 	int i;
 
 	i = 0;
-	if ((type_dif(all->type) || all->type == 117)	&& all->flag.precision == 0 && all->flag.zero == 1)
+	if ((type_dif(all->type) || all->type == 117 || all->type == 120 || all->type == 88)	&& all->flag.precision == 0 && all->flag.zero == 1)
 	{
 			while( i < size)
 			str[i++] = '0';

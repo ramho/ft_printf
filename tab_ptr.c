@@ -7,11 +7,11 @@ void	init_function(int (*conversion[122])(t_base *all))
 	conversion[115] = s_conversion;
 	conversion[100] = di_conversion;
 	conversion[105] = di_conversion;
-	// conversion['o'] = o_conversion; // o
+	conversion[111] = o_conversion; // o
 	conversion[117] = u_conversion;  // u
-	// conversion['x'] = x_conversion; // x
-	// conversion['X'] = X_conversion; // X
-	// conversion['f'] = f_conversion; // f
+	conversion[120] = xX_conversion; // x
+	conversion[88] = xX_conversion; // X
+	// conversion[102] = f_conversion; // f
 }
 
 void init_value_of_base(t_base *all)
