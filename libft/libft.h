@@ -31,7 +31,7 @@ void					ft_bzero(void *str, size_t n);
 int						ft_isalpha(int c);
 int						ft_isalnum(int c);
 int						ft_isdigit(int c);
-char					*ft_itoa(int n);
+char					*ft_itoa(long n);
 int						ft_isascii(int c);
 int						ft_isprint(int c);
 int						ft_isspace(int c);

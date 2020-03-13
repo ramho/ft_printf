@@ -68,6 +68,6 @@ int 	light_flags(t_base *all, char *str)
 		i++;
 	}
 	all->type = str[i];
-	 // printf("flag plus %d flag minus %d\n", all->flag.plus, all->flag.minus);
+	  // printf("flag zero %d flag minus %d\n", all->flag.zero, all->flag.minus);
 	return(start_conversion(all));
 }

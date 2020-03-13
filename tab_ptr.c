@@ -8,7 +8,7 @@ void	init_function(int (*conversion[122])(t_base *all))
 	conversion[100] = di_conversion;
 	conversion[105] = di_conversion;
 	// conversion['o'] = o_conversion; // o
-	conversion[117] = di_conversion;  // u
+	conversion[117] = u_conversion;  // u
 	// conversion['x'] = x_conversion; // x
 	// conversion['X'] = X_conversion; // X
 	// conversion['f'] = f_conversion; // f

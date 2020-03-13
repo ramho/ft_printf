@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_numlen(int n)
+#include <stdio.h>
+static int	ft_numlen(long n)
 {
 	int		i;
 
@@ -32,7 +32,7 @@ static int	ft_numlen(int n)
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(long n)
 {
 	int		len;
 	char	*s;

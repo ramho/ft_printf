@@ -49,7 +49,7 @@ char *precision_diouxX(t_base *all,char *s)
 		diff = all->flag.precision - ft_strlen(s);
 		tmp = fill_zero(tmp, diff);
 		tmp = ft_strjoin(tmp, s);
-		if (all->flag.plus == 1)
+		if (all->flag.plus == 1 && type_dif(all->type))
 		{
 			tmp = ft_strjoin(all->flag.sign, tmp);
 			all->flag.plus = 0;
@@ -71,7 +71,7 @@ void	fill_width_space(t_base *all, char *str, int size)
 	int i;
 
 	i = 0;
-	if (type_dif(all->type) && all->flag.precision == 0 && all->flag.zero == 1)
+	if ((type_dif(all->type) || all->type == 117)	&& all->flag.precision == 0 && all->flag.zero == 1)
 	{
 			while( i < size)
 			str[i++] = '0';

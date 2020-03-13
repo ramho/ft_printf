@@ -56,14 +56,20 @@ t_flag	init_flag(t_flag flag);
 */
 void	init_function(int(*conversion[255])(t_base *all));
 //void	init_value_of_base(t_base *all);
+
 /*
-**  convert.c
+**  convert_csp.c
 */
 int start_conversion(t_base *all);
 int c_conversion(t_base *all);
 int p_conversion(t_base *all);
 int s_conversion(t_base *all);
+
+/*
+**  convert_diouxX.c
+*/
 int di_conversion(t_base *all);
+int		u_conversion(t_base *all);
 
 /*
 **  flags.c
