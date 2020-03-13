@@ -24,6 +24,7 @@ t_flag	init_flag(t_flag flag)
 	flag.precision = 0;
 	flag.l = 0;
 	flag.h = 0;
+	flag.sign = "+\0";
 	return(flag);
 }
 
@@ -40,12 +41,14 @@ int 	light_flags(t_base *all, char *str)
 			str[i] == '+' ? all->flag.plus = 1 : 0;
 			str[i] == '-' ? all->flag.minus = 1 : 0;
 			str[i] == ' ' ? all->flag.space = 1 : 0;
-			if (ft_isdigit(str[i]))
+			if (ft_isdigit(str[i])) // width
 			{
-					all->flag.width = ft_atoi(str + i);
-					i += ft_count_num(all->flag.width);
+				while (str[i] == '0')
+					i++;
+				all->flag.width = ft_atoi(str + i);
+				i += ft_count_num(all->flag.width);
 			}
-			if (str[i] == '.')
+			if (str[i] == '.') // precision
 			{
 				i++;
 				if (ft_isdigit(str[i]))
@@ -61,9 +64,10 @@ int 	light_flags(t_base *all, char *str)
 			{
 				all->flag.l = 1;
 				(str[i + 1] == 'l') ? all->flag.l = 2 && i++ : i;
-			}		
+			}
 		i++;
 	}
 	all->type = str[i];
+	 // printf("flag plus %d flag minus %d\n", all->flag.plus, all->flag.minus);
 	return(start_conversion(all));
 }

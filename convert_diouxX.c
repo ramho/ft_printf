@@ -12,22 +12,35 @@
 
 #include "printf.h"
 
-// void	length_modifier(t_base all)
-// {
-//
-// 	if (all->flag.h == 1)
-// 	else if (all->flag.h == 2)
-// 	else if (all->flag.l == 1)
-// 	else if(all->flag.l == 2)
-// 	else
-//
-// }
-
-
 int		di_conversion(t_base *all)
 {
 	int d;
+	int i;
+	char *s;
 
 	d = va_arg(all->args, int);
-	return (1);
+	d < 0 ? all->flag.sign = "-\0" : all->flag.sign;
+	d < 0 ? d = -d : d;
+	s = ft_itoa((unsigned int)d);
+	s = precision_diouxX(all, s);
+	if(all->flag.plus == 1 && all->flag.zero == 0)
+		s = ft_strjoin(all->flag.sign, s);
+	ft_flag_width(all, s);
+	fill_width_space(all, all->con_str, all->tot_len);
+
+	i = -1;
+	if (all->flag.minus)
+	{
+		while (++i <= all->len - 1)
+			all->con_str[i] = s[i];
+	}
+	else
+	{
+		i = all->tot_len;
+		while (all->len + 1)
+			all->con_str[i--] = s[all->len--];
+	}
+	all->con_str[all->tot_len + 1] = '\0';
+	ft_putstr(all->con_str);
+	return (all->tot_len);
 }

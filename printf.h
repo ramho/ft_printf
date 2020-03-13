@@ -19,6 +19,7 @@ typedef		struct 	s_flag
 	int precision;
 	int l;
 	int h;
+	char* sign;
 
 }						t_flag;
 
@@ -34,6 +35,7 @@ typedef   struct  	s_base
 	int 			type;
 	int len;
 	int tot_len;
+
 }                	 t_base;
 
 
@@ -63,13 +65,13 @@ int p_conversion(t_base *all);
 int s_conversion(t_base *all);
 int di_conversion(t_base *all);
 
-
-
 /*
 **  flags.c
 */
-char *ft_flag_precision(t_base *all,char *s, int i);
+char *precision_s(t_base *all,char *s);
+char *precision_diouxX(t_base *all,char *s);
 int ft_flag_width(t_base *all, char *s);
-void	fill_width_space(char *str, int size);
+void	fill_width_space(t_base *all, char *str, int size);
+int 	type_dif(char c);
 
 #endif

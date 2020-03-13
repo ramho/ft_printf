@@ -21,7 +21,7 @@ int		c_conversion(t_base *all)
 	all->tot_len = (all->len <= all->flag.width) ? all->flag.width : all->len;
 	if (!(all->con_str = malloc(sizeof(char *) * (all->tot_len + 1))))
 		return (-1);
-	fill_width_space(all->con_str, all->tot_len);
+	fill_width_space(all, all->con_str, all->tot_len);
 	all->con_str[all->tot_len] = '\0';
 	if (all->flag.minus)
 	{
@@ -49,7 +49,7 @@ int		p_conversion(t_base *all)
 	p = va_arg(all->args, long);
 	tmp = ft_strjoin("0x", ft_itoa_base(p, 16, 'm'));
 	ft_flag_width(all, tmp);
-	fill_width_space(all->con_str, all->tot_len);
+	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;
 	if (all->flag.minus)
 	{
@@ -73,8 +73,9 @@ int		s_conversion(t_base *all)
 	int		i;
 
 	s = va_arg(all->args, char*);
+	s = precision_s(all, s);
 	ft_flag_width(all, s);
-	fill_width_space(all->con_str, all->tot_len);
+	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;
 	if (all->flag.minus)
 	{
@@ -96,7 +97,7 @@ int		start_conversion(t_base *all)
 {
 	int		ret;
 	int		(*conversion[255])(t_base *all);
-
+	// printf("enter start conversion\n");
 	//init_value_of_base(all);
 	init_function(conversion);
 	ret = conversion[all->type](all);
