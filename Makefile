@@ -14,7 +14,7 @@ NAME = libftprintf.a
 
 LIBFT = libft
 
-SRC = printf.c sort_flag.c convert_csp.c convert_diouxX.c flags.c tab_ptr.c convert_diouxX.c \
+SRC = printf.c sort_flag.c convert_csp.c convert_diouxX.c flags.c tab_ptr.c convert_diouxX.c  start_conversion.c \
 
 
 INC = printf.h

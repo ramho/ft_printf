@@ -36,6 +36,7 @@ typedef   struct  	s_base
 	int 			type;
 	int len;
 	int tot_len;
+	intmax_t di;
 
 }                	 t_base;
 

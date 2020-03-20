@@ -30,9 +30,10 @@ uintmax_t  check_l_h(uintmax_t nb, t_base *all)
   if(all->flag.l == 2)
     nb = va_arg(all->args, long long);
   if(all->flag.h == 1)
-    nb = va_arg(all->args, short);
+    nb = va_arg(all->args, int);
   if(all->flag.h == 2)
-    nb = va_arg(all->args, char);
+    nb = va_arg(all->args, int);
+  all->di = nb;
   return(nb);
 
 }

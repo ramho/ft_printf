@@ -52,8 +52,12 @@ int 	light_flags(t_base *all, char *str)
 			{
 				i++;
 				if (ft_isdigit(str[i]))
+				{
 					all->flag.precision = ft_atoi(str + i);
 					i += ft_count_num(all->flag.precision);
+				}
+				else
+					i--;
 			}
 			if (str[i] == 'h')
 			{
@@ -67,6 +71,7 @@ int 	light_flags(t_base *all, char *str)
 			}
 			if (str[i] == '%')
 				return(modulo_conversion(all));
+
 		i++;
 	}
 	all->type = str[i];
