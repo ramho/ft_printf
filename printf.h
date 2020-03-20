@@ -61,10 +61,10 @@ void	init_function(int(*conversion[255])(t_base *all));
 /*
 **  convert_csp.c
 */
-int start_conversion(t_base *all);
 int c_conversion(t_base *all);
 int p_conversion(t_base *all);
 int s_conversion(t_base *all);
+int		modulo_conversion();
 
 /*
 **  convert_diouxX.c
@@ -72,7 +72,8 @@ int s_conversion(t_base *all);
 int di_conversion(t_base *all);
 int		u_conversion(t_base *all);
 int		o_conversion(t_base *all);
-int		xX_conversion(t_base *all);
+int		x_conversion(t_base *all);
+int		X_conversion(t_base *all);
 
 /*
 **  flags.c
@@ -82,5 +83,12 @@ char *precision_diouxX(t_base *all,char *s);
 int ft_flag_width(t_base *all, char *s);
 void	fill_width_space(t_base *all, char *str, int size);
 int 	type_dif(char c);
+
+/*
+**  start_conversion.c
+*/
+int start_conversion(t_base *all);
+uintmax_t	check_l_h(uintmax_t d, t_base *all);
+
 
 #endif

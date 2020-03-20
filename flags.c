@@ -16,6 +16,7 @@ char *precision_s(t_base *all,char *s)
 	{
 		tmp = ft_strsub(s, 0, all->flag.precision);
 		s = tmp;
+		free(tmp);
 	}
 	else
 		return(s);
@@ -34,15 +35,15 @@ char	*fill_zero(char *str, int size)
 		i++;
 	}
 	str[i]= '\0';
-	// printf("str %s\n", str);
 	return (str);
 }
 
 char *precision_diouxX(t_base *all,char *s)
 {
 	char *tmp;
-
 	int diff;
+
+	tmp = NULL;
 
 	if (all->flag.precision > 0 && all->flag.precision > (int)ft_strlen(s))
 	{
@@ -71,7 +72,9 @@ void	fill_width_space(t_base *all, char *str, int size)
 	int i;
 
 	i = 0;
-	if ((type_dif(all->type) || all->type == 117 || all->type == 120 || all->type == 88)	&& all->flag.precision == 0 && all->flag.zero == 1)
+	if ((type_dif(all->type) || all->type == 117 || all->type == 120 ||
+			all->type == 88 || all->type == 99)	&& all->flag.precision == 0
+			&& all->flag.zero == 1)
 	{
 			while( i < size)
 			str[i++] = '0';
@@ -81,6 +84,6 @@ void	fill_width_space(t_base *all, char *str, int size)
 	else
 	{
 		while(i < size)
-			str[i++] = '.';
+			str[i++] = ' ';
 	}
 }

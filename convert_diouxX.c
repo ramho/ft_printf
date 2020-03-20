@@ -14,17 +14,22 @@
 
 int		di_conversion(t_base *all)
 {
-	int d;
+	uintmax_t d;
+	int di;
 	int i;
 	char *s;
 
-	d = va_arg(all->args, int);
+	// d = va_arg(all->args, uintmax_t);
+	d = 0;
+	d = check_l_h(d, all);
+	printf("%ju\n", d);
+	di = d;
 	all->flag.minus ? all->flag.zero = 0 : 0;
 	d < 0 ? all->flag.sign = "-\0" : all->flag.sign;
 	d < 0 ? d = -d : d;
 	s = ft_itoa(d);
 	s = precision_diouxX(all, s);
-	if(all->flag.plus == 1 && all->flag.zero == 0 && type_dif(all->type))
+	if((all->flag.plus == 1 && all->flag.zero == 0 && type_dif(all->type)) || ( di < 0))
 		s = ft_strjoin(all->flag.sign, s);
 	ft_flag_width(all, s);
 	fill_width_space(all, all->con_str, all->tot_len);
@@ -41,6 +46,11 @@ int		di_conversion(t_base *all)
 			all->con_str[i--] = s[all->len--];
 	}
 	all->con_str[all->tot_len + 1] = '\0';
+	if (all->flag.space == 1)
+	{
+		all->con_str = ft_strjoin(" \0", all->con_str);
+		all->tot_len++;
+}
 	ft_putstr(all->con_str);
 	return (all->tot_len);
 }
@@ -103,7 +113,7 @@ int		o_conversion(t_base *all)
 	return (all->tot_len);
 }
 
-int		xX_conversion(t_base *all)
+int		x_conversion(t_base *all)
 {
 	long x;
 	char *s;
@@ -111,6 +121,8 @@ int		xX_conversion(t_base *all)
 
 	x = va_arg(all->args, long);
 	s = ft_itoa_base(x, 16, 'm');
+	if(all->flag.hash == 1)
+		s = ft_strjoin("0x", s);
 	s = precision_diouxX(all, s);
 	ft_flag_width(all, s);
 	fill_width_space(all, all->con_str, all->tot_len);
@@ -129,5 +141,34 @@ int		xX_conversion(t_base *all)
 	all->con_str[all->tot_len + 1] = '\0';
 	ft_putstr(all->con_str);
 	return (all->tot_len);
+}
 
+int		X_conversion(t_base *all)
+{
+	long x;
+	char *s;
+	int i;
+
+	x = va_arg(all->args, long);
+	s = ft_itoa_base(x, 16, 'M');
+	if(all->flag.hash == 1)
+		s = ft_strjoin("0X", s);
+	s = precision_diouxX(all, s);
+	ft_flag_width(all, s);
+	fill_width_space(all, all->con_str, all->tot_len);
+	i = -1;
+	if (all->flag.minus)
+	{
+		while (++i <= all->len - 1)
+			all->con_str[i] = s[i];
+	}
+	else
+	{
+		i = all->tot_len;
+		while (all->len + 1)
+			all->con_str[i--] = s[all->len--];
+	}
+	all->con_str[all->tot_len + 1] = '\0';
+	ft_putstr(all->con_str);
+	return (all->tot_len);
 }

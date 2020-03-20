@@ -3,6 +3,7 @@
 
 int main(void)
 {
+			int ret = 0;
 	//  char *s = "salut";
 	//
  	// printf("TYPE C\n");
@@ -41,7 +42,7 @@ int main(void)
 	// printf("%hhd\n", 122);
 	// printf("%ld\n", 12);
 	// printf("%lld\n", 12);
-
+	//
 	// printf("1  %10.5d\n", 21);
 	// ft_printf("1  %10.5d\n", 21);
 	// printf("----\n");
@@ -113,6 +114,8 @@ int main(void)
 	// printf("----\n");
 	// printf("2  %.5d\n", 21); // precision adds 000 before d if precision bigger than dlen
 	// ft_printf("2  %.5d\n", 21); // precision adds 000 before d if precision bigger than dlen
+	// ft_printf("%d\n", -21);
+	// printf("%d\n", -21);
 
 	// TYPE U
 	// printf("1  %10.5u\n", 21);
@@ -272,12 +275,12 @@ int main(void)
 	// printf("2  |%-10.2x|\n", 21);
 	// ft_printf("2  |%-10.2x|\n", 21);
 	// printf("----\n");
-	printf("3  %010x\n", 21); // without precision padding of 0
-	ft_printf("3  %010x\n", 21); // without precision padding of 0
-	printf("----\n");
-	printf("4  %00010x\n", 21); // without precision padding of 0
-	ft_printf("4  %00010x\n", 21); // without precision padding of 0
-	printf("----\n");
+	// printf("3  %010x\n", 21); // without precision padding of 0
+	// ft_printf("3  %010x\n", 21); // without precision padding of 0
+	// printf("----\n");
+	// printf("4  %00010x\n", 21); // without precision padding of 0
+	// ft_printf("4  %00010x\n", 21); // without precision padding of 0
+	// printf("----\n");
 	// printf("5  %.0004x\n", 21); // without precision padding of 0
 	// ft_printf("5  %.0004x\n", 21); // without precision padding of 0
 	// printf("----\n");
@@ -296,17 +299,17 @@ int main(void)
 	// printf("6  |%-10.3x|\n", 21); //  to add to dlen bnd precision before width
 	// ft_printf("6  |%-10.3x|\n", 21); //  to add to dlen bnd precision before width
 	// printf("----\n");
-	printf("7  %10.5x\n", INT_MAX); // without precision padding of 0
-	ft_printf("7  %10.5x\n", INT_MAX); // without precision padding of 0
-	printf("----\n");
+	// printf("7  %10.5x\n", INT_MAX); // without precision padding of 0
+	// ft_printf("7  %10.5x\n", INT_MAX); // without precision padding of 0
+	// printf("----\n");
 	// printf("8  |%-10.3x|\n", -21); //  to add to dlen bnd precision before width
 	// ft_printf("8  |%-10.3x|\n", -21); //  to add to dlen bnd precision before width
 	// printf("----\n");
-	printf("9  %050x\n", INT_MAX); // without precision padding of 0
-	ft_printf("9  %050x\n", INT_MAX); // without precision padding of 0
-	printf("----\n");
-	printf("1  %060.40x\n", INT_MAX); // without precision padding of 0
-	ft_printf("1  %060.40x\n", INT_MAX); // without precision padding of 0
+	// printf("9  %050x\n", INT_MAX); // without precision padding of 0
+	// ft_printf("9  %050x\n", INT_MAX); // without precision padding of 0
+	// printf("----\n");
+	// printf("1  %060.40x\n", INT_MAX); // without precision padding of 0
+	// ft_printf("1  %060.40x\n", INT_MAX); // without precision padding of 0
 	// printf("----\n");
 	// printf("2  %10x\n", -21); // without precision padding of 0
 	// ft_printf("2  %10x\n", -21); // without precision padding of 0
@@ -336,5 +339,62 @@ int main(void)
 	// printf("----\n");
 	// printf("2  %.5x\n", 21); // precision adds 000 before d if precision bigger than dlen
 	// ft_printf("2  %.5x\n", 21);
+
+	// ft_printf("%D\n", 0xff11ff11ff88);
+	// printf("%D\n", 0xff11ff11ff88);
+	// ft_printf("%d\n", 0xff11ff11ff88);
+	// printf("%d\n", 0xff11ff11ff88);
+
+	// TYPE MODULO %%
+	// printf("P %.%\n");
+	// ft_printf("|%.%|\n");
+	// printf("----\n");
+	// printf("P % %\n");
+	// ft_printf("|% %|\n");
+
+
+	// printf("P %.d\n", 1);
+	// ft_printf("|%.d|\n", 1);
+	// printf("----\n");
+	// printf("P %.0d\n", 1);
+	// ft_printf("|%.0d|\n", 1);
+
+
+	// CURQUI
+ 	// printf("% d\n", 0);
+ 	// ft_printf("% d\n", 0);
+	// printf("----\n");
+	// printf("% .5d\n", 1);
+	// ft_printf("% .5d\n", 1);
+	// printf("----\n");
+	printf("%ld\n",0x44ff551100);
+	ft_printf("%ld\n",0x44ff551100);
+	printf("----\n");
+	printf("%lld\n",0x44ff551100);
+	ft_printf("%lld\n",0x44ff551100);
+	printf("----\n");
+	printf("%hd\n",0x44ff551100);
+	ft_printf("%hd\n",0x44ff551100);
+
+	// printf("----\n");
+	// printf("% 5d\n", 1);
+	// ft_printf("% 5d\n", 1);
+	// printf("----\n");
+	// printf("%5d\n", 1);
+	// ft_printf("%5d\n", 1);
+	// printf("----\n");
+	// printf("%05d\n", 1);
+	// ft_printf("%05d\n", 1);
+
+
+
+	// RETOUR DE PRINTF
+	// ret = printf("%d\n", 42);
+	// printf("ret printf = |%d|\n", ret);
+	// printf("-------\n");
+	// ret = ft_printf("%d\n", 42);
+	// printf("ret ft_printf = |%d|\n", ret);
+
+
 return(0);
 }

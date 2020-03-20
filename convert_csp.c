@@ -93,13 +93,8 @@ int		s_conversion(t_base *all)
 	return (all->tot_len);
 }
 
-int		start_conversion(t_base *all)
+int		modulo_conversion()
 {
-	int		ret;
-	int		(*conversion[255])(t_base *all);
-	// printf("enter start conversion\n");
-	//init_value_of_base(all);
-	init_function(conversion);
-	ret = conversion[all->type](all);
-	return (-1);
+	write(1, "%", 1);
+	return(1);
 }

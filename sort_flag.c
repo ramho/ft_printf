@@ -65,9 +65,12 @@ int 	light_flags(t_base *all, char *str)
 				all->flag.l = 1;
 				(str[i + 1] == 'l') ? all->flag.l = 2 && i++ : i;
 			}
+			if (str[i] == '%')
+				return(modulo_conversion(all));
 		i++;
 	}
 	all->type = str[i];
-	  // printf("flag zero %d flag minus %d\n", all->flag.zero, all->flag.minus);
+	all->flag.minus == 1 ? all->flag.zero = 0 : 0;
+	all->flag.plus == 1 ? all->flag.space = 0 : 0;
 	return(start_conversion(all));
 }
