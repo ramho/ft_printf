@@ -26,6 +26,7 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c \
 	  ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 	  ft_lstmap.c ft_isspace.c ft_memdel1.c ft_countwords.c \
 	  get_next_line.c ft_itoa_base.c ft_count_sym.c ft_count_num.c\
+	  ft_strjoin_n_free.c \
 
 FLAGS = -Wall -Werror -Wextra
 

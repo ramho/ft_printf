@@ -21,7 +21,7 @@ t_flag	init_flag(t_flag flag)
 	flag.minus = 0;
 	flag.space = 0;
 	flag.width = 0;
-	flag.precision = 0;
+	flag.precision = -1;
 	flag.l = 0;
 	flag.h = 0;
 	flag.sign = "+\0";
@@ -30,15 +30,20 @@ t_flag	init_flag(t_flag flag)
 
 int 	light_flags(t_base *all, char *str)
 {
-	printf("entger light fliqgd");
+	// printf("entger light flaga \n");
 	int i;
 
 	i = 0;
 	all->flag = init_flag(all->flag);
 	while (str[i] && !(is_type(str[i])))
 	{
+			// printf(" str[i] %c et flag plus %d\n", str[i], all->flag.plus);
 			str[i] == '#' ? all->flag.hash = 1 : 0;
-			str[i] == '0' ? all->flag.zero = 1 : 0;
+			if(str[i] == '0')
+			{
+			 all->flag.zero = 1;
+			 i++;
+		 	}
 			str[i] == '+' ? all->flag.plus = 1 : 0;
 			str[i] == '-' ? all->flag.minus = 1 : 0;
 			str[i] == ' ' ? all->flag.space = 1 : 0;
@@ -48,6 +53,7 @@ int 	light_flags(t_base *all, char *str)
 					i++;
 				all->flag.width = ft_atoi(str + i);
 				i += ft_count_num(all->flag.width);
+
 			}
 			if (str[i] == '.') // precision
 			{
@@ -58,7 +64,10 @@ int 	light_flags(t_base *all, char *str)
 					i += ft_count_num(all->flag.precision);
 				}
 				else
+				{
+					all->flag.precision = 0;
 					i--;
+				}
 			}
 			if (str[i] == 'h')
 			{
@@ -78,6 +87,7 @@ int 	light_flags(t_base *all, char *str)
 	all->type = str[i];
 	all->flag.minus == 1 ? all->flag.zero = 0 : 0;
 	all->flag.plus == 1 ? all->flag.space = 0 : 0;
-	all->flag.width == 0 ? all->flag.zero = 0; 0;
+	all->flag.width == 0 ? all->flag.zero = 0: 0;
+	all->flag.precision >= 0 ? all->flag.zero = 0: 0;
 	return(start_conversion(all));
 }

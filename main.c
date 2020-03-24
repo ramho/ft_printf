@@ -393,7 +393,7 @@ int main(void)
 	// printf("----\n");
 	// printf("%08d\n", -71);
 	// ft_printf("%08d\n", -71);
-	printf("----\n");
+	// printf("----\n");
 
 	// printf("----\n");
 	// printf("% 5d\n", 1);
@@ -406,41 +406,77 @@ int main(void)
 	// ft_printf("%05d\n", 1);
 
 //	VARIOUS TEST WITH DI and flag.signe
-printf("%-d\n", 42);
-printf("%-d\n\n", -42);
-printf("%-.5d\n", 42);
-printf("%-.5d\n\n", -42);
-printf("%.5d\n", 42);
-printf("%.5d\n\n", -42);
-printf("%10.5d\n", 42);
-printf("%10.5d\n\n", -42);
-printf("%-10d\n", 42);
-printf("%-10d\n\n", -42);
-printf("%-10.5d\n", 42);
-printf("%-10.5d\n\n", -42);
-printf("%010d\n", 42);
-printf("%010d\n\n", -42);
-printf("%0d\n", 42);
-printf("%0d\n\n", -42);
-printf("%010d\n", 42);
-printf("%010d\n\n", -42);
-printf("%0.5d\n", 42);
-printf("%0.5d\n\n", -42);
-printf("%010.5d\n", 42);
-printf("%010.5d\n\n", -42);
-printf("%+010d\n", 42);
-printf("%+010d\n\n", -42);
-printf("%+0.5d\n", 42);
-printf("%+0.5d\n\n", -42);
-printf("%+010.5d\n", 42);
-printf("%+010.5d\n\n", -42);
-printf("%+10d\n", 42);
-printf("%+10d\n\n", -42);
-printf("%+010d\n", 42);
-printf("%+010d\n\n", -42);
-printf("%010d\n", 42);
-printf("%010d\n\n", -42);
+// printf("%-d\n", 42);
+// printf("%-d\n\n", -42);
+// printf("%-.5d\n", 42);
+// printf("%-.5d\n\n", -42);
+// printf("%.5d\n", 42);
+// printf("%.5d\n\n", -42);
+// printf("%10.5d\n", 42);
+// printf("%10.5d\n\n", -42);
+// printf("%-10d\n", 42);
+// printf("%-10d\n\n", -42);
+// printf("%-10.5d\n", 42);
+// printf("%-10.5d\n\n", -42);
+// printf("%010d\n", 42);
+// printf("%010d\n\n", -42);
+// printf("%0d\n", 42);
+// printf("%0d\n\n", -42);
+// printf("%010d\n", 42);
+// printf("%010d\n\n", -42);
+// printf("%0.5d\n", 42);
+// printf("%0.5d\n\n", -42);
+// printf("%010.5d\n", 42);
+// printf("%010.5d\n\n", -42);
+// printf("%+010d\n", 42);
+// printf("%+010d\n\n", -42);
 
+// printf("%+0.5d\n", 42);
+// ft_printf("%+0.5d\n", 42);
+//
+// printf("%+0.5d\n", -42);
+// ft_printf("%+0.5d\n", -42);
+//
+// printf("%+010.5d\n", 42);
+// ft_printf("%+010.5d\n", 42);
+//
+// printf("%+010.5d\n", -42);
+// ft_printf("%+010.5d\n", -42);
+//
+// printf("%+10d\n", 42);
+// ft_printf("%+10d\n", 42);
+//
+// printf("%+10d\n", -42);
+// ft_printf("%+10d\n", -42);
+//
+// printf("%+010d\n", 42);
+// ft_printf("%+010d\n", 42);
+//
+// printf("%+010d\n", -42);
+// ft_printf("%+010d\n", -42);
+//
+// printf("%010d\n", 42);
+// ft_printf("%010d\n", 42);
+//
+// printf("%010d\n", -42);
+// ft_printf("%010d\n", -42);
+
+
+
+printf("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 0,0,0,0,0);
+ft_printf("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 0,0,0,0,0);
+
+printf    ("printf2     :|% 5d|% 5.3d|% 5.1d|% 5.0d|% 5.d|\n", 0,0,0,0,0);
+ft_printf ("ft_printf2  :|% 5d|% 5.3d|% 5.1d|% 5.0d|% 5.d|\n\n", 0,0,0,0,0);
+
+printf    ("printf4     :|%0+5d|\n", 0);
+ft_printf ("ft_printf4  :|%0+5d|\n\n", 0);
+
+printf    ("printf6     :|% 05d|% 05.3d|% 05.1d|% 05.0d|% 05.d|\n", 0,0,0,0,0),
+ft_printf ("ft_printf6  :|% 05d|% 05.3d|% 05.1d|% 05.0d|% 05.d|\n\n", 0,0,0,0,0);
+
+printf    ("printf7     :|% 03d|\n", -1);
+ft_printf ("ft_printf7  :|% 03d|\n\n", -1);
 
 
 	// RETOUR DE PRINTF

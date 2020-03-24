@@ -36,7 +36,7 @@ typedef   struct  	s_base
 	int 			type;
 	int len;
 	int tot_len;
-	intmax_t nb;
+	// intmax_t nb;
 	intmax_t signed_nb;
 
 }                	 t_base;
@@ -81,9 +81,7 @@ int		X_conversion(t_base *all);
 **  flags.c
 */
 char *precision_s(t_base *all,char *s);
-char *precision_diouxX(t_base *all,char *s);
-int ft_flag_width(t_base *all, char *s);
-void	fill_width_space(t_base *all, char *str, int size);
+
 int 	type_dif(char c);
 char	*fill_zero(char *str, int size);
 
@@ -93,5 +91,12 @@ char	*fill_zero(char *str, int size);
 int start_conversion(t_base *all);
 uintmax_t	check_l_h(uintmax_t d, t_base *all);
 
+/*
+**  di_flags.c
+*/
+intmax_t  check_l_ll_h_hh(intmax_t nb, t_base *all);
+char *precision_diouxX(t_base *all,char *s);
+int ft_flag_width(t_base *all, char *s);
+void	fill_width_space(t_base *all, char *str, int size);
 
 #endif

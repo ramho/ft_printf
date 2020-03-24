@@ -14,30 +14,34 @@
 
 int		di_conversion(t_base *all)
 {
-	intmax_t d;
+	intmax_t nb;
 	int i;
 	char *s;
 
-	d = 0;
-	if (all->flag.h > 0 || all->flag.l > 0)
-		d = check_l_h(d, all);
-	else
-	{
-			d = va_arg(all->args, int);
-			all->di = d;
-	}
-	if ( d == 0 && all->flag.precision == 0)
-		return(0);
-	d < 0 ? all->flag.sign = "-\0" : all->flag.sign;
-	d < 0 ? d = -d : d;
-	s = ft_itoa(d);
+	nb = 0;
+
+	nb = check_l_ll_h_hh(nb, all);
+	nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
+	nb < 0 ? nb = -nb : nb;
+
+	s = ft_itoa(nb);
+
+	if ( nb == 0 && all->flag.precision == 0)
+		ft_bzero(s, ft_strlen(s));
+
 	s = precision_diouxX(all, s);
-	if((all->flag.plus == 1 && all->flag.zero == 0 && type_dif(all->type))) // || ( all->di < 0))
-		s = ft_strjoin(all->flag.sign, s);
-	ft_flag_width(all, s);
+
+	if((all->flag.plus == 1 || all->signed_nb < 0) && all->flag.zero == 0)
+	{
+		s = ft_strjoin_n_free(all->flag.sign, s, 2);
+		all->flag.plus = 0;
+	}
+
+	if(!ft_flag_width(all, s))
+		return(-1);
+		// printf(" flag0 %d et flag plus %d\n", all->flag.zero, all->flag.plus);
 	fill_width_space(all, all->con_str, all->tot_len);
-	// if(all->di < 0)
-	// 	all->con_str = ft_strjoin(all->flag.sign, all->con_str);
+
 	i = -1;
 	if (all->flag.minus)
 	{
@@ -51,12 +55,11 @@ int		di_conversion(t_base *all)
 			all->con_str[i--] = s[all->len--];
 	}
 	all->con_str[all->tot_len + 1] = '\0';
-	if (all->flag.space == 1)
-	{
-		all->con_str = ft_strjoin(" \0", all->con_str);
-		all->tot_len++;
-	}
+	if (all->flag.space == 1 && all->signed_nb >= 0)
+		all->con_str[0] = ' ';
+
 	ft_putstr(all->con_str);
+
 	return (all->tot_len);
 }
 
