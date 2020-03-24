@@ -62,6 +62,7 @@ char *precision_diouxX(t_base *all,char *s)
 	return(s);
 }
 
+
 int 	type_dif(char c)
 {
 	return (c == 'd' || c == 'i' || c == 'f');

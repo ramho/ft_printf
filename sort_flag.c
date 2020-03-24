@@ -30,6 +30,7 @@ t_flag	init_flag(t_flag flag)
 
 int 	light_flags(t_base *all, char *str)
 {
+	printf("entger light fliqgd");
 	int i;
 
 	i = 0;
@@ -77,5 +78,6 @@ int 	light_flags(t_base *all, char *str)
 	all->type = str[i];
 	all->flag.minus == 1 ? all->flag.zero = 0 : 0;
 	all->flag.plus == 1 ? all->flag.space = 0 : 0;
+	all->flag.width == 0 ? all->flag.zero = 0; 0;
 	return(start_conversion(all));
 }

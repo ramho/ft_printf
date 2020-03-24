@@ -376,21 +376,24 @@ int main(void)
 	// printf("%hd\n",0x44ff551100);
 	// ft_printf("%hd\n",0x44ff551100);
 	// printf("----\n");
-	printf("%.i\n", 5);
-	ft_printf("%.d\n", 5);
-	printf("----\n");
-	printf("%.5d\n", -421);
-	ft_printf("%.5d\n", -421);
-	printf("----\n");
-	printf("%+d\n", -4440);
-	ft_printf("%+d\n", -4440);
-	printf("----\n");
-	printf("%.0i\n", 0);
-	ft_printf("%.0i\n", 0);
-	printf("----\n");
-	printf("%.0d\n", 0);
-	ft_printf("%.0d\n", 0);
+	// printf("%.i\n", 5);
+	// ft_printf("%.d\n", 5);
 	// printf("----\n");
+	// printf("%.5d\n", -421);
+	// ft_printf("%.5d\n", -421);
+	// printf("----\n");
+	// printf("%+d\n", -4440);
+	// ft_printf("%+d\n", -4440);
+	// printf("----\n");
+	// printf("%.0i\n", 0);
+	// ft_printf("%.0i\n", 0);
+	// printf("----\n");
+	// printf("%.0d\n", 0);
+	// ft_printf("%.0d\n", 0);
+	// printf("----\n");
+	// printf("%08d\n", -71);
+	// ft_printf("%08d\n", -71);
+	printf("----\n");
 
 	// printf("----\n");
 	// printf("% 5d\n", 1);
@@ -401,6 +404,42 @@ int main(void)
 	// printf("----\n");
 	// printf("%05d\n", 1);
 	// ft_printf("%05d\n", 1);
+
+//	VARIOUS TEST WITH DI and flag.signe
+printf("%-d\n", 42);
+printf("%-d\n\n", -42);
+printf("%-.5d\n", 42);
+printf("%-.5d\n\n", -42);
+printf("%.5d\n", 42);
+printf("%.5d\n\n", -42);
+printf("%10.5d\n", 42);
+printf("%10.5d\n\n", -42);
+printf("%-10d\n", 42);
+printf("%-10d\n\n", -42);
+printf("%-10.5d\n", 42);
+printf("%-10.5d\n\n", -42);
+printf("%010d\n", 42);
+printf("%010d\n\n", -42);
+printf("%0d\n", 42);
+printf("%0d\n\n", -42);
+printf("%010d\n", 42);
+printf("%010d\n\n", -42);
+printf("%0.5d\n", 42);
+printf("%0.5d\n\n", -42);
+printf("%010.5d\n", 42);
+printf("%010.5d\n\n", -42);
+printf("%+010d\n", 42);
+printf("%+010d\n\n", -42);
+printf("%+0.5d\n", 42);
+printf("%+0.5d\n\n", -42);
+printf("%+010.5d\n", 42);
+printf("%+010.5d\n\n", -42);
+printf("%+10d\n", 42);
+printf("%+10d\n\n", -42);
+printf("%+010d\n", 42);
+printf("%+010d\n\n", -42);
+printf("%010d\n", 42);
+printf("%010d\n\n", -42);
 
 
 

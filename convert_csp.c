@@ -30,9 +30,9 @@ int		c_conversion(t_base *all)
 			write(1, "\0", 1);
 			write(1, all->con_str, all->tot_len - 1);
 			return (all->tot_len);
-	}
-	else
-		all->con_str[0] = c;
+		}
+		else
+			all->con_str[0] = c;
 	}
 	else
 		all->con_str[all->tot_len - 1] = c;

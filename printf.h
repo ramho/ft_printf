@@ -36,7 +36,8 @@ typedef   struct  	s_base
 	int 			type;
 	int len;
 	int tot_len;
-	intmax_t di;
+	intmax_t nb;
+	intmax_t signed_nb;
 
 }                	 t_base;
 
@@ -84,6 +85,7 @@ char *precision_diouxX(t_base *all,char *s);
 int ft_flag_width(t_base *all, char *s);
 void	fill_width_space(t_base *all, char *str, int size);
 int 	type_dif(char c);
+char	*fill_zero(char *str, int size);
 
 /*
 **  start_conversion.c

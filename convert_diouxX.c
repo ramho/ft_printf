@@ -14,31 +14,30 @@
 
 int		di_conversion(t_base *all)
 {
-	uintmax_t d;
+	intmax_t d;
 	int i;
 	char *s;
 
-	// d = va_arg(all->args, uintmax_t);
 	d = 0;
 	if (all->flag.h > 0 || all->flag.l > 0)
-	{
 		d = check_l_h(d, all);
-		// printf("1  %d\n", d);
-	}
 	else
+	{
 			d = va_arg(all->args, int);
-	all->flag.minus ? all->flag.zero = 0 : 0;
+			all->di = d;
+	}
+	if ( d == 0 && all->flag.precision == 0)
+		return(0);
 	d < 0 ? all->flag.sign = "-\0" : all->flag.sign;
 	d < 0 ? d = -d : d;
 	s = ft_itoa(d);
-	// printf("111 %s\n", s);
 	s = precision_diouxX(all, s);
-	// printf("222 %s\n", s);
-	if((all->flag.plus == 1 && all->flag.zero == 0 && type_dif(all->type)) || ( all->di < 0))
+	if((all->flag.plus == 1 && all->flag.zero == 0 && type_dif(all->type))) // || ( all->di < 0))
 		s = ft_strjoin(all->flag.sign, s);
-	// printf("333 %s flag plus = %d di = %d\n", s, all->flag.plus, di);
 	ft_flag_width(all, s);
 	fill_width_space(all, all->con_str, all->tot_len);
+	// if(all->di < 0)
+	// 	all->con_str = ft_strjoin(all->flag.sign, all->con_str);
 	i = -1;
 	if (all->flag.minus)
 	{
@@ -56,7 +55,7 @@ int		di_conversion(t_base *all)
 	{
 		all->con_str = ft_strjoin(" \0", all->con_str);
 		all->tot_len++;
-}
+	}
 	ft_putstr(all->con_str);
 	return (all->tot_len);
 }

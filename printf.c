@@ -41,10 +41,11 @@ int ft_printf(const char* format, ...)
 		if(all->fmt[i] == '%')
 		{
 			j = 0;
-			i++;
+			 i++; // issues when %0p
 			while ( all->fmt[i] && !(is_type(all->fmt[i]) || all->fmt[i] == '%'))
 			{
 				i++;
+				//i = i + 2;
 				j++;
 			}
 			tot_j += (j + 2);

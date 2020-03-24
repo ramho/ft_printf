@@ -14,6 +14,7 @@
 
 int		start_conversion(t_base *all)
 {
+	// printf("enter start conversion");
 	int		ret;
 	int		(*conversion[255])(t_base *all);
 
