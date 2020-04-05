@@ -1,7 +1,5 @@
 #include "printf.h"
 
-
-
 char *precision_s(t_base *all,char *s)
 {
 	char *tmp;

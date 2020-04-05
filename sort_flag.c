@@ -30,20 +30,24 @@ t_flag	init_flag(t_flag flag)
 
 int 	light_flags(t_base *all, char *str)
 {
-	// printf("entger light flaga \n");
+	 // printf("enter light flags \n");
 	int i;
 
 	i = 0;
 	all->flag = init_flag(all->flag);
 	while (str[i] && !(is_type(str[i])))
 	{
-			// printf(" str[i] %c et flag plus %d\n", str[i], all->flag.plus);
-			str[i] == '#' ? all->flag.hash = 1 : 0;
 			if(str[i] == '0')
 			{
 			 all->flag.zero = 1;
-			 i++;
-		 	}
+			 while(str[i] == '0' && !is_type(str[i + 1]))
+			 {
+			 		i++;
+				}
+			}
+			// printf("\n %d - str[i]: %c\n", i, str[i]);
+			str[i] == '#' ? all->flag.hash = 1 : 0;
+
 			str[i] == '+' ? all->flag.plus = 1 : 0;
 			str[i] == '-' ? all->flag.minus = 1 : 0;
 			str[i] == ' ' ? all->flag.space = 1 : 0;
@@ -81,13 +85,16 @@ int 	light_flags(t_base *all, char *str)
 			}
 			if (str[i] == '%')
 				return(modulo_conversion(all));
-
-		i++;
+		if(!is_type(str[i]))
+			i++;
 	}
+	// printf("in sort flag, plus = %d width = %d precision = %d\n", all->flag.plus, all->flag.width, all->flag.precision);
 	all->type = str[i];
+	// printf("type: %c\n", str[i]);
 	all->flag.minus == 1 ? all->flag.zero = 0 : 0;
 	all->flag.plus == 1 ? all->flag.space = 0 : 0;
 	all->flag.width == 0 ? all->flag.zero = 0: 0;
 	all->flag.precision >= 0 ? all->flag.zero = 0: 0;
+// all->flag.precision >= 0 ? all->flag.hash = 0: 0;
 	return(start_conversion(all));
 }

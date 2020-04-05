@@ -14,9 +14,9 @@
 
 int		start_conversion(t_base *all)
 {
-	// printf("enter start conversion");
+	// printf("enter start conversion\n");
 	int		ret;
-	int		(*conversion[255])(t_base *all);
+	int		(*conversion[122])(t_base *all);
 
 	init_function(conversion);
 	ret = conversion[all->type](all);

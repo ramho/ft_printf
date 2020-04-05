@@ -2,6 +2,7 @@
 
 void	init_function(int (*conversion[122])(t_base *all))
 {
+	// printf("enter init function\n");
 	conversion[99] = c_conversion;
 	conversion[112] = p_conversion;
 	conversion[115] = s_conversion;

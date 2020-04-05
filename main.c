@@ -1,6 +1,8 @@
 #include "printf.h"
 #include <limits.h>
 
+#define x(p1, p2)    printf("Printf result:    %d\nFt_printf result: %d\n\n", p1, p2 -1)
+
 int main(void)
 {
 			int ret = 0;
@@ -461,22 +463,28 @@ int main(void)
 // printf("%010d\n", -42);
 // ft_printf("%010d\n", -42);
 
+// to try
 
 
-printf("printf1     :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n", 0,0,0,0,0);
-ft_printf("ft_printf1  :|%+ 5d|%+ 5.3d|%+ 5.1d|%+ 5.0d|%+ 5.d|\n\n", 0,0,0,0,0);
+x(printf    ("printf1     :|%-1s|\n", NULL),
+ft_printf ("ft_printf1  :|%-1s|\n\n", NULL));
 
-printf    ("printf2     :|% 5d|% 5.3d|% 5.1d|% 5.0d|% 5.d|\n", 0,0,0,0,0);
-ft_printf ("ft_printf2  :|% 5d|% 5.3d|% 5.1d|% 5.0d|% 5.d|\n\n", 0,0,0,0,0);
+// x(printf    ("printf1     :|%x|\n", -123654789 ),
+// ft_printf ("ft_printf1  :|%x|\n\n", -123654789 ));
+// // //
+// x(printf    ("printf1     :|%#x|\n",-896),
+// ft_printf ("ft_printf1  :|%#x|\n\n",-896));
+//
+// x(printf    ("printf1     :|%lli|\n",(long long)0x11ff11ff11ff11ff ),
+// ft_printf ("ft_printf1  :|%lli|\n\n", (long long)0x11ff11ff11ff11ff));
+//
+// x(printf    ("printf1     :|%hhd|\n",(char)-2 ),
+// ft_printf ("ft_printf1  :|%hhd|\n\n",(char)-2 ));
 
-printf    ("printf4     :|%0+5d|\n", 0);
-ft_printf ("ft_printf4  :|%0+5d|\n\n", 0);
+// x(printf    ("printf1     :|%.5d|\n", -421),
+// ft_printf ("ft_printf1  :|%.5d|\n\n", -421));
 
-printf    ("printf6     :|% 05d|% 05.3d|% 05.1d|% 05.0d|% 05.d|\n", 0,0,0,0,0),
-ft_printf ("ft_printf6  :|% 05d|% 05.3d|% 05.1d|% 05.0d|% 05.d|\n\n", 0,0,0,0,0);
 
-printf    ("printf7     :|% 03d|\n", -1);
-ft_printf ("ft_printf7  :|% 03d|\n\n", -1);
 
 
 	// RETOUR DE PRINTF

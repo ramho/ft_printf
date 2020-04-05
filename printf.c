@@ -34,28 +34,40 @@ int ft_printf(const char* format, ...)
 	tot_ret = 0;
 	tot_j = 0;
 	all = malloc(sizeof(t_base));
-	all->fmt = (char *)format;
 	va_start(all->args, format);
-	while (all->fmt[i] != '\0')
+	// printf("%s\n", format);
+	while (format[i])// != '\0')
 	{
-		if(all->fmt[i] == '%')
+		// printf("A --- i: %d fmt[i]: %c\n", i, format[i]);
+		if(format[i] == '%')
 		{
+			// printf("C --- i: %d fmt[i]: %c\n", i, format[i]);
 			j = 0;
-			 i++; // issues when %0p
-			while ( all->fmt[i] && !(is_type(all->fmt[i]) || all->fmt[i] == '%'))
+			i++; // issues when %0p
+			while (format[i] != '\0' && !(is_type(format[i]) || format[i] == '%'))
 			{
+				// printf("D --- i: %d fmt[i]: %c\n", i, format[i]);
 				i++;
-				//i = i + 2;
+				// i = i + 2;
 				j++;
 			}
+			// printf("E --- i: %d j: %d fmt[i]: %c\n", i, j, format[i]);
 			tot_j += (j + 2);
-			str = ft_strsub(all->fmt, i - j, j + 1);
+			// printf("111\n");
+			str = ft_strsub(format, i - j, j + 1);
+			// printf("222\n");
 			ret = light_flags(all, str);
+			// printf("333\n");
 			tot_ret += ret;
 			free(str);
 		}
 		else
-			write(1, &all->fmt[i], 1);
+		{
+			// printf("B --- i: %c fmt[i]: %c\n", i, format[i]);
+			// printf("%c\n", format[i]);
+			write(1, &format[i], 1);
+
+		}
 		i++;
 	}
 	tot = i - tot_j;
