@@ -14,7 +14,6 @@
 
 intmax_t  check_l_ll_h_hh(intmax_t nb, t_base *all)
 {
-
   if (all->flag.h > 0 || all->flag.l > 0)
   {
     if (all->flag.l == 1)
@@ -31,6 +30,26 @@ intmax_t  check_l_ll_h_hh(intmax_t nb, t_base *all)
   all->signed_nb = nb;
   return(nb);
 }
+
+// intmax_t  check_l_ll_h_hh(intmax_t nb, t_base *all)
+// {
+//   // printf("\nnb %jd\n", nb);
+//   nb = va_arg(all->args, intmax_t);
+//   if (all->flag.h > 0 || all->flag.l > 0)
+//   {
+//     if (all->flag.l == 1)
+//       nb = (long)nb;
+//     else if (all->flag.l == 2)
+//       nb = (long long)nb;
+//     else if (all->flag.h == 1)
+//       nb = (short)nb;
+//     else if (all->flag.h == 2)
+//       nb = (char)nb;
+//   }
+//   all->signed_nb = nb;
+//   // printf("\nnb %jd\n", nb);
+//   return(nb);
+// }
 
 char *precision_diouxX(t_base *all,char *s)
 {

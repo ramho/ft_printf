@@ -466,8 +466,8 @@ int main(void)
 // to try
 
 
-x(printf    ("printf1     :|%-1s|\n", NULL),
-ft_printf ("ft_printf1  :|%-1s|\n\n", NULL));
+printf ("|%lld|\n", (long long)0x11ff11ff11ff11ff);
+ft_printf ("|%lld|\n", (long long)0x11ff11ff11ff11ff);
 
 // x(printf    ("printf1     :|%x|\n", -123654789 ),
 // ft_printf ("ft_printf1  :|%x|\n\n", -123654789 ));

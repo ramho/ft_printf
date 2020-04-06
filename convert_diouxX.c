@@ -19,6 +19,7 @@ int		di_conversion(t_base *all)
 	char *s;
 
 	// printf("enter diouxx\n");
+	// nb = va_arg(all->args, uintmax_t);
 	nb = 0;
 	nb = check_l_ll_h_hh(nb, all);
 	nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;

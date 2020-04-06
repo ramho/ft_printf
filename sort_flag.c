@@ -76,12 +76,20 @@ int 	light_flags(t_base *all, char *str)
 			if (str[i] == 'h')
 			{
 				all->flag.h = 1;
-				(str[i + 1] == 'h') ? all->flag.h = 2 && i++ : i;
+				if (str[i + 1] == 'h')
+				{
+					all->flag.h = 2;
+					i++;
+				}
 			}
 			if (str[i] == 'l')
 			{
 				all->flag.l = 1;
-				(str[i + 1] == 'l') ? all->flag.l = 2 && i++ : i;
+				if (str[i + 1] == 'l')
+				{
+					all->flag.l = 2;
+					i++;
+				}
 			}
 			if (str[i] == '%')
 				return(modulo_conversion(all));
