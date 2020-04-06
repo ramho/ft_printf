@@ -36,8 +36,8 @@ typedef   struct  	s_base
 	int 			type;
 	int len;
 	int tot_len;
-	// intmax_t nb;
-	intmax_t signed_nb;
+	// long long nb;
+	long long signed_nb;
 
 }                	 t_base;
 
@@ -89,12 +89,12 @@ char	*fill_zero(char *str, int size);
 **  start_conversion.c
 */
 int start_conversion(t_base *all);
-uintmax_t	check_l_h(uintmax_t d, t_base *all);
+// ulong long	check_l_h(ulong long d, t_base *all);
 
 /*
 **  di_flags.c
 */
-intmax_t  check_l_ll_h_hh(intmax_t nb, t_base *all);
+long long  check_l_ll_h_hh(long long nb, t_base *all);
 char *precision_diouxX(t_base *all,char *s);
 int ft_flag_width(t_base *all, char *s);
 void	fill_width_space(t_base *all, char *str, int size);

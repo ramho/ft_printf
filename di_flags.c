@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-intmax_t  check_l_ll_h_hh(intmax_t nb, t_base *all)
+long long  check_l_ll_h_hh(long long nb, t_base *all)
 {
   if (all->flag.h > 0 || all->flag.l > 0)
   {
@@ -31,10 +31,10 @@ intmax_t  check_l_ll_h_hh(intmax_t nb, t_base *all)
   return(nb);
 }
 
-// intmax_t  check_l_ll_h_hh(intmax_t nb, t_base *all)
+// long long  check_l_ll_h_hh(long long nb, t_base *all)
 // {
 //   // printf("\nnb %jd\n", nb);
-//   nb = va_arg(all->args, intmax_t);
+//   nb = va_arg(all->args, long long);
 //   if (all->flag.h > 0 || all->flag.l > 0)
 //   {
 //     if (all->flag.l == 1)

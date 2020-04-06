@@ -14,12 +14,12 @@
 
 int		di_conversion(t_base *all)
 {
-	intmax_t nb;
+	long long nb;
 	int i;
 	char *s;
 
 	// printf("enter diouxx\n");
-	// nb = va_arg(all->args, uintmax_t);
+	// nb = va_arg(all->args, ulong long);
 	nb = 0;
 	nb = check_l_ll_h_hh(nb, all);
 	nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
@@ -134,7 +134,7 @@ int		u_conversion(t_base *all)
 
 int		x_conversion(t_base *all)
 {
-	intmax_t nb;
+	long long nb;
 	char *s;
 	int i;
 
@@ -170,7 +170,7 @@ int		x_conversion(t_base *all)
 
 int		X_conversion(t_base *all)
 {
-		intmax_t nb;
+		long long nb;
 		char *s;
 		int i;
 
