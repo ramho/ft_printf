@@ -25,21 +25,31 @@ long double   check_l_L(t_base *all, long double nb)
 char  *get_deci_part(long double decimal, t_base *all)
 {
   long long tmp;
+  char * tmp_s;
   char *s;
-  signed int nb_deci;
+  // signed int nb_deci;
   int precision;
-
+  printf("\n---\n");
   precision = all->flag.precision >= 0 ? all->flag.precision : 6;
   if(!(s=malloc(sizeof(char *) * (precision + 1))))
     return(NULL);
   s[precision] = '\0';
-  // printf("get_deci_part --> decimal = %Lf\n", decimal);
+  printf(" precision = %d\n", precision);
   while (precision > 0)
   {
+    // decimal = decimal * 10;
+    // printf("get_deci_part --> decimal = %Lf\n", decimal);
+    // tmp = (tmp * 10) + decimal;
+    // printf("get_deci_part --> tmp %lld\n", tmp);
+    // decimal -= (signed int)decimal;
+    // precision--;
     decimal = decimal * 10;
-    printf("get_deci_part --> decimal = %Lf\n", decimal);
-    tmp = (tmp * 10) + decimal;
-    printf("get_deci_part --> tmp %lld\n", tmp);
+    printf("decimal = %Lf\n", decimal);
+    tmp_s = ft_itoa(decimal);
+    printf("tmp %s\n", tmp_s);
+    s = ft_strjoin_n_free(s, tmp_s, 2);
+    printf("s = %s\n", s);
+    ft_strdel(&tmp_s);
     decimal -= (signed int)decimal;
     precision--;
   }
@@ -87,6 +97,7 @@ int		f_conversion(t_base *all)
       all->con_str[i--] = s[all->len--];
   }
   all->con_str[all->tot_len + 1] = '\0';
-  ft_putstr(all->con_str);
+  // ft_putstr(all->con_str);
+  printf("final str --> %s\n", all->con_str);
   return(0);
 }

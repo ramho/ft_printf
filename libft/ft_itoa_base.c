@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static long long	nlen(long long value, int base)
 {
@@ -49,10 +48,11 @@ char 			*ft_itoa_base(long long value, int base, char c)
 	if (base < 2 || base > 16)
 		return(NULL);
 	if (value == 0)
-		return ("0");
+		return (ft_strdup("0"));
 	(base == 10 && value < 0) ? sign = 1 && len++: sign;
 	value < 0 ? n = -n: n;
-	dst = malloc(sizeof(char) * (len + 1));
+	if(!(dst = malloc(sizeof(char) * (len + 1))))
+		return(NULL);
 	sign ? dst[0] = '-': 0;
 	dst[len] = '\0';
 	while (n)
