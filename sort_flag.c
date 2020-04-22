@@ -24,13 +24,13 @@ t_flag	init_flag(t_flag flag)
 	flag.precision = -1;
 	flag.l = 0;
 	flag.h = 0;
+	flag.L = 0;
 	flag.sign = "+\0";
 	return(flag);
 }
 
 int 	light_flags(t_base *all, char *str)
 {
-	 // printf("enter light flags \n");
 	int i;
 
 	i = 0;
@@ -41,16 +41,13 @@ int 	light_flags(t_base *all, char *str)
 			{
 			 all->flag.zero = 1;
 			 while(str[i] == '0' && !is_type(str[i + 1]))
-			 {
 			 		i++;
-				}
 			}
-			// printf("\n %d - str[i]: %c\n", i, str[i]);
 			str[i] == '#' ? all->flag.hash = 1 : 0;
-
 			str[i] == '+' ? all->flag.plus = 1 : 0;
 			str[i] == '-' ? all->flag.minus = 1 : 0;
 			str[i] == ' ' ? all->flag.space = 1 : 0;
+			str[i] == 'L' ? all->flag.L = 1 : 0;
 			if (ft_isdigit(str[i])) // width
 			{
 				while (str[i] == '0')
@@ -96,13 +93,10 @@ int 	light_flags(t_base *all, char *str)
 		if(!is_type(str[i]))
 			i++;
 	}
-	// printf("in sort flag, plus = %d width = %d precision = %d\n", all->flag.plus, all->flag.width, all->flag.precision);
 	all->type = str[i];
-	// printf("type: %c\n", str[i]);
 	all->flag.minus == 1 ? all->flag.zero = 0 : 0;
 	all->flag.plus == 1 ? all->flag.space = 0 : 0;
 	all->flag.width == 0 ? all->flag.zero = 0: 0;
 	all->flag.precision >= 0 ? all->flag.zero = 0: 0;
-// all->flag.precision >= 0 ? all->flag.hash = 0: 0;
 	return(start_conversion(all));
 }

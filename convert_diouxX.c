@@ -14,12 +14,10 @@
 
 int		di_conversion(t_base *all)
 {
-	long long nb;
+	intmax_t nb;
 	int i;
 	char *s;
 
-	// printf("enter diouxx\n");
-	// nb = va_arg(all->args, ulong long);
 	nb = 0;
 	nb = check_l_ll_h_hh(nb, all);
 	nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
@@ -57,21 +55,18 @@ int		di_conversion(t_base *all)
 
 int		o_conversion(t_base *all)
 {
-	long nb;
+
+	uintmax_t nb;
 	char *s;
 	int i;
 	int len;
 
 	nb = 0;
-	nb = check_l_ll_h_hh(nb, all);
+	nb = check_l_ll_h_hh_unsigned(nb, all);
 	s = ft_itoa_base(nb, 8, 'm');
-	// printf("nb = %jd et s = %s\n", nb, s);
 	len = ft_strlen(s);
-	// if (nb == 0 && all->flag.precision == 0)
-	// 	{
-	// 		printf("s = %s et slen = %ld\n", s, ft_strlen(s));
-	// 		ft_bzero(s, ft_strlen(s));
-	// 	}
+	if (nb == 0 && all->flag.precision == 0)
+			ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
 	if(all->flag.hash == 1 &&  all->flag.precision <= len && nb >= 1) // pk pas ft_strlen direct ?
 	{
@@ -134,15 +129,15 @@ int		u_conversion(t_base *all)
 
 int		x_conversion(t_base *all)
 {
-	long long nb;
+	uintmax_t nb;
 	char *s;
 	int i;
 
 	nb = va_arg(all->args, long);
 	all->signed_nb = nb;
 	s = ft_itoa_base(nb, 16, 'm');
-	// if ( nb == 0 && all->flag.precision == 0)
-	// 	ft_bzero(s, ft_strlen(s));
+	if ( nb == 0 && all->flag.precision == 0)
+	 	ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
 	if(all->flag.hash == 1 && ((all->flag.precision >= 0 && nb > 0) || (all->flag.zero == 0 && nb > 0)))
 	{
@@ -170,7 +165,7 @@ int		x_conversion(t_base *all)
 
 int		X_conversion(t_base *all)
 {
-		long long nb;
+		uintmax_t nb;
 		char *s;
 		int i;
 

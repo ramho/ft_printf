@@ -12,18 +12,18 @@
 
 #include "printf.h"
 
-long long  check_l_ll_h_hh(long long nb, t_base *all)
+intmax_t  check_l_ll_h_hh(intmax_t nb, t_base *all)
 {
   if (all->flag.h > 0 || all->flag.l > 0)
   {
     if (all->flag.l == 1)
-      nb = va_arg(all->args, long);
+      nb = va_arg(all->args, long int);
     else if (all->flag.l == 2)
-      nb = va_arg(all->args, long long);
+      nb = va_arg(all->args, long long int);
     else if (all->flag.h == 1)
-      nb = va_arg(all->args, int);
+      nb = (short int)va_arg(all->args, int);
     else if (all->flag.h == 2)
-      nb = va_arg(all->args, int);
+      nb = (char)va_arg(all->args, int);
   }
   else
     nb = va_arg(all->args, int);
@@ -31,25 +31,24 @@ long long  check_l_ll_h_hh(long long nb, t_base *all)
   return(nb);
 }
 
-// long long  check_l_ll_h_hh(long long nb, t_base *all)
-// {
-//   // printf("\nnb %jd\n", nb);
-//   nb = va_arg(all->args, long long);
-//   if (all->flag.h > 0 || all->flag.l > 0)
-//   {
-//     if (all->flag.l == 1)
-//       nb = (long)nb;
-//     else if (all->flag.l == 2)
-//       nb = (long long)nb;
-//     else if (all->flag.h == 1)
-//       nb = (short)nb;
-//     else if (all->flag.h == 2)
-//       nb = (char)nb;
-//   }
-//   all->signed_nb = nb;
-//   // printf("\nnb %jd\n", nb);
-//   return(nb);
-// }
+uintmax_t check_l_ll_h_hh_unsigned(uintmax_t nb,  t_base *all)
+{
+  if (all->flag.h > 0 || all->flag.l > 0)
+  {
+    if (all->flag.l == 1)
+      nb = va_arg(all->args, unsigned long int);
+    else if (all->flag.l == 2)
+      nb = va_arg(all->args, unsigned long long int);
+    else if (all->flag.h == 1)
+      nb = (unsigned short int)va_arg(all->args, int);
+    else if (all->flag.h == 2)
+      nb = (unsigned char)va_arg(all->args,int);
+  }
+  else
+    nb = va_arg(all->args, unsigned int);
+  all->signed_nb = nb;
+  return(nb);
+}
 
 char *precision_diouxX(t_base *all,char *s)
 {

@@ -12,7 +12,7 @@ void	init_function(int (*conversion[122])(t_base *all))
 	conversion[117] = u_conversion;  // u
 	conversion[120] = x_conversion; // x
 	conversion[88] = X_conversion; // X
-	// conversion[102] = f_conversion; // f
+	conversion[102] = f_conversion; // f
 	conversion[37] = modulo_conversion;
 }
 

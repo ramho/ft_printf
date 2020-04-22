@@ -24,7 +24,7 @@ long double   check_l_L(t_base *all, long double nb)
 
 char  *get_deci_part(long double decimal, t_base *all)
 {
-  char *tmp;
+  long long tmp;
   char *s;
   signed int nb_deci;
   int precision;
@@ -33,20 +33,18 @@ char  *get_deci_part(long double decimal, t_base *all)
   if(!(s=malloc(sizeof(char *) * (precision + 1))))
     return(NULL);
   s[precision] = '\0';
-  while (precision--)
+  // printf("get_deci_part --> decimal = %Lf\n", decimal);
+  while (precision > 0)
   {
-    // printf("\n deci debut = %Lf\n", decimal);
     decimal = decimal * 10;
-    nb_deci = decimal;
-    printf("\nnb_deci = %d --- deci = %Lf\n", nb_deci, decimal);
-    tmp = ft_itoa(nb_deci);
-    printf("tmp %s\n", tmp);
-    s = ft_strjoin_n_free(s, tmp, 2);
-    ft_strdel(&tmp);
+    printf("get_deci_part --> decimal = %Lf\n", decimal);
+    tmp = (tmp * 10) + decimal;
+    printf("get_deci_part --> tmp %lld\n", tmp);
     decimal -= (signed int)decimal;
-    // printf("\ns: %s deci %Lf tmp : %s\n", s, decimal, tmp);
+    precision--;
   }
-  return(tmp);
+  s = ft_itoa(tmp);
+  return(s);
 }
 
 int		f_conversion(t_base *all)
@@ -55,18 +53,40 @@ int		f_conversion(t_base *all)
   int entier;
   long double decimal;
   int i;
+  char *s;
   char *s_entier;
   char *s_deci;
 
   nb = check_l_L(all, nb);
+  // (nb < 1 && nb > 0) ? nb += 1 : 0;
+  printf("f_conversion --> nb = %Lf\n", nb);
   nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
 	nb < 0 ? nb = -nb : nb;
   entier = nb;
   decimal = nb - entier;
   s_entier = ft_itoa(entier);
+  printf("f_conversion decimal --> %Lf\n", decimal);
+  // entier == 0 ? decimal += 1 : 0;
   s_deci = get_deci_part(decimal, all);
   // s = precision_f()
   // printf("nb = %Lf\n", nb);
-
+  s = ft_strjoin(s_entier, ".");
+  s = ft_strjoin(s, s_deci);
+  ft_flag_width(all, s);
+  fill_width_space(all, all->con_str, all->tot_len);
+  i = -1;
+  if (all->flag.minus)
+  {
+    while (++i <= all->len - 1)
+      all->con_str[i] = s[i];
+  }
+  else
+  {
+    i = all->tot_len;
+    while (all->len + 1)
+      all->con_str[i--] = s[all->len--];
+  }
+  all->con_str[all->tot_len + 1] = '\0';
+  ft_putstr(all->con_str);
   return(0);
 }
