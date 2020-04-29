@@ -39,7 +39,6 @@ char		*ft_itoa(long long n)
 	int		i;
 	int		j;
 
-printf("dans itoa n = %lld\n", n);
 	i = -1;
 	j = 0;
 	if (n == -2147483648)

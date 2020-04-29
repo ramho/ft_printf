@@ -97,6 +97,6 @@ int 	light_flags(t_base *all, char *str)
 	all->flag.minus == 1 ? all->flag.zero = 0 : 0;
 	all->flag.plus == 1 ? all->flag.space = 0 : 0;
 	all->flag.width == 0 ? all->flag.zero = 0: 0;
-	all->flag.precision >= 0 ? all->flag.zero = 0: 0;
+	//all->flag.precision >= 0 ? all->flag.zero = 0: 0; // commented for float, ft_printf("|%05.1f|\n", 1.1);
 	return(start_conversion(all));
 }
