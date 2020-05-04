@@ -21,6 +21,7 @@ int		di_conversion(t_base *all)
 	nb = 0;
 	nb = check_l_ll_h_hh(nb, all);
 	nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
+	all->signed_nb = nb;
 	nb < 0 ? nb = -nb : nb;
 	s = ft_itoa(nb);
 	if ( nb == 0 && all->flag.precision == 0)
@@ -66,7 +67,7 @@ int		o_conversion(t_base *all)
 	s = ft_itoa_base(nb, 8, 'm');
 	len = ft_strlen(s);
 	if (nb == 0 && all->flag.precision == 0)
-			ft_bzero(s, ft_strlen(s));
+			all->flag.hash == 1 ? s = ft_strdup("0"):ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
 	if(all->flag.hash == 1 &&  all->flag.precision <= len && nb >= 1) // pk pas ft_strlen direct ?
 	{
@@ -74,7 +75,7 @@ int		o_conversion(t_base *all)
 		all->flag.hash = 0;
 	}
 	ft_flag_width(all, s);
-
+	// printf("\n s --> %s flag zero %d\n",s, all->flag.zero);
 	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;
 	if (all->flag.minus)
@@ -172,8 +173,8 @@ int		X_conversion(t_base *all)
 		nb = va_arg(all->args, long);
 		all->signed_nb = nb;
 		s = ft_itoa_base(nb, 16, 'M');
-		// if ( nb == 0 && all->flag.precision == 0)
-		// 	ft_bzero(s, ft_strlen(s));
+		if ( nb == 0 && all->flag.precision == 0)
+			ft_bzero(s, ft_strlen(s));
 		s = precision_diouxX(all, s);
 		if(all->flag.hash == 1 && ((all->flag.precision >= 0 && nb > 0) || (all->flag.zero == 0 && nb > 0)))
 		{

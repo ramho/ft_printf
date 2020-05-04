@@ -56,8 +56,9 @@ char *precision_diouxX(t_base *all,char *s)
 	int diff;
 
 	tmp = NULL;
-	if (all->flag.precision > 0 && all->flag.precision > (int)ft_strlen(s))
+	if (all->flag.precision > 0 && all->flag.precision >= (int)ft_strlen(s))
 	{
+    all->flag.zero = 0;
 		diff = all->flag.precision - ft_strlen(s);
 		tmp = fill_zero(tmp, diff);
 		tmp = ft_strjoin(tmp, s);
@@ -71,11 +72,12 @@ char *precision_diouxX(t_base *all,char *s)
 		s = tmp;
 	}
   else if (all->flag.space == 1 && all->signed_nb >= 0)
-  {
     s = ft_strjoin_n_free(" ", s, 2);
-  }
 	else
+  {
+    all->flag.precision == 0 ? all->flag.zero = 0 : 0;
 		return(s);
+  }
 	return(s);
 }
 

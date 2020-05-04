@@ -12,8 +12,10 @@
 
 #include "printf.h"
 
-long double   check_l_L(t_base *all, long double nb)
+long double   check_l_L(t_base *all)
 {
+   long double nb;
+
   if(all->flag.l == 1 || all->flag.L == 1)
     nb = va_arg(all->args, long double);
   else
@@ -97,10 +99,9 @@ int		f_conversion(t_base *all)
   long double decimal;
   int i;
   char *s;
-  char *s_entier;
   char *s_deci;
 
-  nb = check_l_L(all, nb);
+  nb = check_l_L(all);
   nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
 	nb < 0 ? nb = -nb : nb;
   entier = nb;

@@ -14,7 +14,8 @@ NAME = libftprintf.a
 
 LIBFT = libft
 
-SRC = printf.c sort_flag.c convert_csp.c convert_diouxX.c flags.c tab_ptr.c convert_diouxX.c  start_conversion.c di_flags.c\
+SRC = printf.c sort_flag.c convert_csp.c convert_diouxX.c convert_f.c \
+			start_conversion.c di_flags.c flags.c tab_ptr.c sort_flag.c\
 
 
 INC = printf.h
@@ -42,44 +43,3 @@ fclean: clean
 re: fclean all
 
 .PHONY : all clean fclean re
-
-# NAME = libftprintf.a
-#
-# FLAGS = -Wall -Wextra -Werror
-#
-# LIBFT = libft
-#
-# DIR_S = sources
-#
-# DIR_O = temporary
-#
-# HEADER = include
-#
-# SOURCES = printf.c sort_flag.c convert_csp.c convert_diouxX.c flags.c tab_ptr.c convert_diouxX.c \
-#  		main.c
-#
-# SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
-#
-# OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
-#
-# all: $(NAME)
-#
-# $(NAME): $(OBJS)
-# 	@make -C $(LIBFT)
-# 	@cp libft/libft.a ./$(NAME)
-# 	@ar rc $(NAME) $(OBJS)
-# 	@ranlib $(NAME)
-#
-# # $(DIR_O)/%.o: $(DIR_S)/%.c
-# # 	@mkdir -p temporary
-# # 	@$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
-#
-# clean:
-# 	@rm  -f *.o *.gch
-# 	@make clean -C $(LIBFT)
-#
-# fclean: clean
-# 	@rm -f $(NAME)
-# 	@make fclean -C $(LIBFT)
-#
-# re: fclean all

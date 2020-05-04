@@ -75,8 +75,8 @@ int		s_conversion(t_base *all)
 	s = va_arg(all->args, char*);
 	if (s == NULL)
 		s = "(null)";
-	if( all->flag.precision == 0)
-		return (0);
+	if(all->flag.precision == 0)
+		s = "\0";
 	s = precision_s(all, s);
 	ft_flag_width(all, s);
 	fill_width_space(all, all->con_str, all->tot_len);
