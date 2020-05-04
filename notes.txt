@@ -20,3 +20,7 @@ need to handle % without arg ? (ft_printf("hello %s des %0.5d la %-#0.2s\n"))
 
   find alternative to ft_strlen of a char, because when you send a pointer to char c,
   	it sometimes sends additional/random chars along and affects ft_strlen return
+
+va_arg, si precison = 0 et int est paire, no arrondisement, tmp_floa
+
+si pas de type, what do do ?
