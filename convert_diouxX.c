@@ -34,24 +34,34 @@ int		di_conversion(t_base *all)
 	}
 	if(!ft_flag_width(all, s))
 		return(-1);
+	// printf("\n s = %s\n", s);
 	fill_width_space(all, all->con_str, all->tot_len);
+	// printf("\n111- con_str = %s\n", all->con_str);
 	i = -1;
 	if (all->flag.minus)
 	{
 		while (++i <= all->len - 1)
 			all->con_str[i] = s[i];
+		// printf("a- con_str = %s\n", all->con_str);
 	}
 	else
 	{
 		i = all->tot_len;
 		while (all->len + 1)
 			all->con_str[i--] = s[all->len--];
+		// printf("b- con_str = |%s| et s = |%s|\n", all->con_str, s);
 	}
+	// printf("222- con_str = %s\n", all->con_str);
 	all->con_str[all->tot_len + 1] = '\0';
 	if (all->flag.space == 1 && all->signed_nb >= 0)
-		all->con_str[0] = ' ';
+	{
+		if(all->flag.width == 0)
+			all->con_str = ft_strjoin(" \0", all->con_str);
+		else
+			all->con_str[0] = ' ';
+	}
 	ft_putstr(all->con_str);
-	return (all->tot_len);
+	return (ft_strlen(all->con_str));
 }
 
 int		o_conversion(t_base *all)
@@ -97,16 +107,18 @@ int		o_conversion(t_base *all)
 
 int		u_conversion(t_base *all)
 {
-	unsigned int d;
+	uintmax_t d;
 	int i;
 	char *s;
 
 	all->flag.plus ? all->flag.plus = 0 : 0;
 	all->flag.minus ? all->flag.zero = 0 : 0;
-	d = va_arg(all->args, unsigned int);
-	if(all->flag.precision == 0 && d == 0)
-		return(0);
+	all->flag.space ? all->flag.space = 0 : 0;
+	d = 0;
+	d = check_l_ll_h_hh_unsigned(d, all);
 	s = ft_itoa(d);
+	if(all->flag.precision == 0 && d == 0)
+		all->flag.hash == 1 ? s = ft_strdup("0"):ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
 	ft_flag_width(all, s);
 	fill_width_space(all, all->con_str, all->tot_len);
@@ -134,8 +146,8 @@ int		x_conversion(t_base *all)
 	char *s;
 	int i;
 
-	nb = va_arg(all->args, long);
-	all->signed_nb = nb;
+	nb = 0;
+	nb = check_l_ll_h_hh(nb, all);
 	s = ft_itoa_base(nb, 16, 'm');
 	if ( nb == 0 && all->flag.precision == 0)
 	 	ft_bzero(s, ft_strlen(s));
@@ -170,8 +182,8 @@ int		X_conversion(t_base *all)
 		char *s;
 		int i;
 
-		nb = va_arg(all->args, long);
-		all->signed_nb = nb;
+		nb = 0;
+		nb = check_l_ll_h_hh(nb, all);
 		s = ft_itoa_base(nb, 16, 'M');
 		if ( nb == 0 && all->flag.precision == 0)
 			ft_bzero(s, ft_strlen(s));

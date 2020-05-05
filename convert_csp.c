@@ -18,11 +18,20 @@ int		c_conversion(t_base *all)
 
 	c = va_arg(all->args, int);
 	all->len = 1;
+	// if( c == 0)
+	// 	ft_bzero(&c,1);
+
 	all->tot_len = (all->len <= all->flag.width) ? all->flag.width : all->len;
 	if (!(all->con_str = malloc(sizeof(char *) * (all->tot_len + 1))))
 		return (-1);
 	fill_width_space(all, all->con_str, all->tot_len);
 	all->con_str[all->tot_len] = '\0';
+	// if(c == 0)
+	// {
+	// 	// printf("hello");
+	// 	all->con_str = ft_strjoin(all->con_str, "^@");
+		// return(1);
+	// }
 	if (all->flag.minus)
 	{
 		if (c == '\0')
@@ -47,7 +56,24 @@ int		p_conversion(t_base *all)
 	int		i;
 
 	p = va_arg(all->args, long);
-	tmp = ft_strjoin("0x", ft_itoa_base(p, 16, 'm'));
+	tmp = ft_itoa_base(p, 16, 'm');
+	if(p == 0 && all->flag.precision == 0)
+	{
+			ft_bzero(tmp, ft_strlen(tmp));
+			all->flag.zero = 0;
+	}
+	if(all->flag.precision >= 0)
+		tmp = precision_diouxX(all, tmp);
+	else
+	{
+		if(all->flag.zero == 1)
+		{
+				tmp = ft_strjoin(fill_zero(all->flag.width - (ft_strlen(tmp) + 2)),tmp);
+				all->flag.zero = 0;
+		}
+	}
+	// printf("\n 111 zero %d\n", all->flag.zero);
+	tmp = ft_strjoin("0x", tmp);
 	ft_flag_width(all, tmp);
 	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;

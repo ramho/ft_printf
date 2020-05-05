@@ -14,9 +14,10 @@ char *precision_s(t_base *all,char *s)
 	return(s);
 }
 
-char	*fill_zero(char *str, int size)
+char	*fill_zero(int size)
 {
 	int i;
+	char *str;
 
 	i = 0;
 	str = malloc(sizeof(char *) * (size +1));

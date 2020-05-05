@@ -83,7 +83,7 @@ int		X_conversion(t_base *all);
 char *precision_s(t_base *all,char *s);
 
 int 	type_dif(char c);
-char	*fill_zero(char *str, int size);
+char	*fill_zero(int size);
 
 /*
 **  start_conversion.c
