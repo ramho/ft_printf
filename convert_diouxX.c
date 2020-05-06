@@ -23,10 +23,11 @@ int		di_conversion(t_base *all)
 	nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
 	all->signed_nb = nb;
 	nb < 0 ? nb = -nb : nb;
-	s = ft_itoa(nb);
+	s = ft_u_itoa_base(nb, 10, 'm');
 	if ( nb == 0 && all->flag.precision == 0)
 		ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
+	// printf("zero = %d\n", all->flag.zero);
 	if((all->flag.plus == 1 || all->signed_nb < 0) && all->flag.zero == 0)
 	{
 		s = ft_strjoin_n_free(all->flag.sign, s, 2);
@@ -34,9 +35,9 @@ int		di_conversion(t_base *all)
 	}
 	if(!ft_flag_width(all, s))
 		return(-1);
-	// printf("\n s = %s\n", s);
+	// printf("\n s = |%s|\n", s);
 	fill_width_space(all, all->con_str, all->tot_len);
-	// printf("\n111- con_str = %s\n", all->con_str);
+	// printf("\n111- con_str = |%s|\n", all->con_str);
 	i = -1;
 	if (all->flag.minus)
 	{
@@ -51,7 +52,7 @@ int		di_conversion(t_base *all)
 			all->con_str[i--] = s[all->len--];
 		// printf("b- con_str = |%s| et s = |%s|\n", all->con_str, s);
 	}
-	// printf("222- con_str = %s\n", all->con_str);
+	// printf("222- con_str =| %s|\n", all->con_str);
 	all->con_str[all->tot_len + 1] = '\0';
 	if (all->flag.space == 1 && all->signed_nb >= 0)
 	{
@@ -74,7 +75,7 @@ int		o_conversion(t_base *all)
 
 	nb = 0;
 	nb = check_l_ll_h_hh_unsigned(nb, all);
-	s = ft_itoa_base(nb, 8, 'm');
+	s = ft_u_itoa_base(nb, 8, 'm');
 	len = ft_strlen(s);
 	if (nb == 0 && all->flag.precision == 0)
 			all->flag.hash == 1 ? s = ft_strdup("0"):ft_bzero(s, ft_strlen(s));
@@ -116,7 +117,7 @@ int		u_conversion(t_base *all)
 	all->flag.space ? all->flag.space = 0 : 0;
 	d = 0;
 	d = check_l_ll_h_hh_unsigned(d, all);
-	s = ft_itoa(d);
+	s = ft_u_itoa_base(d,10, 'm');
 	if(all->flag.precision == 0 && d == 0)
 		all->flag.hash == 1 ? s = ft_strdup("0"):ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
@@ -147,8 +148,8 @@ int		x_conversion(t_base *all)
 	int i;
 
 	nb = 0;
-	nb = check_l_ll_h_hh(nb, all);
-	s = ft_itoa_base(nb, 16, 'm');
+	nb = check_l_ll_h_hh_unsigned(nb, all);
+	s = ft_u_itoa_base(nb, 16, 'm');
 	if ( nb == 0 && all->flag.precision == 0)
 	 	ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
@@ -183,8 +184,8 @@ int		X_conversion(t_base *all)
 		int i;
 
 		nb = 0;
-		nb = check_l_ll_h_hh(nb, all);
-		s = ft_itoa_base(nb, 16, 'M');
+		nb = check_l_ll_h_hh_unsigned(nb, all);
+		s = ft_u_itoa_base(nb, 16, 'M');
 		if ( nb == 0 && all->flag.precision == 0)
 			ft_bzero(s, ft_strlen(s));
 		s = precision_diouxX(all, s);

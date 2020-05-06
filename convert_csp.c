@@ -123,8 +123,30 @@ int		s_conversion(t_base *all)
 	return (all->tot_len);
 }
 
-int		modulo_conversion()
+int		modulo_conversion(t_base *all)
 {
-	write(1, "%", 1);
-	return(1);
+	char c;
+
+	c = '%';
+	all->len = 1;
+	all->tot_len = (all->len <= all->flag.width) ? all->flag.width : all->len;
+	if (!(all->con_str = malloc(sizeof(char *) * (all->tot_len + 1))))
+		return (-1);
+	fill_width_space(all, all->con_str, all->tot_len);
+	all->con_str[all->tot_len] = '\0';
+	if (all->flag.minus)
+	{
+		if (c == '\0')
+		{
+			write(1, "\0", 1);
+			write(1, all->con_str, all->tot_len - 1);
+			return (all->tot_len);
+		}
+		else
+			all->con_str[0] = c;
+	}
+	else
+		all->con_str[all->tot_len - 1] = c;
+	ft_putstr(all->con_str);
+	return(all->tot_len);
 }

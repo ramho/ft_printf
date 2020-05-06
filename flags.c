@@ -3,6 +3,7 @@
 char *precision_s(t_base *all,char *s)
 {
 	char *tmp;
+
 	if (all->flag.precision > 0 && all->flag.precision < (int)ft_strlen(s))
 	{
 		tmp = ft_strsub(s, 0, all->flag.precision);

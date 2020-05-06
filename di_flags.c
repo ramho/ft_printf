@@ -75,12 +75,13 @@ char *precision_diouxX(t_base *all,char *s)
   {
     // printf("111111\n");
     s = ft_strjoin_n_free(" ", s, 2);
+    all->flag.space = 0;
   }
   else
   {
     // printf("22222\n");
     all->flag.precision >= 0 ? all->flag.zero = 0 : 0;
-    // all->flag.width <= (int)ft_strlen(s) ? all->flag.zero = 0 : 0;
+    all->flag.width <= (int)ft_strlen(s) ? all->flag.zero = 0 : 0;
 		return(s);
   }
 	return(s);
@@ -100,7 +101,7 @@ void	fill_width_space(t_base *all, char *str, int size)
 	int i;
 
 	i = 0;
-  // printf("\nzero %d\n", all->flag.zero);
+  // printf("\nsize %d\n", size);
 	if ((type_dif(all->type) || all->type == 'u' || all->type == 'x' ||
 			all->type == 'X' || all->type == 'c' || all->type == 'o' || all->type == 'f' || all->type == 'p') && all->flag.zero == 1)
 	{

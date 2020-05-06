@@ -42,14 +42,14 @@ char		*ft_itoa(long long n)
 	i = -1;
 	j = 0;
 	if (n == -2147483648)
-		return ("-2147483648");
+		return ("-2147483648\0");
 	len = ft_numlen(n);
 	if (!(s = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	if (n < 0)
 	{
 		s[0] = '-';
-		n = -n;
+		n = n * -1;
 		j = 1;
 	}
 	while ((++i + j) < len)
