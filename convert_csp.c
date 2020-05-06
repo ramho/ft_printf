@@ -18,34 +18,21 @@ int		c_conversion(t_base *all)
 
 	c = va_arg(all->args, int);
 	all->len = 1;
-	// if( c == 0)
-	// 	ft_bzero(&c,1);
-
-	all->tot_len = (all->len <= all->flag.width) ? all->flag.width : all->len;
+	all->tot_len = all->flag.width >= all->len ? all->flag.width : all->len;
 	if (!(all->con_str = malloc(sizeof(char *) * (all->tot_len + 1))))
 		return (-1);
 	fill_width_space(all, all->con_str, all->tot_len);
 	all->con_str[all->tot_len] = '\0';
-	// if(c == 0)
-	// {
-	// 	// printf("hello");
-	// 	all->con_str = ft_strjoin(all->con_str, "^@");
-		// return(1);
-	// }
 	if (all->flag.minus)
 	{
-		if (c == '\0')
-		{
-			write(1, "\0", 1);
+			write(1, &c, 1);
 			write(1, all->con_str, all->tot_len - 1);
 			return (all->tot_len);
-		}
-		else
-			all->con_str[0] = c;
 	}
 	else
-		all->con_str[all->tot_len - 1] = c;
-	ft_putstr(all->con_str);
+		write(1, all->con_str, all->tot_len - 1);
+		write(1, &c, 1);
+	// ft_putchar(c);
 	return(all->tot_len);
 }
 

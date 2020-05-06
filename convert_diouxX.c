@@ -21,6 +21,7 @@ int		di_conversion(t_base *all)
 	nb = 0;
 	nb = check_l_ll_h_hh(nb, all);
 	nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
+	nb < 0 ? all->flag.space = 0 : 0;
 	all->signed_nb = nb;
 	nb < 0 ? nb = -nb : nb;
 	s = ft_u_itoa_base(nb, 10, 'm');
