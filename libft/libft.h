@@ -98,6 +98,7 @@ int						ft_toupper(int c);
 int						ft_countwords(char const *str, char c);
 int						get_next_line(const int fd, char **line);
 char 					*ft_itoa_base(long long value, int base, char c);
+char 					*ft_u_itoa_base(unsigned long long value, int base, char c);
 int						ft_count_sym(char *str, char c);
 int						ft_count_num(int value);
 
