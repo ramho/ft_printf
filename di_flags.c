@@ -103,7 +103,7 @@ void	fill_width_space(t_base *all, char *str, int size)
 	i = 0;
   // printf("\nsize %d\n", size);
 	if ((type_dif(all->type) || all->type == 'u' || all->type == 'x' ||
-			all->type == 'X' || all->type == 'c' || all->type == 'o' || all->type == 'f' || all->type == 'p') && all->flag.zero == 1)
+			all->type == 'X' || all->type == 'c' || all->type == 'o' || all->type == 'f' || all->type == 'p' || all->type == '%' || all->type == 's') && all->flag.zero == 1)
 	{
 			while( i < size)
 			   str[i++] = '0';

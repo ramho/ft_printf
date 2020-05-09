@@ -32,7 +32,7 @@ t_flag	init_flag(t_flag flag)
 int 	light_flags(t_base *all, char *str)
 {
 	int i;
-
+// printf("str = %s\n", str);
 	i = 0;
 	all->flag = init_flag(all->flag);
 	while (str[i] && !(is_type(str[i])))
@@ -91,7 +91,10 @@ int 	light_flags(t_base *all, char *str)
 				}
 			}
 			if (str[i] == '%')
+			{
+				all->type = '%';
 				return(modulo_conversion(all));
+			}
 		if(!is_type(str[i]))
 			i++;
 	}

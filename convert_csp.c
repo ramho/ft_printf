@@ -27,12 +27,14 @@ int		c_conversion(t_base *all)
 	{
 			write(1, &c, 1);
 			write(1, all->con_str, all->tot_len - 1);
+			all->count += all->tot_len;
 			return (all->tot_len);
 	}
 	else
 		write(1, all->con_str, all->tot_len - 1);
 		write(1, &c, 1);
 	// ft_putchar(c);
+	all->count += all->tot_len;
 	return(all->tot_len);
 }
 
@@ -43,6 +45,7 @@ int		p_conversion(t_base *all)
 	int		i;
 
 	p = va_arg(all->args, long);
+	all->flag.plus = 0;
 	tmp = ft_itoa_base(p, 16, 'm');
 	if(p == 0 && all->flag.precision == 0)
 	{
@@ -77,6 +80,7 @@ int		p_conversion(t_base *all)
 	}
 	all->con_str[all->tot_len + 1] = '\0';
 	ft_putstr(all->con_str);
+	all->count += all->tot_len;
 	return (all->tot_len);
 }
 
@@ -107,6 +111,7 @@ int		s_conversion(t_base *all)
 	}
 	all->con_str[all->tot_len + 1] = '\0';
 	ft_putstr(all->con_str);
+	all->count += all->tot_len;
 	return (all->tot_len);
 }
 
@@ -115,11 +120,14 @@ int		modulo_conversion(t_base *all)
 	char c;
 
 	c = '%';
+	// all->flag.zero = 0;
+	// printf("zero %d\n", all->flag.zero);
 	all->len = 1;
 	all->tot_len = (all->len <= all->flag.width) ? all->flag.width : all->len;
 	if (!(all->con_str = malloc(sizeof(char *) * (all->tot_len + 1))))
 		return (-1);
 	fill_width_space(all, all->con_str, all->tot_len);
+	// printf("str %s\n", all->con_str);
 	all->con_str[all->tot_len] = '\0';
 	if (all->flag.minus)
 	{
@@ -127,6 +135,7 @@ int		modulo_conversion(t_base *all)
 		{
 			write(1, "\0", 1);
 			write(1, all->con_str, all->tot_len - 1);
+			all->count += all->tot_len;
 			return (all->tot_len);
 		}
 		else
@@ -135,5 +144,6 @@ int		modulo_conversion(t_base *all)
 	else
 		all->con_str[all->tot_len - 1] = c;
 	ft_putstr(all->con_str);
+	all->count += all->tot_len;
 	return(all->tot_len);
 }

@@ -38,7 +38,8 @@ typedef   struct  	s_base
 	int len;
 	int tot_len;
 	intmax_t signed_nb;
-
+	long double signed_nb_f;
+	size_t		count;
 }                	 t_base;
 
 

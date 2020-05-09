@@ -16,6 +16,7 @@ int		di_conversion(t_base *all)
 {
 	intmax_t nb;
 	int i;
+	int j;
 	char *s;
 
 	nb = 0;
@@ -34,17 +35,29 @@ int		di_conversion(t_base *all)
 		s = ft_strjoin_n_free(all->flag.sign, s, 2);
 		all->flag.plus = 0;
 	}
+	if (all->flag.space == 1 && all->flag.precision >= 0)
+	{
+		s = ft_strjoin(" \0", s);
+		all->flag.space = 0;
+	}
 	if(!ft_flag_width(all, s))
 		return(-1);
-	// printf("\n s = |%s|\n", s);
+
 	fill_width_space(all, all->con_str, all->tot_len);
-	// printf("\n111- con_str = |%s|\n", all->con_str);
+	printf("\n111 - s[%zu] = |%s| con_str[%zu] =|%s|\n",  ft_strlen(s), s, ft_strlen(all->con_str), all->con_str);
 	i = -1;
 	if (all->flag.minus)
 	{
+		if (all->flag.space == 1)
+		{
+			s = ft_strjoin(" \0", s);
+			all->len +=1;
+}
 		while (++i <= all->len - 1)
+		{
 			all->con_str[i] = s[i];
-		// printf("a- con_str = %s\n", all->con_str);
+			// printf("333 - s = |%c| con_str =|%c|\n", s[i], all->con_str[i]);
+		}
 	}
 	else
 	{
@@ -53,16 +66,18 @@ int		di_conversion(t_base *all)
 			all->con_str[i--] = s[all->len--];
 		// printf("b- con_str = |%s| et s = |%s|\n", all->con_str, s);
 	}
-	// printf("222- con_str =| %s|\n", all->con_str);
+	printf("333 - s = |%s| con_str =|%s|\n", s, all->con_str);
 	all->con_str[all->tot_len + 1] = '\0';
 	if (all->flag.space == 1 && all->signed_nb >= 0)
 	{
-		if(all->flag.width == 0)
-			all->con_str = ft_strjoin(" \0", all->con_str);
-		else
+		// printf("con |%s| width %d precision %d \n", all->con_str, all->flag.width, all->flag.precision);
+		// if(all->flag.precision > all->flag.width)// || (all->flag.width == 0  && all->flag.precision == -1))
+		// 	all->con_str = ft_strjoin(" \0", all->con_str);
+		// else if ( all->flag.width > all->flag.precision)
 			all->con_str[0] = ' ';
 	}
 	ft_putstr(all->con_str);
+	all->count += ft_strlen(all->con_str);
 	return (ft_strlen(all->con_str));
 }
 
@@ -103,6 +118,7 @@ int		o_conversion(t_base *all)
 	}
 	all->con_str[all->tot_len + 1] = '\0';
 	ft_putstr(all->con_str);
+	all->count += all->tot_len;
 	return (all->tot_len);
 }
 
@@ -138,6 +154,7 @@ int		u_conversion(t_base *all)
 	}
 	all->con_str[all->tot_len + 1] = '\0';
 	ft_putstr(all->con_str);
+	all->count += all->tot_len;
 	return (all->tot_len);
 }
 
@@ -175,6 +192,7 @@ int		x_conversion(t_base *all)
 	}
 	all->con_str[all->tot_len + 1] = '\0';
 	ft_putstr(all->con_str);
+	all->count += all->tot_len;
 	return (all->tot_len);
 }
 
@@ -211,5 +229,6 @@ int		X_conversion(t_base *all)
 		}
 		all->con_str[all->tot_len + 1] = '\0';
 		ft_putstr(all->con_str);
+		all->count += all->tot_len;
 		return (all->tot_len);
 }

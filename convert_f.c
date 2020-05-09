@@ -20,18 +20,16 @@ long double   check_l_L(t_base *all)
     nb = va_arg(all->args, long double);
   else
     nb = va_arg(all->args, double);
-  all->signed_nb = nb;
+  all->signed_nb_f = nb;
   return(nb);
 }
 
-long double rounding(int *entier, long double decimal, t_base *all)
+long double rounding(int *entier, long double decimal, int precision)
 {
-  int precision;
   int count;
   double round_up;
   double deci_tmp;
 
-  precision = all->flag.precision >= 0 ? all->flag.precision : 6;
   count = precision;
   round_up = 0.1;
   deci_tmp = decimal * 10;
@@ -48,11 +46,14 @@ long double rounding(int *entier, long double decimal, t_base *all)
   }
   else
     {
+      // printf("bqn\n");
       decimal = decimal + round_up;
-      if(decimal >= 1)
+      // printf("deci %Lf\n", decimal);
+      if(decimal >= 0.999999)
       {
+        // printf("ban\n");
         decimal -= 1;
-        *entier += + 1;
+        *entier += 1;
       }
     }
   return (decimal);
@@ -67,7 +68,7 @@ char  *get_deci_part(int *entier, long double decimal, t_base *all)
   int i;
 
   precision = all->flag.precision >= 0 ? all->flag.precision : 6;
-  matissa = rounding(entier, decimal, all);
+  matissa = rounding(entier, decimal, precision);
   if (decimal == 0)
   {
     s = malloc(sizeof(char *) * precision + 1);
@@ -108,7 +109,7 @@ int		f_conversion(t_base *all)
   decimal = nb - entier;
   s_deci = get_deci_part(&entier, decimal, all);
   s = ft_itoa(entier);
-  if (all->flag.plus == 1)
+  if (all->flag.plus == 1 || all->signed_nb_f < 0)
   {
     s = ft_strjoin(all->flag.sign, s);
     all->flag.space = 0;
@@ -141,6 +142,7 @@ int		f_conversion(t_base *all)
   }
   all->con_str[all->tot_len + 1] = '\0';
   ft_putstr(all->con_str);
+  all->count += ft_strlen(all->con_str);
   return(ft_strlen(all->con_str));
 }
 
