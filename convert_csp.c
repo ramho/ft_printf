@@ -118,7 +118,7 @@ int		s_conversion(t_base *all)
 int		modulo_conversion(t_base *all)
 {
 	char c;
-
+// printf("enter modulo\n");
 	c = '%';
 	// all->flag.zero = 0;
 	// printf("zero %d\n", all->flag.zero);
@@ -133,6 +133,7 @@ int		modulo_conversion(t_base *all)
 	{
 		if (c == '\0')
 		{
+			// printf("haalo\n");
 			write(1, "\0", 1);
 			write(1, all->con_str, all->tot_len - 1);
 			all->count += all->tot_len;
@@ -144,6 +145,7 @@ int		modulo_conversion(t_base *all)
 	else
 		all->con_str[all->tot_len - 1] = c;
 	ft_putstr(all->con_str);
-	all->count += all->tot_len;
+	// printf("-%zu-\n",ft_strlen(all->con_str) );
+	all->count += ft_strlen(all->con_str);
 	return(all->tot_len);
 }

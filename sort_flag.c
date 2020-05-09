@@ -34,9 +34,17 @@ int 	light_flags(t_base *all, char *str)
 	int i;
 // printf("str = %s\n", str);
 	i = 0;
+	// printf("type %c\n",str[ft_strlen(str) - 1]);
+	if(!((is_type(str[ft_strlen(str) - 1])) || str[ft_strlen(str) - 1] == '%') )
+	{
+		// printf("in is type\n");
+		write(1, &str[ft_strlen(str) - 1], 1);
+		return(1);
+	}
 	all->flag = init_flag(all->flag);
 	while (str[i] && !(is_type(str[i])))
 	{
+		// printf("in here\n");
 			if(str[i] == '0')
 			{
 			 all->flag.zero = 1;
@@ -93,11 +101,13 @@ int 	light_flags(t_base *all, char *str)
 			if (str[i] == '%')
 			{
 				all->type = '%';
+				// printf("trala\n");
 				return(modulo_conversion(all));
 			}
 		if(!is_type(str[i]))
 			i++;
 	}
+	// printf("lala\n");
 	all->type = str[i];
 	all->flag.minus == 1 ? all->flag.zero = 0 : 0;
 	all->flag.plus == 1 ? all->flag.space = 0 : 0;

@@ -37,7 +37,7 @@ int ft_printf(const char* format, ...)
 	va_start(all->args, format);
 	while (format[i] != '\0')
 	{
-		// printf("%c\n", format[i]);
+		// printf("%s\n", format);
 		if(format[i] == '%' && format[i + 1])
 		{
 			// printf("1\n");
@@ -49,22 +49,25 @@ int ft_printf(const char* format, ...)
 				i++;
 				j++;
 			}
+			// printf("111 %c\n", format[i]);
 			while(format[i] == 'l' || format[i] == 'L' || format[i] == 'h')
 			{
 				i++;
 				j++;
 			}
-			if (is_type(format[i]) || format[i] == '%')
-			{
+			// printf("222 %c\n", format[i]);
+			// if (is_type(format[i]) || format[i] == '%')
+			// {
 				tot_j += (j + 2);
 				str = ft_strsub(format, i - j, j + 1);
 				ret = light_flags(all, str);
-			}
-			else
-				all->count += 0;
+			// }
+			// else
+				// all->count += 0;
 		}
 		else if(format[i] == '%' && !(format[i + 1]))
 		{
+			// printf("in esle if\n");
 			return(0);
 		}
 		else

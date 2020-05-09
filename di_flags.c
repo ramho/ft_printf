@@ -71,7 +71,7 @@ char *precision_diouxX(t_base *all,char *s)
 		}
 		s = tmp;
 	}
-  else if (all->flag.space == 1 && all->signed_nb >= 0 && all->type != 'd')
+  else if (all->flag.space == 1 && all->signed_nb >= 0 && all->flag.zero == 0 && (all->type != 'd' || all->type != 'i'))
   {
     // printf("111111\n");
     s = ft_strjoin_n_free(" ", s, 2);

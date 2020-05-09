@@ -16,7 +16,6 @@ int		di_conversion(t_base *all)
 {
 	intmax_t nb;
 	int i;
-	int j;
 	char *s;
 
 	nb = 0;
@@ -29,7 +28,6 @@ int		di_conversion(t_base *all)
 	if ( nb == 0 && all->flag.precision == 0)
 		ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
-	// printf("zero = %d\n", all->flag.zero);
 	if((all->flag.plus == 1 || all->signed_nb < 0) && all->flag.zero == 0)
 	{
 		s = ft_strjoin_n_free(all->flag.sign, s, 2);
@@ -37,6 +35,7 @@ int		di_conversion(t_base *all)
 	}
 	if (all->flag.space == 1 && all->flag.precision >= 0)
 	{
+		// printf("bim\n");
 		s = ft_strjoin(" \0", s);
 		all->flag.space = 0;
 	}
@@ -44,14 +43,17 @@ int		di_conversion(t_base *all)
 		return(-1);
 
 	fill_width_space(all, all->con_str, all->tot_len);
-	printf("\n111 - s[%zu] = |%s| con_str[%zu] =|%s|\n",  ft_strlen(s), s, ft_strlen(all->con_str), all->con_str);
+	// printf("\nflag zero = %d space = %d\n", all->flag.zero, all->flag.space);
+	// printf("\n111 - s[%zu] = |%s| con_str[%zu] =|%s|\n",  ft_strlen(s), s, ft_strlen(all->con_str), all->con_str);
 	i = -1;
 	if (all->flag.minus)
 	{
-		if (all->flag.space == 1)
+		if (all->flag.space == 1 && all->flag.zero == 0)
 		{
+			// printf("bim\n");
 			s = ft_strjoin(" \0", s);
 			all->len +=1;
+			all->flag.space = 0;
 }
 		while (++i <= all->len - 1)
 		{
@@ -66,14 +68,10 @@ int		di_conversion(t_base *all)
 			all->con_str[i--] = s[all->len--];
 		// printf("b- con_str = |%s| et s = |%s|\n", all->con_str, s);
 	}
-	printf("333 - s = |%s| con_str =|%s|\n", s, all->con_str);
+	// printf("333 - s = |%s| con_str =|%s|\n", s, all->con_str);
 	all->con_str[all->tot_len + 1] = '\0';
-	if (all->flag.space == 1 && all->signed_nb >= 0)
+	if (all->flag.space == 1)
 	{
-		// printf("con |%s| width %d precision %d \n", all->con_str, all->flag.width, all->flag.precision);
-		// if(all->flag.precision > all->flag.width)// || (all->flag.width == 0  && all->flag.precision == -1))
-		// 	all->con_str = ft_strjoin(" \0", all->con_str);
-		// else if ( all->flag.width > all->flag.precision)
 			all->con_str[0] = ' ';
 	}
 	ft_putstr(all->con_str);
