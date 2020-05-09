@@ -122,6 +122,8 @@ int		modulo_conversion(t_base *all)
 	c = '%';
 	// all->flag.zero = 0;
 	// printf("zero %d\n", all->flag.zero);
+	all->flag.minus == 1 ? all->flag.zero = 0 : 0;
+	all->flag.plus == 1 ? all->flag.space = 0 : 0;
 	all->len = 1;
 	all->tot_len = (all->len <= all->flag.width) ? all->flag.width : all->len;
 	if (!(all->con_str = malloc(sizeof(char *) * (all->tot_len + 1))))

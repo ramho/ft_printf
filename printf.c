@@ -18,6 +18,12 @@ char 	is_type(char c)
 			c == 'o'||	c == 'u' || c == 'x' || c == 'X' || c == 'f');
 }
 
+char is_flag_char(char c)
+{
+	return(c == 'h' || c == 'l' || c == 'L' || c == ' ' || c == '-' ||
+			c == '+'||	c == '#' || c == '0' || c =='j');
+}
+
 int ft_printf(const char* format, ...)
 {
 	t_base *all;
@@ -25,57 +31,42 @@ int ft_printf(const char* format, ...)
 	int j;
 	char *str;
 	int ret;
-	int tot_ret;
-	int tot_j;
+	// int tot_ret;
+	// int tot_j;
 
 	i = 0;
 	ret = 0;
-	tot_ret = 0;
-	tot_j = 0;
+	// tot_ret = 0;
+	// tot_j = 0;
 	all = malloc(sizeof(t_base));
 	all->count = 0;
 	va_start(all->args, format);
-	while (format[i] != '\0')
+	// printf("len %d i = %d\n", (int)ft_strlen(format), i);
+	while (format[i] != '\0') //<= (int)ft_strlen(format))// != '\0')
 	{
-		// printf("%s\n", format);
+		// printf("enter fmt [%s] - [%d]%c\n", format,i,format[i]);
 		if(format[i] == '%' && format[i + 1])
 		{
-			// printf("1\n");
 			j = 0;
 			i++;
 			while (!(ft_isalpha(format[i]) || format[i] == '%') && format[i] != '\0')
 			{
-				// printf("2\n");
 				i++;
 				j++;
 			}
-			// printf("111 %c\n", format[i]);
-			while(format[i] == 'l' || format[i] == 'L' || format[i] == 'h')
+			while(is_flag_char(format[i]) && format[i + 1] != '\0')
 			{
 				i++;
 				j++;
 			}
-			// printf("222 %c\n", format[i]);
-			// if (is_type(format[i]) || format[i] == '%')
-			// {
-				tot_j += (j + 2);
+				// tot_j += (j + 2);
 				str = ft_strsub(format, i - j, j + 1);
 				ret = light_flags(all, str);
-			// }
-			// else
-				// all->count += 0;
 		}
 		else if(format[i] == '%' && !(format[i + 1]))
-		{
-			// printf("in esle if\n");
-			return(0);
-		}
+			return(all->count);
 		else
-		{
-			// printf("else\n");
 			all->count += write(1, &format[i], 1);
-		}
-		// printf(" [%d] %c\n", i,format[i]);
 		i++;
 	}
 	va_end(all->args);
