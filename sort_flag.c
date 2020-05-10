@@ -28,6 +28,8 @@ t_flag	init_flag(t_flag flag)
 	return(flag);
 }
 
+
+
 int 	light_flags(t_base *all, char *str)
 {
 	int i;
@@ -35,6 +37,8 @@ int 	light_flags(t_base *all, char *str)
 	i = 0;
 	if(!((is_type(str[ft_strlen(str) - 1])) || str[ft_strlen(str) - 1] == '%') )
 	{
+		if ( is_flag_char(str[ft_strlen(str) - 1]) || ft_isdigit(str[ft_strlen(str) - 1]))
+			return (1);
 		write(1, &str[ft_strlen(str) - 1], 1);
 		all->count += 1;
 		return(1);

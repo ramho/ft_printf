@@ -31,6 +31,7 @@ int ft_printf(const char* format, ...)
 	int j;
 	char *str;
 	int ret;
+	int count;
 	// int tot_ret;
 	// int tot_j;
 
@@ -42,7 +43,7 @@ int ft_printf(const char* format, ...)
 	all->count = 0;
 	va_start(all->args, format);
 	// printf("len %d i = %d\n", (int)ft_strlen(format), i);
-	while (format[i] != '\0') //<= (int)ft_strlen(format))// != '\0')
+	while (i < (int)ft_strlen(format))// != '\0')
 	{
 		// printf("enter fmt [%s] - [%d]%c\n", format,i,format[i]);
 		if(format[i] == '%' && format[i + 1])
@@ -59,7 +60,7 @@ int ft_printf(const char* format, ...)
 				i++;
 				j++;
 			}
-				// tot_j += (j + 2);
+
 				str = ft_strsub(format, i - j, j + 1);
 				ret = light_flags(all, str);
 		}
@@ -69,8 +70,10 @@ int ft_printf(const char* format, ...)
 			all->count += write(1, &format[i], 1);
 		i++;
 	}
+	count = all->count;
 	va_end(all->args);
-	return (all->count);
+	free(all);
+	return (count);
 }
 
 

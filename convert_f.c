@@ -46,9 +46,8 @@ long double rounding(int *entier, long double decimal, int precision)
   }
   else
     {
-      // printf("bqn\n");
       decimal = decimal + round_up;
-      // printf("deci %Lf\n", decimal);
+
       if(decimal >= 0.999999)
       {
         // printf("ban\n");

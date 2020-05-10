@@ -43,11 +43,14 @@ typedef   struct  	s_base
 }                	 t_base;
 
 
+
+
 /*
 **  printf.c
 */
 int ft_printf(const char* fmt, ...);
 char 	is_type(char c);
+char is_flag_char(char c);
 
 /*
 **  sort_flag.c
