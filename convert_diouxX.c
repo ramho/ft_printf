@@ -36,7 +36,6 @@ int		di_conversion(t_base *all)
 	}
 	if (all->flag.space == 1 && all->flag.precision >= 0)
 	{
-		// printf("bim\n");
 		s = ft_strjoin(" \0", s);
 		all->flag.space = 0;
 	}
@@ -44,14 +43,11 @@ int		di_conversion(t_base *all)
 		return(-1);
 
 	fill_width_space(all, all->con_str, all->tot_len);
-	// printf("\nflag zero = %d space = %d\n", all->flag.zero, all->flag.space);
-	// printf("\n111 - s[%zu] = |%s| con_str[%zu] =|%s|\n",  ft_strlen(s), s, ft_strlen(all->con_str), all->con_str);
 	i = -1;
 	if (all->flag.minus)
 	{
 		if (all->flag.space == 1 && all->flag.zero == 0)
 		{
-			// printf("bim\n");
 			s = ft_strjoin(" \0", s);
 			all->len +=1;
 			all->flag.space = 0;
@@ -59,7 +55,6 @@ int		di_conversion(t_base *all)
 		while (++i <= all->len - 1)
 		{
 			all->con_str[i] = s[i];
-			// printf("333 - s = |%c| con_str =|%c|\n", s[i], all->con_str[i]);
 		}
 	}
 	else
@@ -67,14 +62,10 @@ int		di_conversion(t_base *all)
 		i = all->tot_len;
 		while (all->len + 1)
 			all->con_str[i--] = s[all->len--];
-		// printf("b- con_str = |%s| et s = |%s|\n", all->con_str, s);
 	}
-	// printf("333 - s = |%s| con_str =|%s|\n", s, all->con_str);
 	all->con_str[all->tot_len + 1] = '\0';
 	if (all->flag.space == 1)
-	{
-			all->con_str[0] = ' ';
-	}
+		all->con_str[0] = ' ';
 	ft_putstr(all->con_str);
 	all->count += ft_strlen(all->con_str);
 	return (ft_strlen(all->con_str));
@@ -95,13 +86,12 @@ int		o_conversion(t_base *all)
 	if (nb == 0 && all->flag.precision == 0)
 			all->flag.hash == 1 ? s = ft_strdup("0"):ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
-	if(all->flag.hash == 1 &&  all->flag.precision <= len && nb >= 1) // pk pas ft_strlen direct ?
+	if(all->flag.hash == 1 &&  all->flag.precision <= len && nb >= 1)
 	{
 		s = ft_strjoin_n_free("0", s, 2);
 		all->flag.hash = 0;
 	}
 	ft_flag_width(all, s);
-	// printf("\n s --> %s flag zero %d\n",s, all->flag.zero);
 	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;
 	if (all->flag.minus)
@@ -120,7 +110,6 @@ int		o_conversion(t_base *all)
 	all->count += all->tot_len;
 	return (all->tot_len);
 }
-
 
 int		u_conversion(t_base *all)
 {

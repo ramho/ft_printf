@@ -33,7 +33,6 @@ int		c_conversion(t_base *all)
 	else
 		write(1, all->con_str, all->tot_len - 1);
 		write(1, &c, 1);
-	// ft_putchar(c);
 	all->count += all->tot_len;
 	return(all->tot_len);
 }
@@ -62,7 +61,6 @@ int		p_conversion(t_base *all)
 				all->flag.zero = 0;
 		}
 	}
-	// printf("\n 111 zero %d\n", all->flag.zero);
 	tmp = ft_strjoin("0x", tmp);
 	ft_flag_width(all, tmp);
 	fill_width_space(all, all->con_str, all->tot_len);
@@ -119,10 +117,8 @@ int		s_conversion(t_base *all)
 int		modulo_conversion(t_base *all)
 {
 	char c;
-// printf("enter modulo\n");
+
 	c = '%';
-	// all->flag.zero = 0;
-	// printf("zero %d\n", all->flag.zero);
 	all->flag.minus == 1 ? all->flag.zero = 0 : 0;
 	all->flag.plus == 1 ? all->flag.space = 0 : 0;
 	all->len = 1;
@@ -130,13 +126,11 @@ int		modulo_conversion(t_base *all)
 	if (!(all->con_str = malloc(sizeof(char *) * (all->tot_len + 1))))
 		return (-1);
 	fill_width_space(all, all->con_str, all->tot_len);
-	// printf("str %s\n", all->con_str);
 	all->con_str[all->tot_len] = '\0';
 	if (all->flag.minus)
 	{
 		if (c == '\0')
 		{
-			// printf("haalo\n");
 			write(1, "\0", 1);
 			write(1, all->con_str, all->tot_len - 1);
 			all->count += all->tot_len;
@@ -148,7 +142,6 @@ int		modulo_conversion(t_base *all)
 	else
 		all->con_str[all->tot_len - 1] = c;
 	ft_putstr(all->con_str);
-	// printf("-%zu-\n",ft_strlen(all->con_str) );
 	all->count += ft_strlen(all->con_str);
 	return(all->tot_len);
 }

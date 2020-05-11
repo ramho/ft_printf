@@ -59,11 +59,10 @@ int 	light_flags(t_base *all, char *str);
 t_flag	init_flag(t_flag flag);
 
 /*
-**  tab_ptr.c
+**  start_conversion.c
 */
+int start_conversion(t_base *all);
 void	init_function(int(*conversion[255])(t_base *all));
-//void	init_value_of_base(t_base *all);
-
 /*
 **  convert_csp.c
 */
@@ -89,10 +88,7 @@ char *precision_s(t_base *all,char *s);
 int 	type_dif(char c);
 char	*fill_zero(int size);
 
-/*
-**  start_conversion.c
-*/
-int start_conversion(t_base *all);
+
 
 /*
 **  di_flags.c
