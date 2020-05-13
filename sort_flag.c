@@ -35,6 +35,7 @@ int 	light_flags(t_base *all, char *str)
 	int i;
 
 	i = 0;
+	all->malloc = 0;
 	if(!((is_type(str[ft_strlen(str) - 1])) || str[ft_strlen(str) - 1] == '%') )
 	{
 		if ( is_flag_char(str[ft_strlen(str) - 1]) || ft_isdigit(str[ft_strlen(str) - 1]))

@@ -61,15 +61,16 @@ char *precision_diouxX(t_base *all,char *s)
     all->flag.zero = 0;
 		diff = all->flag.precision - ft_strlen(s);
 		tmp = fill_zero(diff);
-		tmp = ft_strjoin(tmp, s);
+		tmp = ft_strjoin_n_free(tmp, s, 3);
 		if (all->flag.plus == 1 || all->signed_nb < 0)
 		{
-			tmp = ft_strjoin(all->flag.sign, tmp);
+			tmp = ft_strjoin_n_free(all->flag.sign, tmp, 2);
 			all->flag.plus = 0;
       if( all->signed_nb < 0)
         all->signed_nb = - all->signed_nb ;
 		}
 		s = tmp;
+    // free(tmp); seg fault
 	}
   else if (all->flag.space == 1 && all->signed_nb >= 0 && all->flag.zero == 0 && (all->type != 'd' || all->type != 'i'))
   {

@@ -35,8 +35,7 @@ int ft_printf(const char* format, ...)
 
 	i = 0;
 	ret = 0;
-	if (!(all = malloc(sizeof(t_base))))
-		return(-1);
+	all = malloc(sizeof(t_base));
 	all->count = 0;
 	va_start(all->args, format);
 	while (i < (int)ft_strlen(format))
@@ -55,8 +54,7 @@ int ft_printf(const char* format, ...)
 				i++;
 				j++;
 			}
-				if(!(str = ft_strsub(format, i - j, j + 1)))
-					return(-1); // free all !
+				str = ft_strsub(format, i - j, j + 1);
 				ret = light_flags(all, str);
 				free(str);
 		}

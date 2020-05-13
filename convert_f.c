@@ -14,12 +14,12 @@
 
 long double   check_l_L(t_base *all)
 {
-   long double nb;
+   uintmax_t nb;
 
   if(all->flag.l == 1 || all->flag.L == 1)
-    nb = va_arg(all->args, long double);
+    nb = (long double)va_arg(all->args, uintmax_t);
   else
-    nb = va_arg(all->args, double);
+    nb = (double)va_arg(all->args, uintmax_t);
   all->signed_nb_f = nb;
   return(nb);
 }
@@ -58,13 +58,14 @@ char  *get_deci_part( long double decimal, t_base *all)
   matissa = rounding( decimal, precision);
   if (decimal == 0)
   {
-    s = malloc(sizeof(char *) * precision + 1);
+    if(!(s = malloc(sizeof(char *) * precision + 1)))
+      return(NULL);
     s = ft_memset(s, '0', precision);
   }
   else
   {
     i = 0;
-    if(!(s=malloc(sizeof(char *) * (precision + 1))))
+    if(!(s = malloc(sizeof(char *) * (precision + 1))))
       return(NULL);
       s[precision] = '\0';
     while (precision > 0)
@@ -73,6 +74,7 @@ char  *get_deci_part( long double decimal, t_base *all)
       tmp = ft_itoa((int)matissa);
       matissa -= (signed int)matissa;
       s[i] = tmp[0];
+      free(tmp);
       precision--;
       i++;
     }
@@ -83,37 +85,39 @@ char  *get_deci_part( long double decimal, t_base *all)
 int		f_conversion(t_base *all)
 {
   long double nb;
-  int entier;
+  uintmax_t entier;
   long double decimal;
   int i;
   char *s;
   char *s_deci;
 
   nb = check_l_L(all);
+  printf("\n [%Lf] \n", nb);
   nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
 	nb < 0 ? nb = -nb : nb;
   entier = nb;
   decimal = nb - entier;
   if( all->flag.precision == 0 && (decimal * 10) >= 5)
     entier += 1;
-  s_deci = get_deci_part( decimal, all);
-  s = ft_itoa(entier);
+  s_deci = get_deci_part(decimal, all);
+  s = ft_u_itoa_base(entier, 10, 'm');
   if (all->flag.plus == 1 || all->signed_nb_f < 0)
   {
-    s = ft_strjoin(all->flag.sign, s);
+    s = ft_strjoin_n_free(all->flag.sign, s, 2);
     all->flag.space = 0;
   }
   if (all->flag.space == 1)
-    s = ft_strjoin(" ", s);
+    s = ft_strjoin_n_free(" ", s, 2);
   if (all->flag.precision != 0)
   {
-    s = ft_strjoin(s, ".");
-    s = ft_strjoin(s, s_deci);
+    s = ft_strjoin_n_free(s, ".", 1);
+    s = ft_strjoin_n_free(s, s_deci, 3);
+    all->malloc = 1;
   }
   else
   {
     if ( all->flag.hash == 1)
-      s = ft_strjoin(s, ".");
+      s = ft_strjoin_n_free(s, ".", 1);
   }
   ft_flag_width(all, s);
   fill_width_space(all, all->con_str, all->tot_len);
@@ -132,5 +136,9 @@ int		f_conversion(t_base *all)
   all->con_str[all->tot_len + 1] = '\0';
   ft_putstr(all->con_str);
   all->count += ft_strlen(all->con_str);
+  free(all->con_str);
+  free(s);
+  if (all->malloc == 0)
+    free(s_deci);
   return(ft_strlen(all->con_str));
 }

@@ -24,7 +24,6 @@ char	*ft_strjoin_n_free(char *s1, char *s2, int del)
 			return (NULL);
 		ft_strcpy(result, s1);
 		ft_strcat(result, s2);
-		return (result);
 		if ( del == 1)
 			free(s1);
 		if ( del == 2)
@@ -34,6 +33,7 @@ char	*ft_strjoin_n_free(char *s1, char *s2, int del)
 			free(s1);
 			free(s2);
 		}
+		return (result);
 	}
 	return (NULL);
 }

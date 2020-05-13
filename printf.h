@@ -40,6 +40,7 @@ typedef   struct  	s_base
 	intmax_t signed_nb;
 	long double signed_nb_f;
 	size_t		count;
+	int malloc;
 }                	 t_base;
 
 
