@@ -24,40 +24,45 @@ char is_flag_char(char c)
 			c == '+'||	c == '#' || c == '0' || c =='j');
 }
 
+int		sort_format(const char *format, int *i, t_base *all)
+{
+	int j;
+	char *str;
+
+	j = 0;
+	*i += 1;
+	while (!(ft_isalpha(format[*i]) || format[*i] == '%') && format[*i] != '\0')
+	{
+		*i += 1;
+		j++;
+	}
+	while(is_flag_char(format[*i]) && format[*i + 1] != '\0')
+	{
+		*i+= 1;
+		j++;
+	}
+		if(!(str = ft_strsub(format, *i - j, j + 1)))
+			return(-1);
+		if(!(light_flags(all, str)))
+			return(-1);
+		free(str);
+		return(1);
+}
+
 int ft_printf(const char* format, ...)
 {
 	t_base *all;
 	int i;
-	int j;
-	char *str;
-	int ret;
 	int count;
 
 	i = 0;
-	ret = 0;
 	all = malloc(sizeof(t_base));
 	all->count = 0;
 	va_start(all->args, format);
 	while (i < (int)ft_strlen(format))
 	{
 		if(format[i] == '%' && format[i + 1])
-		{
-			j = 0;
-			i++;
-			while (!(ft_isalpha(format[i]) || format[i] == '%') && format[i] != '\0')
-			{
-				i++;
-				j++;
-			}
-			while(is_flag_char(format[i]) && format[i + 1] != '\0')
-			{
-				i++;
-				j++;
-			}
-				str = ft_strsub(format, i - j, j + 1);
-				ret = light_flags(all, str);
-				free(str);
-		}
+			sort_format(format, &i, all);
 		else if(format[i] == '%' && !(format[i + 1]))
 			return(all->count);
 		else
