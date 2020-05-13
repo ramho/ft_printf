@@ -70,9 +70,9 @@ char *precision_diouxX(t_base *all,char *s)
         all->signed_nb = - all->signed_nb ;
 		}
 		s = tmp;
-    // free(tmp); seg fault
 	}
-  else if (all->flag.space == 1 && all->signed_nb >= 0 && all->flag.zero == 0 && (all->type != 'd' || all->type != 'i'))
+  else if (all->flag.space == 1 && all->signed_nb >= 0 
+      && all->flag.zero == 0 && (all->type != 'd' || all->type != 'i'))
   {
     s = ft_strjoin_n_free(" ", s, 2);
     all->flag.space = 0;
@@ -100,8 +100,10 @@ void	fill_width_space(t_base *all, char *str, int size)
 	int i;
 
 	i = 0;
-	if ((type_dif(all->type) || all->type == 'u' || all->type == 'x' ||
-			all->type == 'X' || all->type == 'c' || all->type == 'o' || all->type == 'f' || all->type == 'p' || all->type == '%' || all->type == 's') && all->flag.zero == 1)
+	if ((type_dif(all->type) || all->type == 'u' || all->type == 'x'
+      || all->type == 'X' || all->type == 'c' || all->type == 'o'
+      || all->type == 'f' || all->type == 'p' || all->type == '%'
+      || all->type == 's') && all->flag.zero == 1)
 	{
 			while( i < size)
 			   str[i++] = '0';
@@ -110,7 +112,8 @@ void	fill_width_space(t_base *all, char *str, int size)
         str[0] = *all->flag.sign;
         all->flag.plus = 0;
       }
-      if(all->flag.hash == 1 && all->signed_nb != 0 && (all->type == 'x' || all->type == 'X'))//||all->type == 'o' )
+      if(all->flag.hash == 1 && all->signed_nb != 0 && (all->type == 'x'
+      || all->type == 'X'))//||all->type == 'o' )
       {
         str[0] = '0';
         all->type == 'x' ? str[1] = 'x' : 0;

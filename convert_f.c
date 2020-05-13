@@ -14,12 +14,12 @@
 
 long double   check_l_L(t_base *all)
 {
-   uintmax_t nb;
+   long double nb;
 
   if(all->flag.l == 1 || all->flag.L == 1)
-    nb = (long double)va_arg(all->args, uintmax_t);
+    nb = va_arg(all->args, long double);
   else
-    nb = (double)va_arg(all->args, uintmax_t);
+    nb = va_arg(all->args, double);
   all->signed_nb_f = nb;
   return(nb);
 }
@@ -85,14 +85,13 @@ char  *get_deci_part( long double decimal, t_base *all)
 int		f_conversion(t_base *all)
 {
   long double nb;
-  uintmax_t entier;
+  int entier;
   long double decimal;
   int i;
   char *s;
   char *s_deci;
 
   nb = check_l_L(all);
-  printf("\n [%Lf] \n", nb);
   nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
 	nb < 0 ? nb = -nb : nb;
   entier = nb;

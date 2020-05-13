@@ -9,7 +9,6 @@ char *precision_s(t_base *all,char *s)
 		tmp = ft_strsub(s, 0, all->flag.precision);
 		s = tmp;
 		free(tmp);
-		// all->malloc = 1;
 	}
 	else
 		return(s);
