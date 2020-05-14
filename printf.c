@@ -15,7 +15,7 @@
 char 	is_type(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' ||
-			c == 'o'||	c == 'u' || c == 'x' || c == 'X' || c == 'f');
+			c == 'o'||	c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == '%');
 }
 
 char is_flag_char(char c)
@@ -24,7 +24,7 @@ char is_flag_char(char c)
 			c == '+'||	c == '#' || c == '0' || c =='j');
 }
 
-int		sort_format(const char *format, int *i, t_base *all)
+int		parse_format(const char *format, int *i, t_base *all)
 {
 	int j;
 	char *str;
@@ -43,7 +43,7 @@ int		sort_format(const char *format, int *i, t_base *all)
 	}
 		if(!(str = ft_strsub(format, *i - j, j + 1)))
 			return(-1);
-		if(!(light_flags(all, str)))
+		if((light_flags(all, str)) == -1)
 			return(-1);
 		free(str);
 		return(1);
@@ -62,7 +62,7 @@ int ft_printf(const char* format, ...)
 	while (i < (int)ft_strlen(format))
 	{
 		if(format[i] == '%' && format[i + 1])
-			sort_format(format, &i, all);
+			parse_format(format, &i, all);
 		else if(format[i] == '%' && !(format[i + 1]))
 			return(all->count);
 		else

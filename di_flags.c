@@ -50,31 +50,41 @@ uintmax_t check_l_ll_h_hh_unsigned(uintmax_t nb,  t_base *all)
   return(nb);
 }
 
+char *precision_diouxX_bis(t_base *all, char *s)
+{
+  int diff;
+  char *tmp;
+
+  tmp = NULL;
+  all->flag.zero = 0;
+  diff = all->flag.precision - ft_strlen(s);
+  if(!(tmp = fill_zero(diff)))
+    return(NULL);
+  if(!(tmp = ft_strjoin_n_free(tmp, s, 3)))
+    return(NULL);
+  if (all->flag.plus == 1 || all->signed_nb < 0)
+  {
+    if(!(tmp = ft_strjoin_n_free(all->flag.sign, tmp, 2)))
+      return(NULL);
+    all->flag.plus = 0;
+    if( all->signed_nb < 0)
+      all->signed_nb = - all->signed_nb ;
+  }
+  return(tmp);
+}
+
 char *precision_diouxX(t_base *all,char *s)
 {
-	char *tmp;
-	int diff;
-
-	tmp = NULL;
 	if (all->flag.precision > 0 && all->flag.precision >= (int)ft_strlen(s))
-	{
-    all->flag.zero = 0;
-		diff = all->flag.precision - ft_strlen(s);
-		tmp = fill_zero(diff);
-		tmp = ft_strjoin_n_free(tmp, s, 3);
-		if (all->flag.plus == 1 || all->signed_nb < 0)
-		{
-			tmp = ft_strjoin_n_free(all->flag.sign, tmp, 2);
-			all->flag.plus = 0;
-      if( all->signed_nb < 0)
-        all->signed_nb = - all->signed_nb ;
-		}
-		s = tmp;
-	}
-  else if (all->flag.space == 1 && all->signed_nb >= 0 
+  {
+    if((s = precision_diouxX_bis(all, s))== NULL)
+      return(NULL);
+  }
+  else if (all->flag.space == 1 && all->signed_nb >= 0
       && all->flag.zero == 0 && (all->type != 'd' || all->type != 'i'))
   {
-    s = ft_strjoin_n_free(" ", s, 2);
+    if(!(s = ft_strjoin_n_free(" ", s, 2)))
+      return(NULL);
     all->flag.space = 0;
   }
   else
@@ -100,20 +110,17 @@ void	fill_width_space(t_base *all, char *str, int size)
 	int i;
 
 	i = 0;
-	if ((type_dif(all->type) || all->type == 'u' || all->type == 'x'
-      || all->type == 'X' || all->type == 'c' || all->type == 'o'
-      || all->type == 'f' || all->type == 'p' || all->type == '%'
-      || all->type == 's') && all->flag.zero == 1)
+	if(all->flag.zero == 1)
 	{
 			while( i < size)
 			   str[i++] = '0';
-			if (all->flag.plus == 1 || all->signed_nb < 0)
+			if(all->flag.plus == 1 || all->signed_nb < 0)
       {
         str[0] = *all->flag.sign;
         all->flag.plus = 0;
       }
       if(all->flag.hash == 1 && all->signed_nb != 0 && (all->type == 'x'
-      || all->type == 'X'))//||all->type == 'o' )
+        || all->type == 'X'))
       {
         str[0] = '0';
         all->type == 'x' ? str[1] = 'x' : 0;

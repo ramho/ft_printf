@@ -103,17 +103,12 @@ int 	light_flags_bis(int *i, char *str, t_base *all)
 		str[*i] == '+' ? all->flag.plus = 1 : 0;
 		str[*i] == '-' ? all->flag.minus = 1 : 0;
 		str[*i] == ' ' ? all->flag.space = 1 : 0;
-		if(ft_isdigit(str[*i]) && all->flag.width == 0) // width
+		if(ft_isdigit(str[*i]) && all->flag.width == 0)
 		width(i, all, str);
-		if (str[*i] == '.') // precision
+		if (str[*i] == '.')
 		precision(i, all, str);
 		if (str[*i] == 'h' || str[*i] == 'l' || str[*i] == 'L')
 		flag_l_h_L(i, all, str);
-		if (str[*i] == '%')
-		{
-			all->type = '%';
-			return(modulo_conversion(all));
-		}
 		if(!is_type(str[*i]))
 		*i += 1;
 	}
@@ -127,14 +122,10 @@ int 	light_flags(t_base *all, char *str)
 
 	i = 0;
 	all->malloc = 0;
-	if(!((is_type(str[ft_strlen(str) - 1])) || str[ft_strlen(str) - 1] == '%') )
+	if(!((is_type(str[ft_strlen(str) - 1])) || str[ft_strlen(str) - 1] == '%'))
 		return(no_conversion_char(str, all));
 	all->flag = init_flag(all->flag);
 	ret = light_flags_bis(&i, str, all);
-	if(all->type == '%')
-			return(ret);
-	else if(ret == -1)
-		return(-1);
 	all->type = str[i];
 	all->flag.minus == 1 ? all->flag.zero = 0 : 0;
 	all->flag.plus == 1 ? all->flag.space = 0 : 0;

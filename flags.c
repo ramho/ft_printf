@@ -21,7 +21,8 @@ char	*fill_zero(int size)
 	char *str;
 
 	i = 0;
-	str = malloc(sizeof(char *) * (size +1));
+	if(!(str = malloc(sizeof(char *) * (size +1))))
+		return(NULL);
 	while ( i < size)
 	{
 		str[i] = '0';
@@ -31,7 +32,21 @@ char	*fill_zero(int size)
 	return (str);
 }
 
-int 	type_dif(char c)
+void 	final_conversion(t_base *all, char *s, int i)
 {
-	return (c == 'd' || c == 'i' || c == 'f');
+	if (all->flag.minus)
+	{
+		while (++i <= all->len - 1)
+			all->con_str[i] = s[i];
+		}
+	else
+	{
+		i = all->tot_len;
+		while (all->len + 1)
+			all->con_str[i--] = s[all->len--];
+	}
+	all->con_str[all->tot_len + 1] = '\0';
+	ft_putstr(all->con_str);
+	all->count += all->tot_len;
+	free(all->con_str);
 }

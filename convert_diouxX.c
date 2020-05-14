@@ -101,21 +101,22 @@ int		o_conversion(t_base *all)
 	ft_flag_width(all, s);
 	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;
-	if (all->flag.minus)
-	{
-		while (++i <= all->len - 1)
-			all->con_str[i] = s[i];
-	}
-	else
-	{
-		i = all->tot_len;
-		while (all->len + 1)
-			all->con_str[i--] = s[all->len--];
-	}
-	all->con_str[all->tot_len + 1] = '\0';
-	ft_putstr(all->con_str);
-	all->count += all->tot_len;
-	free(all->con_str);
+	final_conversion(all, s, i);
+	// if (all->flag.minus)
+	// {
+	// 	while (++i <= all->len - 1)
+	// 		all->con_str[i] = s[i];
+	// }
+	// else
+	// {
+	// 	i = all->tot_len;
+	// 	while (all->len + 1)
+	// 		all->con_str[i--] = s[all->len--];
+	// }
+	// all->con_str[all->tot_len + 1] = '\0';
+	// ft_putstr(all->con_str);
+	// all->count += all->tot_len;
+	// free(all->con_str);
 	free(s);
 	return (all->tot_len);
 }
@@ -138,21 +139,22 @@ int		u_conversion(t_base *all)
 	ft_flag_width(all, s);
 	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;
-	if (all->flag.minus)
-	{
-		while (++i <= all->len - 1)
-			all->con_str[i] = s[i];
-	}
-	else
-	{
-		i = all->tot_len;
-		while (all->len + 1)
-			all->con_str[i--] = s[all->len--];
-	}
-	all->con_str[all->tot_len + 1] = '\0';
-	ft_putstr(all->con_str);
-	all->count += all->tot_len;
-	free(all->con_str);
+	final_conversion(all, s, i);
+	// if (all->flag.minus)
+	// {
+	// 	while (++i <= all->len - 1)
+	// 		all->con_str[i] = s[i];
+	// }
+	// else
+	// {
+	// 	i = all->tot_len;
+	// 	while (all->len + 1)
+	// 		all->con_str[i--] = s[all->len--];
+	// }
+	// all->con_str[all->tot_len + 1] = '\0';
+	// ft_putstr(all->con_str);
+	// all->count += all->tot_len;
+	// free(all->con_str);
 	free(s);
 	return (all->tot_len);
 }
@@ -177,21 +179,22 @@ int		x_conversion(t_base *all)
 	ft_flag_width(all, s);
 	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;
-	if (all->flag.minus)
-	{
-		while (++i <= all->len - 1)
-			all->con_str[i] = s[i];
-	}
-	else
-	{
-		i = all->tot_len;
-		while (all->len + 1)
-			all->con_str[i--] = s[all->len--];
-	}
-	all->con_str[all->tot_len + 1] = '\0';
-	ft_putstr(all->con_str);
-	all->count += all->tot_len;
-	free(all->con_str);
+	final_conversion(all, s, i);
+	// if (all->flag.minus)
+	// {
+	// 	while (++i <= all->len - 1)
+	// 		all->con_str[i] = s[i];
+	// }
+	// else
+	// {
+	// 	i = all->tot_len;
+	// 	while (all->len + 1)
+	// 		all->con_str[i--] = s[all->len--];
+	// }
+	// all->con_str[all->tot_len + 1] = '\0';
+	// ft_putstr(all->con_str);
+	// all->count += all->tot_len;
+	// free(all->con_str);
 	free(s);
 	return (all->tot_len);
 }
@@ -216,21 +219,22 @@ int		X_conversion(t_base *all)
 		ft_flag_width(all, s);
 		fill_width_space(all, all->con_str, all->tot_len);
 		i = -1;
-		if (all->flag.minus)
-		{
-			while (++i <= all->len - 1)
-				all->con_str[i] = s[i];
-		}
-		else
-		{
-			i = all->tot_len;
-			while (all->len + 1)
-				all->con_str[i--] = s[all->len--];
-		}
-		all->con_str[all->tot_len + 1] = '\0';
-		ft_putstr(all->con_str);
-		all->count += all->tot_len;
-		free(all->con_str);
+		final_conversion(all, s, i);
+		// if (all->flag.minus)
+		// {
+		// 	while (++i <= all->len - 1)
+		// 		all->con_str[i] = s[i];
+		// }
+		// else
+		// {
+		// 	i = all->tot_len;
+		// 	while (all->len + 1)
+		// 		all->con_str[i--] = s[all->len--];
+		// }
+		// all->con_str[all->tot_len + 1] = '\0';
+		// ft_putstr(all->con_str);
+		// all->count += all->tot_len;
+		// free(all->con_str);
 		free(s);
 		return (all->tot_len);
 }
