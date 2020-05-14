@@ -77,7 +77,7 @@ char *precision_diouxX(t_base *all,char *s)
 {
 	if (all->flag.precision > 0 && all->flag.precision >= (int)ft_strlen(s))
   {
-    if((s = precision_diouxX_bis(all, s))== NULL)
+    if((s = precision_diouxX_bis(all, s)) == NULL)
       return(NULL);
   }
   else if (all->flag.space == 1 && all->signed_nb >= 0

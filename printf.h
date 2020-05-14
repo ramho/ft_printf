@@ -74,26 +74,30 @@ void			init_function(int(*conversion[255])(t_base *all));
 */
 int 			c_conversion(t_base *all);
 int 			p_conversion(t_base *all);
-int 			s_conversion(t_base *all);
-int				modulo_conversion();
-int 			modulo_conversion_bis(t_base *all);
 char 			*p_conversion_bis(t_base *all, long int p, char *s);
+int 			s_conversion(t_base *all);
+int				modulo_conversion(t_base *all);
+int 			modulo_conversion_bis(t_base *all);
+
 
 /*
 **  convert_diouxX.c
 */
 int 			di_conversion(t_base *all);
+char 			*di_conversion_thrice(t_base *all, char *s);
+char 			*di_conversion_twice(intmax_t nb, t_base *all, char *s);
 int				u_conversion(t_base *all);
 int				o_conversion(t_base *all);
 int				x_conversion(t_base *all);
 int				X_conversion(t_base *all);
+char 			*o_conversion_bis(uintmax_t nb, t_base *all, char *s);
 
 /*
 **  flags.c
 */
 char 			*precision_s(t_base *all,char *s);
 char			*fill_zero(int size);
-void 	final_conversion(t_base *all, char *s, int i);
+void 			final_conversion(t_base *all, char *s, int i);
 
 /*
 **  di_flags.c

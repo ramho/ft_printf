@@ -12,41 +12,38 @@
 
 #include "printf.h"
 
-int		di_conversion(t_base *all)
+char 	*di_conversion_twice(intmax_t nb, t_base *all, char *s)
 {
-	intmax_t nb;
-	int i;
-	char *s;
-
-	nb = 0;
-	nb = check_l_ll_h_hh(nb, all);
-	nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
-	nb < 0 ? all->flag.space = 0 : 0;
-	all->signed_nb = nb;
-	nb < 0 ? nb = -nb : nb;
-	s = ft_u_itoa_base(nb, 10, 'm');
-	if ( nb == 0 && all->flag.precision == 0)
+	if (nb == 0 && all->flag.precision == 0)
 		ft_bzero(s, ft_strlen(s));
-	s = precision_diouxX(all, s);
+	if(!(s = precision_diouxX(all, s)))
+		return(NULL);
 	if((all->flag.plus == 1 || all->signed_nb < 0) && all->flag.zero == 0)
 	{
-		s = ft_strjoin_n_free(all->flag.sign, s, 2);
+		if(!(s = ft_strjoin_n_free(all->flag.sign, s, 2)))
+			return(NULL);
 		all->flag.plus = 0;
 	}
 	if (all->flag.space == 1 && all->flag.precision >= 0)
 	{
-		s = ft_strjoin_n_free(" \0", s, 2);
+		if(!(s = ft_strjoin_n_free(" \0", s, 2)))
+			return(NULL);
 		all->flag.space = 0;
 	}
-	if(!ft_flag_width(all, s))
-		return(-1);
-	fill_width_space(all, all->con_str, all->tot_len);
+	return(s);
+}
+
+char 	*di_conversion_thrice(t_base *all, char *s)
+{
+	int i;
+
 	i = -1;
 	if (all->flag.minus)
 	{
 		if (all->flag.space == 1 && all->flag.zero == 0)
 		{
-			s = ft_strjoin_n_free(" \0", s, 2);
+			if(!(s = ft_strjoin_n_free(" \0", s, 2)))
+				return(NULL);
 			all->len +=1;
 			all->flag.space = 0;
 }
@@ -61,6 +58,28 @@ int		di_conversion(t_base *all)
 		while (all->len + 1)
 			all->con_str[i--] = s[all->len--];
 	}
+	return(all->con_str);
+}
+
+int		di_conversion(t_base *all)
+{
+	intmax_t nb;
+	char *s;
+
+	nb = 0;
+	nb = check_l_ll_h_hh(nb, all);
+	nb < 0 ? all->flag.sign = "-\0" : all->flag.sign;
+	nb < 0 ? all->flag.space = 0 : 0;
+	all->signed_nb = nb;
+	nb < 0 ? nb = -nb : nb;
+	s = ft_u_itoa_base(nb, 10, 'm');
+	if(!(s = di_conversion_twice(nb, all, s)))
+		return(-1);
+	if(!ft_flag_width(all, s))
+		return(-1);
+	fill_width_space(all, all->con_str, all->tot_len);
+	if(!(di_conversion_thrice(all, s)))
+		return(-1);
 	all->con_str[all->tot_len + 1] = '\0';
 	if (all->flag.space == 1)
 		all->con_str[0] = ' ';
@@ -69,6 +88,22 @@ int		di_conversion(t_base *all)
 	free(all->con_str);
 	free(s);
 	return (ft_strlen(all->con_str));
+}
+
+char 	*o_conversion_bis(uintmax_t nb, t_base *all, char *s)
+{
+	if (nb == 0 && all->flag.precision == 0)
+	{
+		if(all->flag.hash == 1)
+		{
+			free(s);
+			if(!(s = ft_strdup("0")))
+				return(NULL);
+		 }
+		else
+			ft_bzero(s, ft_strlen(s));
+	}
+	return(s);
 }
 
 int		o_conversion(t_base *all)
@@ -82,16 +117,8 @@ int		o_conversion(t_base *all)
 	nb = check_l_ll_h_hh_unsigned(nb, all);
 	s = ft_u_itoa_base(nb, 8, 'm');
 	len = ft_strlen(s);
-	if (nb == 0 && all->flag.precision == 0)
-	{
-		if(all->flag.hash == 1)
-		{
-			free(s);
-			 s = ft_strdup("0");
-		 }
-		else
-			ft_bzero(s, ft_strlen(s));
-	}
+	if(!(o_conversion_bis(nb, all, s)))
+		return(-1);
 	s = precision_diouxX(all, s);
 	if(all->flag.hash == 1 &&  all->flag.precision <= len && nb >= 1)
 	{
@@ -102,59 +129,29 @@ int		o_conversion(t_base *all)
 	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;
 	final_conversion(all, s, i);
-	// if (all->flag.minus)
-	// {
-	// 	while (++i <= all->len - 1)
-	// 		all->con_str[i] = s[i];
-	// }
-	// else
-	// {
-	// 	i = all->tot_len;
-	// 	while (all->len + 1)
-	// 		all->con_str[i--] = s[all->len--];
-	// }
-	// all->con_str[all->tot_len + 1] = '\0';
-	// ft_putstr(all->con_str);
-	// all->count += all->tot_len;
-	// free(all->con_str);
 	free(s);
 	return (all->tot_len);
 }
 
 int		u_conversion(t_base *all)
 {
-	uintmax_t d;
+	uintmax_t nb;
 	int i;
 	char *s;
 
 	all->flag.plus ? all->flag.plus = 0 : 0;
 	all->flag.minus ? all->flag.zero = 0 : 0;
 	all->flag.space ? all->flag.space = 0 : 0;
-	d = 0;
-	d = check_l_ll_h_hh_unsigned(d, all);
-	s = ft_u_itoa_base(d,10, 'm');
-	if(all->flag.precision == 0 && d == 0)
+	nb = 0;
+	nb = check_l_ll_h_hh_unsigned(nb, all);
+	s = ft_u_itoa_base(nb,10, 'm');
+	if(all->flag.precision == 0 && nb == 0)
 		all->flag.hash == 1 ? s = ft_strdup("0"):ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
 	ft_flag_width(all, s);
 	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;
 	final_conversion(all, s, i);
-	// if (all->flag.minus)
-	// {
-	// 	while (++i <= all->len - 1)
-	// 		all->con_str[i] = s[i];
-	// }
-	// else
-	// {
-	// 	i = all->tot_len;
-	// 	while (all->len + 1)
-	// 		all->con_str[i--] = s[all->len--];
-	// }
-	// all->con_str[all->tot_len + 1] = '\0';
-	// ft_putstr(all->con_str);
-	// all->count += all->tot_len;
-	// free(all->con_str);
 	free(s);
 	return (all->tot_len);
 }
@@ -171,7 +168,8 @@ int		x_conversion(t_base *all)
 	if ( nb == 0 && all->flag.precision == 0)
 	 	ft_bzero(s, ft_strlen(s));
 	s = precision_diouxX(all, s);
-	if(all->flag.hash == 1 && ((all->flag.precision >= 0 && nb > 0) || (all->flag.zero == 0 && nb > 0)))
+	if(all->flag.hash == 1 && ((all->flag.precision >= 0 && nb > 0)
+		|| (all->flag.zero == 0 && nb > 0)))
 	{
 		s = ft_strjoin_n_free("0x", s, 2);
 		all->flag.hash = 0;
@@ -180,21 +178,6 @@ int		x_conversion(t_base *all)
 	fill_width_space(all, all->con_str, all->tot_len);
 	i = -1;
 	final_conversion(all, s, i);
-	// if (all->flag.minus)
-	// {
-	// 	while (++i <= all->len - 1)
-	// 		all->con_str[i] = s[i];
-	// }
-	// else
-	// {
-	// 	i = all->tot_len;
-	// 	while (all->len + 1)
-	// 		all->con_str[i--] = s[all->len--];
-	// }
-	// all->con_str[all->tot_len + 1] = '\0';
-	// ft_putstr(all->con_str);
-	// all->count += all->tot_len;
-	// free(all->con_str);
 	free(s);
 	return (all->tot_len);
 }
@@ -211,7 +194,8 @@ int		X_conversion(t_base *all)
 		if ( nb == 0 && all->flag.precision == 0)
 			ft_bzero(s, ft_strlen(s));
 		s = precision_diouxX(all, s);
-		if(all->flag.hash == 1 && ((all->flag.precision >= 0 && nb > 0) || (all->flag.zero == 0 && nb > 0)))
+		if(all->flag.hash == 1 && ((all->flag.precision >= 0 && nb > 0)
+			|| (all->flag.zero == 0 && nb > 0)))
 		{
 			s = ft_strjoin_n_free("0X", s, 2);
 			all->flag.hash = 0;
@@ -220,21 +204,6 @@ int		X_conversion(t_base *all)
 		fill_width_space(all, all->con_str, all->tot_len);
 		i = -1;
 		final_conversion(all, s, i);
-		// if (all->flag.minus)
-		// {
-		// 	while (++i <= all->len - 1)
-		// 		all->con_str[i] = s[i];
-		// }
-		// else
-		// {
-		// 	i = all->tot_len;
-		// 	while (all->len + 1)
-		// 		all->con_str[i--] = s[all->len--];
-		// }
-		// all->con_str[all->tot_len + 1] = '\0';
-		// ft_putstr(all->con_str);
-		// all->count += all->tot_len;
-		// free(all->con_str);
 		free(s);
 		return (all->tot_len);
 }
