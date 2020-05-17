@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	init_function(int (*conversion[122])(t_base *all))
 {
@@ -22,15 +22,15 @@ void	init_function(int (*conversion[122])(t_base *all))
 	conversion[111] = o_conversion;
 	conversion[117] = u_conversion;
 	conversion[120] = x_conversion;
-	conversion[88] = X_conversion;
+	conversion[88] = xupper_conversion;
 	conversion[102] = f_conversion;
 	conversion[37] = modulo_conversion;
 }
 
 int		start_conversion(t_base *all)
 {
-	int		ret;
-	int		(*conversion[122])(t_base *all);
+	int	ret;
+	int	(*conversion[122])(t_base *all);
 
 	init_function(conversion);
 	ret = conversion[all->type](all);

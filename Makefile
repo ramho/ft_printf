@@ -14,10 +14,11 @@ NAME = libftprintf.a
 
 LIBFT = libft
 
-SRC = convert_csp.c convert_diouxX.c convert_f.c di_flags.c flags.c printf.c \
-			sort_flag.c start_conversion.c 
+SRC = convert_csp.c convert_di.c convert_oux.c convert_f.c convert_modulo.c \
+			width_n_final_flag.c precision_flag.c ft_printf.c parse_flags.c parse_flags_bis.c \
+			start_conversion.c length_modifiers_flag.c
 
-INC = printf.h
+INC = ft_printf.h
 
 FLAGS = -Wall -Wextra -Werror
 

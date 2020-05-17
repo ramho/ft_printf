@@ -14,8 +14,8 @@
 
 int		ft_count_sym(char *str, char c)
 {
-	int i;
-	int count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -23,7 +23,7 @@ int		ft_count_sym(char *str, char c)
 	{
 		if (str[i] == c)
 			count++;
-		i++;	
+		i++;
 	}
-	return(count);
+	return (count);
 }

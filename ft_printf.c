@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhoorntj <rhoorntj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,24 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-char 	is_type(char c)
+char		is_type(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' ||
-			c == 'o'||	c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == '%');
+			c == 'o' || c == 'u' || c == 'x' || c == 'X' || c == 'f' ||
+			c == '%');
 }
 
-char is_flag_char(char c)
+char		is_flag_char(char c)
 {
-	return(c == 'h' || c == 'l' || c == 'L' || c == ' ' || c == '-' ||
-			c == '+'||	c == '#' || c == '0' || c =='j');
+	return (c == 'h' || c == 'l' || c == 'L' || c == ' ' || c == '-' ||
+			c == '+' || c == '#' || c == '0' || c == 'j');
 }
 
-int		parse_format(const char *format, int *i, t_base *all)
+int			parse_format(const char *format, int *i, t_base *all)
 {
-	int j;
-	char *str;
+	int		j;
+	char	*str;
 
 	j = 0;
 	*i += 1;
@@ -36,24 +37,24 @@ int		parse_format(const char *format, int *i, t_base *all)
 		*i += 1;
 		j++;
 	}
-	while(is_flag_char(format[*i]) && format[*i + 1] != '\0')
+	while (is_flag_char(format[*i]) && format[*i + 1] != '\0')
 	{
-		*i+= 1;
+		*i += 1;
 		j++;
 	}
-		if(!(str = ft_strsub(format, *i - j, j + 1)))
-			return(-1);
-		if((light_flags(all, str)) == -1)
-			return(-1);
-		free(str);
-		return(1);
+	if (!(str = ft_strsub(format, *i - j, j + 1)))
+		return (-1);
+	if ((light_flags(all, str)) == -1)
+		return (-1);
+	free(str);
+	return (1);
 }
 
-int ft_printf(const char* format, ...)
+int			ft_printf(const char *format, ...)
 {
-	t_base *all;
-	int i;
-	int count;
+	t_base	*all;
+	int		i;
+	int		count;
 
 	i = 0;
 	all = malloc(sizeof(t_base));
@@ -61,10 +62,10 @@ int ft_printf(const char* format, ...)
 	va_start(all->args, format);
 	while (i < (int)ft_strlen(format))
 	{
-		if(format[i] == '%' && format[i + 1])
+		if (format[i] == '%' && format[i + 1])
 			parse_format(format, &i, all);
-		else if(format[i] == '%' && !(format[i + 1]))
-			return(all->count);
+		else if (format[i] == '%' && !(format[i + 1]))
+			return (all->count);
 		else
 			all->count += write(1, &format[i], 1);
 		i++;
